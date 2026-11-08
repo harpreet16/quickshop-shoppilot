@@ -34,7 +34,7 @@ LEGITIMACY_WEIGHTS = {
 def _score_price(price: float, max_budget: float = None) -> tuple[int, str]:
     """Score price from 1-5. Returns (score, evidence)."""
     if price <= 0:
-        return (3,)
+        return 3, "Price unknown, assuming average"
 
     for threshold, score in PRICE_BRACKETS:
         if price < threshold:
