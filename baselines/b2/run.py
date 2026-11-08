@@ -1,12 +1,15 @@
 import argparse
 import os
+import sys
 
 from dotenv import load_dotenv
 
-load_dotenv()
+here = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(here, ".env"))
+load_dotenv(os.path.join(here, "..", "..", ".env"))
 
-PROVIDER = os.getenv("WEBSEARCH_PROVIDER", "openai")
-MODEL = os.getenv("WEBSEARCH_MODEL", "gpt-4o")
+PROVIDER = os.getenv("WEBSEARCH_PROVIDER", "gemini")
+MODEL = os.getenv("WEBSEARCH_MODEL", "gemini-3.8-flash")
 
 
 def read_query(path):
@@ -36,6 +39,29 @@ def web_grounded_call(query, mock=False):
 
     prompt = PROMPT.format(query=query)
 
+    if PROVIDER == "gemini":
+        from google import genai
+        from google.genai import types
+
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "GEMINI_API_KEY not set. Add it to .env or baselines/b2/.env"
+            )
+
+        client = genai.Client(api_key=api_key)
+
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                tools=[types.Tool(google_search=types.GoogleSearch())],
+                temperature=0.2,
+            ),
+        )
+
+        return response.text
+
     if PROVIDER == "openai":
         from openai import OpenAI
 
@@ -48,8 +74,7 @@ def web_grounded_call(query, mock=False):
         return resp.output_text
 
     raise ValueError(
-        f"Unsupported WEBSEARCH_PROVIDER={PROVIDER!r}. "
-        "Edit web_grounded_call() to add Anthropic or Gemini web search."
+        f"Unsupported WEBSEARCH_PROVIDER={PROVIDER!r}. Supported: 'gemini', 'openai'."
     )
 
 
