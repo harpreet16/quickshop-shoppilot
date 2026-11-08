@@ -1,0 +1,32 @@
+**Scoring key** – each product is judged on three dimensions (1 = poor, 5 = excellent).  
+*Price*: 5 = well‑under the $80 limit, 4 = comfortably under, 3 = close to the limit, 2 = at the limit, 1 = above the limit.  
+*Quality*: combines material durability, rating and number of reviews.  
+*Legitimacy*: based on the seller‑reputation description that was supplied.
+
+| Product | Price | Price Score | Quality Score | Legitimacy Score | Overall (sum) |
+|---------|-------|------------|--------------|------------------|---------------|
+| **Everyday Cotton Straight Jeans** | $68.00 | 4 | 5 (99 % cotton, 4.5★ from 2 300 reviews) | 5 (Established retailer, long sales history) | **14** |
+| **Essential Straight Jeans** | $52.00 | 4 | 4 (70 % cotton/30 % polyester, 4.3★ from 800 reviews) | 4 (Established retailer, described as “Trusted”) | **12** |
+| **Classic Straight Jeans** | $29.99 | 5 | 3 (65 % polyester/35 % cotton, 4.9★ but only 15 reviews) | 2 (Seller has “limited information”) | **10** |
+| Ultra Cheap Straight Jeans | $19.99 | 5 | 2 (no material data, only 7 reviews) | 2 (New retailer, little info) | 9 |
+| Premium Cotton Jeans | $95.00 | 1 (above budget) | – | – | – |
+
+### Recommended products
+1. **Everyday Cotton Straight Jeans** – $68  
+   *Price Score: 4, Quality Score: 5, Legitimacy Score: 5, Overall: 14*  
+   *Why:* Well‑under the $80 ceiling, made of almost pure cotton (durable), excellent rating supported by thousands of reviews, and sold by an established, long‑standing retailer.
+
+2. **Essential Straight Jeans** – $52  
+   *Price Score: 4, Quality Score: 4, Legitimacy Score: 4, Overall: 12*  
+   *Why:* Comfortable price, a solid cotton‑polyester blend that should hold up to wear, good rating with many reviews, and offered by a retailer described as “Established” and “Trusted.”
+
+3. **Classic Straight Jeans** – $29.99  
+   *Price Score: 5, Quality Score: 3, Legitimacy Score: 2, Overall: 10*  
+   *Why:* The cheapest option and comfortably within budget. Material mix includes polyester which can add strength, but the low review count and limited seller information lower confidence in durability and trustworthiness.
+
+### Rejected products
+- **Premium Cotton Jeans** – $95.00 – *Rejected because it exceeds the $80 maximum budget.*  
+- **Ultra Cheap Straight Jeans** – $19.99 – *Rejected despite the low price because the material composition is unknown, the seller has little public information, and the product has only a handful of reviews, making durability and trustworthiness uncertain.*
+
+### Note on colour  
+None of the supplied listings specify the colour of the jeans. All three recommended items are straight‑leg styles that meet the price, durability and seller‑trust criteria, but **the black colour cannot be confirmed from the data provided**. If colour is a strict requirement, you may need to verify the colour on the retailer’s product page before purchase.

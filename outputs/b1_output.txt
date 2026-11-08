@@ -1,0 +1,25 @@
+B1 baseline — query: black straight-leg jeans under $80, durable, from a trustworthy seller
+============================================================
+
+Top 3 recommendations (arithmetic average of 3 axes):
+
+1. Women's Nine West Straight Jeans, Size: 4, Black  ($19.19)
+   price=5 quality=5 legitimacy=5  overall=5.0
+   Cheapest option → 5. Strong rating (4.5) and large review base (1800) indicate excellent quality → 5. Sold by Kohl's, a major and trustworthy retailer, with many reviews → 5. Title explicitly says Black, matching the request.
+
+2. Gloria Vanderbilt Women's Jeans Gloria Vanderbilt Amanda  ($24.99)
+   price=5 quality=5 legitimacy=5  overall=5.0
+   Price ≤$25 → 5. Rating 4.3 with a massive 16,000 reviews signals top‑tier quality → 5. Sold by Macy's, a highly trusted department store with huge review volume → 5. Color not specified.
+
+3. Old Navy Women's High-Waisted Wow Straight Ankle Jeans  ($22.19)
+   price=5 quality=5 legitimacy=5  overall=5.0
+   Very low price → 5. Rating 4.6 and 32,000 reviews indicate excellent quality → 5. Old Navy is a large, trustworthy retailer with huge review counts → 5. Color not mentioned.
+
+Not recommended:
+   - Gap Factory Women's High Rise '90S Slim Straight Jeans (overall=4.67)
+   - AE High-Waisted Stovepipe Jean Women's (overall=4.67)
+   - AE Super High-Waisted Straight Jean Women's (overall=4.33)
+   - AE Stretch High-Waisted Straight Jean Women's (overall=4.33)
+   - AE Low-Rise Classic Straight Jean Women's (overall=4.0)
+   - Old Navy Women's Mid-Rise Straight Leg Jeans (overall=3.67)
+   - AE High-Waisted Straight Jean Women's (overall=3.67)
