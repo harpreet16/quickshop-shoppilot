@@ -36,6 +36,32 @@ agentic rather than a single model call or a fixed pipeline.
 | **5. Scoring** | Deterministic Python scores each axis 1–5, applies the legitimacy gate, then ranks eligible candidates with a weighted geometric mean. |
 | **6. Report** | Render the ranked shortlist (3–5) with evidence, a flagged higher-risk section, the rejection list, and a risk band. |
 
+### Setup Instructions
+```bash
+# Clone and setup
+git clone https://github.com/harpreet16/quickshop-shoppilot.git
+cd quickshop-shoppilot
+python -m venv .venv && source .venv/bin/activate
+pip install -e .
+cp .env.example .env  # Add: API_KEY, SERPAPI_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
+
+# Run QuickShop agent (interactive, output to terminal)
+python -m quickshop "black jeans under $80"
+
+# Run baselines (output written to baselines/b*/output.txt)
+python baselines/b0/run.py
+python baselines/b1/run.py
+python baselines/b2/run.py
+
+# Run tests
+pytest tests/
+# Pre-captured outputs are in outputs/ folder:
+#   outputs/quickshop_output.txt  - Main agent output
+#   outputs/b0_output.txt         - B0 baseline
+#   outputs/b1_output.txt         - B1 baseline
+#   outputs/b2_output.txt         - B2 baseline
+```
+
 ### Scoring (the key design decision)
 
 The LLM **extracts** evidence into a schema but does **not** compute the scores : scoring is
