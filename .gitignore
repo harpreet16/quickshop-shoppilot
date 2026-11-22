@@ -3,6 +3,8 @@
 .env.*
 *.env
 !.env.example
+.streamlit
+.pi
 
 # Claude Code local files (never committed)
 CLAUDE.md

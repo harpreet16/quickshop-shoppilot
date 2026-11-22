@@ -19,9 +19,9 @@ def build_agent(tools=None, credits=5, session_id=None, model=None, extra_hooks=
     hooks = [trace] + (list(extra_hooks) if extra_hooks else [])
     agent = create_harness(
         model=model,
-        instructions=build_instructions(credits),
+        instructions=instructions if instructions is not None else build_instructions(credits),
         tools=tools,
-        builtin_tools=[], # set no shell, file or web tools
+        builtin_tools=[],  # set no shell, file or web tools
         builtin_plugins=[],
         skills=False,
         memory=False,

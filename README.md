@@ -71,6 +71,58 @@ pytest tests/
 #   outputs/b2_output.txt         - B2 baseline
 ```
 
+### Browser UI (local pilot)
+
+```bash
+source .venv/bin/activate
+pip install -e '.[ui]'
+streamlit run app.py
+# Or start with the Frozen toggle enabled:
+streamlit run app.py -- --frozen
+```
+
+Open http://127.0.0.1:8501. Project configuration binds the server to localhost;
+this pilot has no authentication and must not be exposed publicly.
+
+Live mode uses server-side `.env` keys: `API_KEY` (ASU gateway), `SERPAPI_KEY`
+(add this manually if absent from your template), and `FIRECRAWL_API_KEY`.
+No keys are entered or displayed in the page. Gemini is not needed for this UI.
+Keep `QUICKSHOP_EVIDENCE_REPLAY=0` for fresh live evidence.
+
+Try: **black straight-leg jeans, size 32 waist, under $80**. Reply to clarification
+questions in the chat box; the same agent invocation continues. Follow-up requests
+reuse the conversation. Session controls stay on the left, replies and questions in
+center chat, and live tool/result cards in the right column. Activity cards show
+running/completed calls with expandable inputs and outputs, category colors and
+risk indicators; rejected products appear in red. Cards use tool results, not parsed AI prose.
+Use **Hide live activity** in the sidebar to expand chat to full width; **Show live activity**
+restores the right column without interrupting ongoing work. Tables grow naturally inside
+the chat feed, which handles scrolling; neither table has its own scrollbar.
+The **Options** table below the events table lists discovered products with brand,
+wrapped title, a small product-link pill, and the current verdict. Brands come only
+from explicit tool data (otherwise `—`); products remain unreviewed or awaiting a
+verdict until assessed. Rejections appear in red.
+A compact table inside the main chat feed summarizes the ten latest events (for example,
+"Editorialist — Unrecognized seller"). Conversation and activity feeds auto-scroll
+to new content; activity is chronological. Evidence and raw tool payloads stay
+collapsed until expanded. The UI extra requires Streamlit 1.67+ for native auto-scroll.
+Merchant signals remain heuristics, not verified seller safety. Unscored candidates
+are not promoted into recommendation cards.
+
+**Frozen mode** uses synthetic fixed black-jeans listings/evidence inspired by
+`outputs/quickshop_output.txt`, including an untrusted eBay seller. It still uses
+the live ASU model and requires `API_KEY`, but makes no SerpAPI/Firecrawl calls.
+Demo links are placeholders, not purchasable offers. Other searches still receive
+the same demo products. Mode changes and **New conversation** clear the browser's
+conversation; they are disabled while work is active. Answer pending questions
+within five minutes. Closing the browser does not cancel an in-flight API request.
+
+The sidebar page-read counter resets per shopping turn and counts evidence tool
+calls (including cache hits), not provider billing credits. Activity refreshes every
+half second as tools start and finish. Search/model spending is not capped by this counter.
+
+Offline UI tests: install `pip install -e '.[dev,ui]'`, then run
+`pytest tests/test_web.py`. No paid API calls are required by these tests.
 ### Evaluation (results tables)
 
 Compare QuickShop with the three baselines on the benchmark queries in `eval/benchmark.py`.
