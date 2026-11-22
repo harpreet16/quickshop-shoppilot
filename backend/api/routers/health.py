@@ -1,7 +1,7 @@
 import os
 from fastapi import APIRouter
 from ..models import HealthResponse, ServiceStatus
-from quickshop.config import MODEL_ID
+from quickshop.config import active_model_id, model_configured
 
 router = APIRouter(tags=["health"])
 
@@ -12,11 +12,11 @@ async def health() -> HealthResponse:
     services = ServiceStatus(
         serpapi=bool(os.getenv("SERPAPI_KEY")),
         firecrawl=bool(os.getenv("FIRECRAWL_API_KEY")),
-        model=bool(os.getenv("API_KEY")),
+        model=model_configured(),
     )
     all_ok = all([services.serpapi, services.firecrawl, services.model])
     return HealthResponse(
         status="ok" if all_ok else "degraded",
-        model=MODEL_ID,
+        model=active_model_id(),
         services=services,
     )

@@ -8,6 +8,7 @@ SSE event types the frontend will receive, in order:
   done       → final markdown response + session_id + usage stats
   error      → something went wrong; show an error state
 """
+
 import asyncio
 import json
 import threading
@@ -66,6 +67,14 @@ def _sse(event: str, payload: dict) -> dict:
     return {"event": event, "data": json.dumps(payload)}
 
 
+def _credits_used() -> int:
+    """Firecrawl credits spent so far by this server process (the counter is never reset)."""
+    try:
+        return int(get_usage().get("firecrawl", {}).get("credits_used", 0))
+    except Exception:
+        return 0
+
+
 async def _agent_stream(query: str, session_id: str) -> AsyncGenerator[dict, None]:
     queue: asyncio.Queue = asyncio.Queue()
     loop = asyncio.get_event_loop()
@@ -83,14 +92,10 @@ async def _agent_stream(query: str, session_id: str) -> AsyncGenerator[dict, Non
                 session_id=session_id,
                 extra_hooks=[streaming_hook],
             )
+            credits_before = _credits_used()
             result = agent(query)
             response_text = str(result).strip()
-
-            try:
-                usage = get_usage()
-                credits = usage.get("firecrawl", {}).get("credits_used", 0)
-            except Exception:
-                credits = 0
+            credits = max(_credits_used() - credits_before, 0)
 
             loop.call_soon_threadsafe(
                 queue.put_nowait,
@@ -101,13 +106,17 @@ async def _agent_stream(query: str, session_id: str) -> AsyncGenerator[dict, Non
                         "session_id": session_id,
                         "tool_calls": len(streaming_hook.calls),
                         "firecrawl_credits": credits,
+                        "products": streaming_hook.products(),
                     },
                 },
             )
         except Exception as exc:
             loop.call_soon_threadsafe(
                 queue.put_nowait,
-                {"event": "error", "data": {"message": str(exc), "code": "AGENT_ERROR"}},
+                {
+                    "event": "error",
+                    "data": {"message": str(exc), "code": "AGENT_ERROR"},
+                },
             )
         finally:
             loop.call_soon_threadsafe(queue.put_nowait, None)  # sentinel
@@ -118,7 +127,7 @@ async def _agent_stream(query: str, session_id: str) -> AsyncGenerator[dict, Non
         item = await queue.get()
         if item is None:
             break
-        yield item
+        yield _sse(item["event"], item["data"])
 
 
 @router.post(
