@@ -15,12 +15,26 @@ load_dotenv()
 from eval.benchmark import BENCHMARK_QUERIES, get_queries_by_category, get_query_by_id
 
 
+def _firecrawl_credits_used() -> int:
+    # total Firecrawl credits spent so far in this process (0 if it cannot be read)
+    try:
+        from quickshop.evidence.tool import get_usage
+        return int(get_usage()["firecrawl"]["credits_used"] or 0)
+    except Exception:
+        return 0
+
+
 def run_quickshop(query: str, timeout: int = 120) -> dict:
     from quickshop.agent.orchestrator import build_agent
+    from eval.recorder import ToolRecorder
 
     start = time.time()
+    credits_before = _firecrawl_credits_used()
     try:
         agent = build_agent(credits=5)
+        # keep every tool input and result, so eval/metrics.py can use the real scores
+        recorder = ToolRecorder()
+        agent.hooks.add_hook(recorder)
         result = agent(query)
         elapsed = time.time() - start
 
@@ -29,6 +43,8 @@ def run_quickshop(query: str, timeout: int = 120) -> dict:
             "output": str(result) if result else "[No output captured]",
             "tool_calls": len(agent.trace.calls),
             "elapsed_seconds": round(elapsed, 2),
+            "firecrawl_credits": _firecrawl_credits_used() - credits_before,
+            "tool_log": recorder.calls,
         }
     except Exception as e:
         return {

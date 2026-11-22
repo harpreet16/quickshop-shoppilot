@@ -54,6 +54,9 @@ python -m quickshop 'black jeans under $80'
 python -m quickshop --frozen 'black jeans under $80'
 python -m eval.runner --systems quickshop --frozen
 
+# Turn the newest results file in eval/results/ into a results table (also saved as a .md file)
+python -m eval.metrics
+
 # Run baselines (output written to baselines/b*/output.txt)
 python baselines/b0/run.py
 python baselines/b1/run.py
@@ -67,6 +70,45 @@ pytest tests/
 #   outputs/b1_output.txt         - B1 baseline
 #   outputs/b2_output.txt         - B2 baseline
 ```
+
+### Evaluation (results tables)
+
+Compare QuickShop with the three baselines on the benchmark queries in `eval/benchmark.py`.
+
+```bash
+# 1. Run every system on every query, live, once. Results go to eval/results/eval_<date>.json
+python -m eval.runner
+
+# Only some systems, some queries, or one category:
+python -m eval.runner --systems quickshop b1 --queries q1 q6
+python -m eval.runner --category trust
+python -m eval.runner --list            # show all benchmark queries
+
+# 2. Run QuickShop again on the same saved data, to check the results repeat (no API calls)
+python -m eval.runner --systems quickshop --frozen
+
+# 3. Make the results table from the newest results file (or name the files you want)
+python -m eval.metrics
+python -m eval.metrics eval/results/eval_20261122_140000.json
+```
+
+`eval.metrics` prints two tables and saves them as `eval/results/metrics_<results file>.md`:
+
+- **Summary:** one column per system. Risky sellers in the top 3, sellers blocked by the
+  legitimacy gate, fabric verified from the product page, picks within budget, items
+  recommended, tool calls, page reads, Firecrawl credits and seconds per query.
+- **Per query:** one row per query and system, for checking the numbers by hand.
+
+Good to know:
+
+- QuickShop's numbers come from its real tool results, which the runner saves. Results files
+  made before this was added have no tool log, so run the evaluation again.
+- B0 and B1 numbers are read from their output text. B2 describes sellers in words, so its
+  risky-seller column says "check by hand".
+- "Fabric verified" only counts fabric read from the product page. The baselines never read
+  pages, so theirs is always 0.
+- Run each query live only once. A second live run replaces the saved searches, and the
+  results will no longer match.
 
 ### Scoring (the key design decision)
 
