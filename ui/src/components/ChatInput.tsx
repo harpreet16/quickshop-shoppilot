@@ -108,16 +108,16 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       </form>
 
       <Flex justifyContent="center" mt={4} gap={4} flexWrap="wrap">
-        <Text fontSize="xs" color="gray.400" fontWeight="500">
-          Powered by AI
+        <Text fontSize="xs" color="gray.500" fontWeight="500">
+          Clothing only
         </Text>
         <Text fontSize="xs" color="gray.300">•</Text>
-        <Text fontSize="xs" color="gray.400" fontWeight="500">
-          100+ Stores
+        <Text fontSize="xs" color="gray.500" fontWeight="500">
+          Searches take a minute or two
         </Text>
         <Text fontSize="xs" color="gray.300">•</Text>
-        <Text fontSize="xs" color="gray.400" fontWeight="500">
-          Real-time Prices
+        <Text fontSize="xs" color="gray.500" fontWeight="500">
+          Risk levels are guidance, not a guarantee
         </Text>
       </Flex>
     </Box>

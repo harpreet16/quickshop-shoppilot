@@ -17,8 +17,8 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'QuickShop — AI Shopping Assistant',
-  description: 'Discover perfect products with AI-powered recommendations',
+  title: 'QuickShop — Clothing Shopping Assistant',
+  description: 'Find clothing from trustworthy sellers, made from natural fibers, at a fair price',
 }
 
 export default function RootLayout({

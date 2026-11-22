@@ -6,28 +6,29 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { MessageBubble } from './MessageBubble'
 import { ChatInput } from './ChatInput'
 import { ThinkingIndicator } from './ThinkingIndicator'
-import type { ChatMessage } from '@/types'
+import type { ChatMessage, ToolCall } from '@/types'
 
 interface ChatInterfaceProps {
   messages: ChatMessage[]
   isLoading: boolean
+  liveToolCalls?: ToolCall[]
   onSendMessage: (message: string) => void
 }
 
 const suggestions = [
-  { icon: '👗', text: 'Trendy summer dresses', color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-  { icon: '👟', text: 'Running shoes 2024', color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-  { icon: '🧥', text: 'Winter jackets on sale', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-  { icon: '👜', text: 'Designer bags deals', color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
+  { icon: '👗', text: 'Linen summer dress under $60', color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+  { icon: '👖', text: 'Black jeans under $50', color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
+  { icon: '🧥', text: 'Wool coat for winter', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+  { icon: '👕', text: 'White cotton shirt under $40', color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
 ]
 
 const features = [
-  { icon: '🔍', title: 'Smart Search', desc: '100+ stores' },
-  { icon: '💰', title: 'Best Prices', desc: 'Price comparison' },
-  { icon: '⚡', title: 'Instant', desc: 'Real-time results' },
+  { icon: '🏪', title: 'Seller checks', desc: 'Every seller vetted' },
+  { icon: '🧵', title: 'Fabric evidence', desc: 'Read from product pages' },
+  { icon: '🛡️', title: 'Risk levels', desc: 'Low, medium or high' },
 ]
 
-export function ChatInterface({ messages, isLoading, onSendMessage }: ChatInterfaceProps) {
+export function ChatInterface({ messages, isLoading, liveToolCalls = [], onSendMessage }: ChatInterfaceProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -128,7 +129,7 @@ export function ChatInterface({ messages, isLoading, onSendMessage }: ChatInterf
                 lineHeight="1.7"
                 fontWeight="400"
               >
-                AI-powered shopping assistant that searches hundreds of stores to find exactly what you need.
+                Describe the clothing you want. I compare retailers, check each seller, read the fabric details and rank the best matches with the evidence behind every score.
               </Text>
             </motion.div>
 
@@ -251,7 +252,7 @@ export function ChatInterface({ messages, isLoading, onSendMessage }: ChatInterf
         <AnimatePresence>
           {isLoading && (
             <Box maxW="4xl" mx="auto">
-              <ThinkingIndicator />
+              <ThinkingIndicator toolCalls={liveToolCalls} />
             </Box>
           )}
         </AnimatePresence>
