@@ -180,3 +180,36 @@ def test_insert_is_trim_so_the_unlabelled_body_is_the_main_fabric(raw):
     p = parse_composition(raw)
     assert [c.part for c in p.components].count("trim") == 1
     assert p.confidence == "explicit" and p.natural_fiber_pct == 0.0 and p.regenerated_fiber_pct == 92.0
+
+
+# ---- fibers named without percentages: reported as stated, never turned into a share
+
+def test_slash_list_is_not_treated_as_dominance():
+    r = parse_composition("Cotton/Polyester")
+    assert r.natural_fiber_pct is None and r.confidence == "ambiguous"
+    assert r.fibers_mentioned == ["cotton", "polyester"]
+    assert "does not prove" in r.composition_hint
+
+
+def test_slash_list_with_a_non_fiber_word_keeps_only_fibers():
+    r = parse_composition("Cotton/Denim/Polyester")
+    assert r.natural_fiber_pct is None and r.fibers_mentioned == ["cotton", "polyester"]
+
+
+def test_cotton_blend_is_not_assumed_to_be_majority_cotton():
+    r = parse_composition("cotton blend")
+    assert r.natural_fiber_pct is None and r.confidence == "ambiguous"
+    assert r.fibers_mentioned == ["cotton"]
+    assert "blend" in r.composition_hint and "any share" in r.composition_hint
+
+
+def test_single_fiber_without_percentage_gets_a_plain_hint():
+    r = parse_composition("RWS-certified merino wool")
+    assert r.natural_fiber_pct is None and r.fibers_mentioned == ["wool"]
+    assert r.composition_hint == "wool named with no percentage."
+
+
+def test_explicit_and_missing_compositions_have_no_hint():
+    assert parse_composition("79% Cotton, 21% Polyester").composition_hint is None
+    r = parse_composition("Machine wash cold")
+    assert r.confidence == "missing" and r.fibers_mentioned == [] and r.composition_hint is None

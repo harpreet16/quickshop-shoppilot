@@ -69,6 +69,9 @@ class EvidenceRecord(BaseModel):
     composition: list[Component] = []
     composition_raw: str | None = None
     composition_confidence: Confidence = "missing"
+    # set only when the page names fibers but gives no percentages. natural_fiber_pct stays None.
+    fibers_mentioned: list[str] = []
+    composition_hint: str | None = None
     main_part: PartName | None = None            # which part natural_fiber_pct was computed from
     natural_fiber_pct: float | None = Field(default=None, ge=0, le=100)
     regenerated_fiber_pct: float | None = Field(default=None, ge=0, le=100)

@@ -43,6 +43,10 @@ class ParsedComposition:
     unknown_fiber_pct: float | None = None
     confidence: str = "missing"            # explicit | ambiguous | missing
     notes: list[str] = field(default_factory=list)
+    # when the page names fibers but gives no percentages: what it named and in what order.
+    # This is reported as-is. It is never turned into a percentage.
+    fibers_mentioned: list[str] = field(default_factory=list)
+    composition_hint: str | None = None
 
     @property
     def status(self) -> str:
@@ -255,6 +259,32 @@ def _sum(comp: Component, cats) -> float:
     return round(sum(f.percent for f in comp.fibers if f.category in cats), 2)
 
 
+# ---------------------------------------------------------------- fibers named without percentages
+
+_BLEND_RE = re.compile(r"\bblends?\b", re.IGNORECASE)
+
+
+def _fibers_in_order(text: str) -> list[str]:
+    """Canonical fiber names in the order the text first mentions them (no duplicates)."""
+    seen: list[str] = []
+    for w in _words(text):
+        canon = _lookup([w[0]])
+        if canon and canon not in seen:
+            seen.append(canon)
+    return seen
+
+
+def _no_percentage_hint(text: str, fibers: list[str]) -> str:
+    """A plain statement of what the page said. Order and the word 'blend' are NOT shares."""
+    if len(fibers) > 1:
+        return (f"no percentages given; {' / '.join(fibers)} named in that order. "
+                "Order does not prove which fiber is the largest share.")
+    if _BLEND_RE.search(text):
+        return (f"described as a {fibers[0]} blend with no percentages. "
+                "A blend can contain any share of it.")
+    return f"{fibers[0]} named with no percentage."
+
+
 # ---------------------------------------------------------------- public API
 
 def parse_composition(raw: str | None, *, count_regenerated_as_natural: bool | None = None) -> ParsedComposition:
@@ -299,10 +329,13 @@ def parse_composition(raw: str | None, *, count_regenerated_as_natural: bool | N
     res.components = comps
 
     if not comps:
-        mentioned = any(_lookup([w[0]]) for w in _words(text))
+        res.fibers_mentioned = _fibers_in_order(text)
+        mentioned = bool(res.fibers_mentioned)
         res.confidence = "ambiguous" if mentioned else "missing"
         res.notes.append("fibers mentioned without percentages" if mentioned
                          else "no fiber percentages found")
+        if mentioned:
+            res.composition_hint = _no_percentage_hint(text, res.fibers_mentioned)
         return res
 
     main = _choose_main(comps, res.notes)
