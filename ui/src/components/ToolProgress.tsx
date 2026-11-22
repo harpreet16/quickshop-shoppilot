@@ -6,12 +6,12 @@ import type { ToolCall } from '@/types'
 
 const MotionBox = motion.create(Box)
 
-const toolLabels: Record<ToolCall['tool'], { label: string; icon: string; color: string }> = {
-  web_search: { label: 'Searching stores', icon: '🔍', color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-  scrape_url: { label: 'Reading details', icon: '📄', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-  compare_products: { label: 'Comparing prices', icon: '⚖️', color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-  get_asu_deals: { label: 'Finding deals', icon: '🎓', color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
-  finalize_recommendation: { label: 'Picking best options', icon: '✨', color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)' },
+const toolLabels: Record<string, { label: string; icon: string; color: string }> = {
+  search_listings: { label: 'Searching stores', icon: '🔍', color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
+  check_merchant: { label: 'Checking seller', icon: '🏪', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+  fetch_product_evidence: { label: 'Reading product page', icon: '📄', color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+  score_product: { label: 'Scoring products', icon: '⭐', color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
+  ask_user: { label: 'Asking for details', icon: '💬', color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)' },
 }
 
 interface ToolProgressProps {
@@ -19,7 +19,8 @@ interface ToolProgressProps {
 }
 
 export function ToolProgress({ toolCall }: ToolProgressProps) {
-  const { label, icon, color } = toolLabels[toolCall.tool]
+  const config = toolLabels[toolCall.tool] || { label: toolCall.tool, icon: '⚙️', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }
+  const { label, icon, color } = config
   const isComplete = toolCall.status === 'complete'
 
   return (

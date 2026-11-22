@@ -8,9 +8,9 @@ export interface Product {
 }
 
 export interface ToolCall {
-  tool: 'web_search' | 'scrape_url' | 'compare_products' | 'get_asu_deals' | 'finalize_recommendation'
+  tool: 'search_listings' | 'check_merchant' | 'fetch_product_evidence' | 'score_product' | 'ask_user'
   status: 'running' | 'complete'
-  result?: unknown
+  blocked?: boolean
 }
 
 export interface ChatMessage {
@@ -25,5 +25,5 @@ export interface ChatMessage {
 export interface ChatState {
   messages: ChatMessage[]
   isLoading: boolean
-  currentTool?: ToolCall
+  sessionId: string | null
 }
