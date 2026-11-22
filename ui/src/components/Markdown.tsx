@@ -2,6 +2,7 @@
 
 import { Box, Link, Text } from '@chakra-ui/react'
 import type { ReactNode } from 'react'
+import { fonts, palette } from '@/theme/palette'
 
 interface ListItem {
   text: string
@@ -141,8 +142,10 @@ function renderInline(text: string, keyPrefix: string): ReactNode[] {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            color="#5b6ee1"
+            color={palette.brassText}
             textDecoration="underline"
+            textUnderlineOffset="3px"
+            fontWeight="600"
             overflowWrap="anywhere"
           >
             {link[1]}
@@ -187,7 +190,7 @@ export function Markdown({ text }: MarkdownProps) {
   const blocks = parseBlocks(text)
 
   return (
-    <Box display="flex" flexDirection="column" gap={3} fontSize="sm" lineHeight="1.75" minW={0} overflowWrap="anywhere">
+    <Box display="flex" flexDirection="column" gap={3.5} fontSize="15px" lineHeight="1.75" color={palette.text} minW={0} overflowWrap="anywhere">
       {blocks.map((block, index) => {
         const key = `block-${index}`
         if (block.type === 'heading') {
@@ -195,17 +198,19 @@ export function Markdown({ text }: MarkdownProps) {
             <Text
               key={key}
               as="h4"
-              fontSize={block.level <= 2 ? 'md' : 'sm'}
-              fontWeight="700"
-              color="gray.800"
+              fontFamily={fonts.display}
+              fontSize={block.level <= 2 ? '28px' : '23px'}
+              fontWeight="600"
+              lineHeight="1.15"
+              color={palette.ink}
               letterSpacing="-0.01em"
-              mt={index === 0 ? 0 : 2}
+              mt={index === 0 ? 0 : 3}
             >
               {renderInline(block.text, key)}
             </Text>
           )
         }
-        if (block.type === 'rule') return <Box key={key} h="1px" bg="gray.200" my={1} />
+        if (block.type === 'rule') return <Box key={key} h="1px" bg={palette.hairline} my={1.5} />
         if (block.type === 'list') return renderList(block.list, key)
         return <Text key={key}>{renderInline(block.text, key)}</Text>
       })}

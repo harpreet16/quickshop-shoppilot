@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { Header, ChatInterface } from '@/components'
 import { useChat } from '@/hooks/useChat'
 import { useHealth } from '@/hooks/useHealth'
@@ -10,16 +10,16 @@ export default function Home() {
   const health = useHealth()
 
   return (
-    <Flex direction="column" minH="100vh" bg="transparent">
+    <Flex direction="column" minH="100vh">
       <Header onLogoClick={clearMessages} health={health} />
-      <Box flex={1} display="flex" flexDirection="column">
+      <Flex as="main" direction="column" flex={1}>
         <ChatInterface
           messages={messages}
           isLoading={isLoading}
           liveToolCalls={liveToolCalls}
           onSendMessage={sendMessage}
         />
-      </Box>
+      </Flex>
     </Flex>
   )
 }

@@ -1,7 +1,8 @@
 'use client'
 
 import { Flex, Text } from '@chakra-ui/react'
-import { toolMeta } from '@/lib/tools'
+import { methodPhrases } from '@/lib/tools'
+import { palette } from '@/theme/palette'
 import type { ToolCall } from '@/types'
 
 interface ToolSummaryProps {
@@ -9,37 +10,17 @@ interface ToolSummaryProps {
 }
 
 export function ToolSummary({ toolCalls }: ToolSummaryProps) {
-  const shown = toolCalls.filter((call) => call.tool !== 'ask_user' && call.tool !== 'retrieve_context')
-  if (shown.length === 0) return null
+  const phrases = methodPhrases(toolCalls)
+  if (phrases.length === 0) return null
 
   return (
-    <Flex alignItems="center" gap={2} flexWrap="wrap" aria-label="How these results were checked" role="group">
-      <Text fontSize="xs" fontWeight="700" color="gray.500" textTransform="uppercase" letterSpacing="0.06em" mr={1}>
-        How I checked
+    <Flex alignItems="baseline" gap={3} flexWrap="wrap" aria-label="How these results were assembled" role="group">
+      <Text fontSize="10.5px" fontWeight="700" letterSpacing="0.2em" textTransform="uppercase" color={palette.textSecondary}>
+        Method
       </Text>
-      {shown.map((call) => {
-        const meta = toolMeta(call.tool)
-        return (
-          <Flex
-            key={call.tool}
-            alignItems="center"
-            gap={1.5}
-            px={3}
-            py={1}
-            borderRadius="full"
-            bg="white"
-            borderWidth="1px"
-            borderColor="gray.200"
-            fontSize="xs"
-            fontWeight="600"
-            color="gray.600"
-          >
-            <Text as="span" aria-hidden="true">{meta.icon}</Text>
-            {meta.past}
-            {call.count && call.count > 1 ? ` × ${call.count}` : ''}
-          </Flex>
-        )
-      })}
+      <Text className="tabular" fontSize="13px" color={palette.textSecondary} lineHeight="1.7">
+        {phrases.join('  ·  ')}
+      </Text>
     </Flex>
   )
 }

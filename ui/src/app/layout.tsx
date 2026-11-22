@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Instrument_Serif } from 'next/font/google'
+import { Cormorant_Garamond, Hanken_Grotesk } from 'next/font/google'
 import { ChakraProvider } from '@/components/ChakraProvider'
 import './globals.css'
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: '--font-inter',
+const display = Cormorant_Garamond({
+  variable: '--font-display',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 })
 
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-serif',
+const body = Hanken_Grotesk({
+  variable: '--font-body',
   subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <ChakraProvider>{children}</ChakraProvider>
       </body>

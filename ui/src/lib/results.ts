@@ -1,3 +1,5 @@
+import type { IconName } from '@/components/Icon'
+import { palette } from '@/theme/palette'
 import type { RiskLevel, ScoredProduct } from '@/types'
 
 export type SortKey = 'best' | 'price' | 'quality' | 'trust'
@@ -6,7 +8,7 @@ export const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: 'best', label: 'Best match' },
   { key: 'price', label: 'Lowest price' },
   { key: 'quality', label: 'Fabric quality' },
-  { key: 'trust', label: 'Most trusted' },
+  { key: 'trust', label: 'Seller trust' },
 ]
 
 export type EvidenceTone = 'good' | 'warn' | 'unknown' | 'bad' | 'neutral'
@@ -84,11 +86,19 @@ export function flaggedReasons(product: ScoredProduct): string[] {
     .map((entry) => entry.text)
 }
 
-export function scoreColor(value: number | null | undefined): string {
-  if (value == null) return '#94a3b8'
-  if (value >= 4) return '#16a34a'
-  if (value >= 3) return '#d97706'
-  return '#dc2626'
+export function evidenceGlyph(tone: EvidenceTone): { icon: IconName; color: string } {
+  if (tone === 'good') return { icon: 'check', color: palette.positive }
+  if (tone === 'warn') return { icon: 'alert', color: palette.caution }
+  if (tone === 'bad') return { icon: 'x', color: palette.danger }
+  if (tone === 'unknown') return { icon: 'help', color: palette.textMuted }
+  return { icon: 'minus', color: palette.hairlineStrong }
+}
+
+export function meterColor(value: number | null | undefined): string {
+  if (value == null) return palette.hairlineStrong
+  if (value >= 4) return palette.positive
+  if (value >= 3) return palette.brass
+  return palette.danger
 }
 
 export interface RiskMeta {
@@ -96,12 +106,11 @@ export interface RiskMeta {
   bg: string
   fg: string
   border: string
-  dot: string
 }
 
 export function riskMeta(risk: RiskLevel | null | undefined): RiskMeta {
-  if (risk === 'low') return { label: 'Low risk', bg: '#ecfdf3', fg: '#166534', border: '#bbf7d0', dot: '#16a34a' }
-  if (risk === 'medium') return { label: 'Medium risk', bg: '#fffbeb', fg: '#92400e', border: '#fde68a', dot: '#d97706' }
-  if (risk === 'high') return { label: 'High risk', bg: '#fef2f2', fg: '#991b1b', border: '#fecaca', dot: '#dc2626' }
-  return { label: 'Risk unknown', bg: '#f1f5f9', fg: '#475569', border: '#e2e8f0', dot: '#94a3b8' }
+  if (risk === 'low') return { label: 'Low risk', bg: palette.positiveSoft, fg: palette.positive, border: '#c3d8c9' }
+  if (risk === 'medium') return { label: 'Medium risk', bg: palette.cautionSoft, fg: palette.caution, border: '#e6d3a6' }
+  if (risk === 'high') return { label: 'High risk', bg: palette.dangerSoft, fg: palette.danger, border: palette.dangerBorder }
+  return { label: 'Risk unknown', bg: palette.paperDeep, fg: palette.textSecondary, border: palette.hairline }
 }

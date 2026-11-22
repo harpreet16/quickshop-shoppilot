@@ -1,7 +1,8 @@
 'use client'
 
-import { Box, Flex, Heading, Text, Link } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { EASE, fonts, palette } from '@/theme/palette'
 import type { HealthState } from '@/hooks/useHealth'
 
 interface HeaderProps {
@@ -14,9 +15,6 @@ interface HealthView {
   detail: string
   title: string
   dot: string
-  bg: string
-  border: string
-  fg: string
 }
 
 function describeHealth(health: HealthState): HealthView {
@@ -25,10 +23,7 @@ function describeHealth(health: HealthState): HealthView {
       label: 'Online',
       detail: health.model,
       title: `Backend online. Model: ${health.model}. API version ${health.version}.`,
-      dot: '#22c55e',
-      bg: 'rgba(34, 197, 94, 0.1)',
-      border: 'rgba(34, 197, 94, 0.25)',
-      fg: '#15803d',
+      dot: palette.positive,
     }
   }
   if (health.status === 'degraded') {
@@ -37,10 +32,7 @@ function describeHealth(health: HealthState): HealthView {
       label: 'Degraded',
       detail: missing ? `Missing: ${missing}` : 'Some services unavailable',
       title: `Backend reachable, but not fully configured. ${missing ? `Missing: ${missing}.` : ''}`,
-      dot: '#f59e0b',
-      bg: 'rgba(245, 158, 11, 0.12)',
-      border: 'rgba(245, 158, 11, 0.3)',
-      fg: '#b45309',
+      dot: palette.brass,
     }
   }
   if (health.status === 'offline') {
@@ -48,21 +40,10 @@ function describeHealth(health: HealthState): HealthView {
       label: 'Offline',
       detail: 'Backend not reachable',
       title: 'The backend did not answer. Check that it is running.',
-      dot: '#ef4444',
-      bg: 'rgba(239, 68, 68, 0.1)',
-      border: 'rgba(239, 68, 68, 0.28)',
-      fg: '#b91c1c',
+      dot: palette.danger,
     }
   }
-  return {
-    label: 'Checking',
-    detail: 'Contacting backend',
-    title: 'Checking the backend.',
-    dot: '#94a3b8',
-    bg: 'rgba(148, 163, 184, 0.12)',
-    border: 'rgba(148, 163, 184, 0.3)',
-    fg: '#475569',
-  }
+  return { label: 'Checking', detail: 'Contacting backend', title: 'Checking the backend.', dot: palette.hairlineStrong }
 }
 
 export function Header({ onLogoClick, health }: HeaderProps) {
@@ -70,98 +51,78 @@ export function Header({ onLogoClick, health }: HeaderProps) {
 
   return (
     <motion.header
-      initial={{ y: -30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: EASE }}
+      style={{ position: 'sticky', top: 0, zIndex: 100 }}
     >
       <Flex
-        px={{ base: 4, md: 8 }}
-        py={4}
-        className="glass-strong"
+        px={{ base: 5, md: 10 }}
+        h="68px"
+        bg="rgba(244, 239, 230, 0.92)"
+        backdropFilter="blur(12px)"
         borderBottomWidth="1px"
-        borderColor="rgba(0, 0, 0, 0.04)"
+        borderColor={palette.hairline}
         alignItems="center"
         justifyContent="space-between"
-        position="sticky"
-        top={0}
-        zIndex={100}
-        boxShadow="0 4px 30px rgba(0, 0, 0, 0.03)"
       >
-        <Link
+        <Box
+          as="button"
           onClick={onLogoClick}
-          _hover={{ textDecoration: 'none' }}
-          _focusVisible={{ outline: '3px solid rgba(102, 126, 234, 0.5)', outlineOffset: '4px', borderRadius: '16px' }}
-          cursor="pointer"
           aria-label="QuickShop home"
+          textAlign="left"
+          cursor="pointer"
+          borderRadius="8px"
+          _focusVisible={{ outline: `2px solid ${palette.ink}`, outlineOffset: '6px' }}
         >
-          <Flex alignItems="center" gap={3}>
-            <motion.div whileHover={{ scale: 1.05, rotate: 5 }} whileTap={{ scale: 0.95 }}>
-              <Box
-                w={12}
-                h={12}
-                bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                borderRadius="16px"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                boxShadow="0 8px 30px rgba(102, 126, 234, 0.35)"
-                position="relative"
-                overflow="hidden"
-                _before={{
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%)',
-                }}
-              >
-                <Text fontSize="xl" fontWeight="700" color="white" fontFamily="var(--font-serif)" fontStyle="italic">
-                  Q
-                </Text>
-              </Box>
-            </motion.div>
+          <Flex alignItems="center" gap={3.5}>
+            <Flex
+              w="36px"
+              h="36px"
+              borderRadius="full"
+              borderWidth="1.5px"
+              borderColor={palette.ink}
+              alignItems="center"
+              justifyContent="center"
+              color={palette.ink}
+              fontFamily={fonts.display}
+              fontStyle="italic"
+              fontSize="22px"
+              fontWeight="600"
+              lineHeight="1"
+              pb="2px"
+              aria-hidden="true"
+            >
+              Q
+            </Flex>
             <Box>
-              <Heading
-                size="md"
-                fontWeight="700"
-                letterSpacing="-0.03em"
-                className="gradient-text"
-                fontFamily="var(--font-inter)"
-              >
+              <Text fontFamily={fonts.display} fontSize="27px" fontWeight="600" lineHeight="1" letterSpacing="-0.01em" color={palette.ink}>
                 QuickShop
-              </Heading>
-              <Text fontSize="11px" color="gray.500" letterSpacing="0.08em" textTransform="uppercase" fontWeight="600">
-                Clothing Assistant
+              </Text>
+              <Text
+                display={{ base: 'none', sm: 'block' }}
+                fontSize="9.5px"
+                fontWeight="600"
+                letterSpacing="0.24em"
+                textTransform="uppercase"
+                color={palette.textSecondary}
+                mt="3px"
+              >
+                Clothing assistant
               </Text>
             </Box>
           </Flex>
-        </Link>
+        </Box>
 
-        <motion.div
-          key={health.status}
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Flex
-            role="status"
-            aria-live="polite"
-            title={view.title}
-            alignItems="center"
-            gap={2}
-            px={4}
-            py={2}
-            borderRadius="full"
-            bg={view.bg}
-            borderWidth="1px"
-            borderColor={view.border}
-          >
-            <Box w={2} h={2} borderRadius="full" bg={view.dot} boxShadow={`0 0 10px ${view.dot}`} flexShrink={0} />
-            <Text fontSize="xs" fontWeight="700" color={view.fg}>{view.label}</Text>
-            <Text fontSize="xs" fontWeight="500" color={view.fg} opacity={0.75} display={{ base: 'none', md: 'inline' }}>
-              {view.detail}
-            </Text>
-          </Flex>
-        </motion.div>
+        <Flex role="status" aria-live="polite" title={view.title} alignItems="center" gap={2.5} key={health.status}>
+          <Box w="7px" h="7px" borderRadius="full" bg={view.dot} flexShrink={0} />
+          <Text fontSize="12px" fontWeight="600" letterSpacing="0.06em" textTransform="uppercase" color={palette.ink}>
+            {view.label}
+          </Text>
+          <Text display={{ base: 'none', md: 'block' }} fontSize="12px" color={palette.textSecondary}>
+            {view.detail}
+          </Text>
+        </Flex>
       </Flex>
     </motion.header>
   )

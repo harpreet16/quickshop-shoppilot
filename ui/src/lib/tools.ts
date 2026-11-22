@@ -1,26 +1,54 @@
-export interface ToolMeta {
-  label: string
-  past: string
-  icon: string
-  color: string
+import type { ToolCall } from '@/types'
+
+export interface Stage {
+  tool: string
+  title: string
+  summary: (count: number) => string
 }
 
-export const TOOL_META: Record<string, ToolMeta> = {
-  search_listings: { label: 'Searching stores', past: 'Searched stores', icon: '🔍', color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-  check_merchant: { label: 'Verifying seller', past: 'Verified sellers', icon: '🏪', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-  fetch_product_evidence: { label: 'Reading product page', past: 'Read product pages', icon: '📄', color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-  score_product: { label: 'Scoring products', past: 'Scored products', icon: '⭐', color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
-  ask_user: { label: 'Asking for details', past: 'Checked your details', icon: '💬', color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)' },
-  retrieve_context: { label: 'Gathering context', past: 'Gathered context', icon: '📚', color: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)' },
+const plural = (count: number, one: string, many: string) => `${count} ${count === 1 ? one : many}`
+
+export const STAGES: Stage[] = [
+  { tool: 'search_listings', title: 'Searching retailers', summary: (n) => `${plural(n, 'search', 'searches')} run` },
+  { tool: 'check_merchant', title: 'Vetting sellers', summary: (n) => `${plural(n, 'seller', 'sellers')} checked` },
+  { tool: 'fetch_product_evidence', title: 'Reading fabric details', summary: (n) => `${plural(n, 'product page', 'product pages')} read` },
+  { tool: 'score_product', title: 'Scoring and ranking', summary: (n) => `${plural(n, 'item', 'items')} scored` },
+]
+
+export type StageState = 'done' | 'active' | 'pending'
+
+export interface StageView {
+  stage: Stage
+  state: StageState
+  count: number
+  detail: string
 }
 
-export function toolMeta(tool: string): ToolMeta {
-  return (
-    TOOL_META[tool] ?? {
-      label: tool,
-      past: tool,
-      icon: '⚙️',
-      color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    }
-  )
+function countFor(toolCalls: ToolCall[], tool: string): number {
+  return toolCalls.filter((call) => call.tool === tool).reduce((total, call) => total + (call.count ?? 1), 0)
+}
+
+export function stageViews(toolCalls: ToolCall[]): StageView[] {
+  const counts = STAGES.map((stage) => countFor(toolCalls, stage.tool))
+  let latest = -1
+  counts.forEach((count, index) => {
+    if (count > 0) latest = index
+  })
+  const active = latest === -1 ? 0 : latest
+
+  return STAGES.map((stage, index) => {
+    const count = counts[index]
+    const state: StageState = index < active ? 'done' : index === active ? 'active' : 'pending'
+    let detail = 'Waiting'
+    if (count > 0) detail = stage.summary(count)
+    else if (state === 'done') detail = 'Not needed'
+    else if (state === 'active') detail = 'In progress'
+    return { stage, state, count, detail }
+  })
+}
+
+export function methodPhrases(toolCalls: ToolCall[]): string[] {
+  return STAGES.map((stage) => ({ stage, count: countFor(toolCalls, stage.tool) }))
+    .filter((entry) => entry.count > 0)
+    .map((entry) => entry.stage.summary(entry.count))
 }

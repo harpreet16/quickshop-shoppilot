@@ -1,10 +1,9 @@
 'use client'
 
-import { Box, Flex, Input, Text } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
-
-const MotionBox = motion.create(Box)
+import { Box, Flex, Text, chakra } from '@chakra-ui/react'
+import { palette } from '@/theme/palette'
+import { Icon } from './Icon'
 
 interface ChatInputProps {
   onSend: (message: string) => void
@@ -13,113 +12,94 @@ interface ChatInputProps {
 
 export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [message, setMessage] = useState('')
-  const [isFocused, setIsFocused] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const canSend = message.trim().length > 0 && !disabled
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (message.trim() && !disabled) {
-      onSend(message.trim())
-      setMessage('')
-    }
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    if (!canSend) return
+    onSend(message.trim())
+    setMessage('')
   }
 
   return (
     <Box
       position="sticky"
       bottom={0}
-      className="glass-strong"
+      zIndex={60}
+      bg="rgba(244, 239, 230, 0.94)"
+      backdropFilter="blur(12px)"
       borderTopWidth="1px"
-      borderColor="rgba(0, 0, 0, 0.04)"
+      borderColor={palette.hairline}
       pt={4}
-      pb={6}
-      px={{ base: 4, md: 6 }}
+      pb={4}
+      px={{ base: 4, md: 8 }}
     >
-      <form onSubmit={handleSubmit}>
-        <MotionBox
-          maxW="3xl"
-          mx="auto"
-          animate={{
-            boxShadow: isFocused
-              ? '0 0 0 4px rgba(102, 126, 234, 0.15), 0 20px 50px rgba(102, 126, 234, 0.15)'
-              : '0 4px 30px rgba(0, 0, 0, 0.08)',
+      <chakra.form onSubmit={handleSubmit} maxW="900px" mx="auto">
+        <Flex
+          alignItems="center"
+          bg={palette.white}
+          borderWidth="1px"
+          borderColor={focused ? palette.ink : palette.hairlineStrong}
+          borderRadius="12px"
+          pl={{ base: 4, md: 5 }}
+          pr={1.5}
+          h="58px"
+          opacity={disabled ? 0.7 : 1}
+          css={{
+            transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+            boxShadow: focused ? '0 0 0 3px rgba(15, 27, 45, 0.1)' : 'none',
           }}
-          transition={{ duration: 0.3 }}
-          bg="white"
-          borderRadius="24px"
-          borderWidth="2px"
-          borderColor={isFocused ? 'rgba(102, 126, 234, 0.5)' : 'transparent'}
-          overflow="hidden"
-          position="relative"
         >
-          <Flex alignItems="center">
-            <Box pl={5} color="gray.400">
-              <motion.div
-                animate={{ rotate: isFocused ? 360 : 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Text fontSize="xl">✨</Text>
-              </motion.div>
-            </Box>
-            <Input
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              placeholder="What are you looking for today?"
-              size="lg"
-              border="none"
-              bg="transparent"
-              color="gray.800"
-              _placeholder={{ color: 'gray.400' }}
-              _focus={{ outline: 'none', boxShadow: 'none' }}
-              disabled={disabled}
-              flex={1}
-              px={4}
-              py={5}
-              fontSize="md"
-              fontWeight="500"
-            />
-            <motion.button
-              type="submit"
-              disabled={!message.trim() || disabled}
-              whileHover={{ scale: message.trim() ? 1.05 : 1 }}
-              whileTap={{ scale: message.trim() ? 0.95 : 1 }}
-              style={{
-                background: message.trim()
-                  ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                  : 'linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)',
-                border: 'none',
-                borderRadius: '16px',
-                width: '52px',
-                height: '52px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: message.trim() && !disabled ? 'pointer' : 'not-allowed',
-                marginRight: '8px',
-                boxShadow: message.trim() ? '0 8px 20px rgba(102, 126, 234, 0.35)' : 'none',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <Text fontSize="xl" color="white">↑</Text>
-            </motion.button>
-          </Flex>
-        </MotionBox>
-      </form>
-
-      <Flex justifyContent="center" mt={4} gap={4} flexWrap="wrap">
-        <Text fontSize="xs" color="gray.500" fontWeight="500">
-          Clothing only
-        </Text>
-        <Text fontSize="xs" color="gray.300">•</Text>
-        <Text fontSize="xs" color="gray.500" fontWeight="500">
-          Searches take a minute or two
-        </Text>
-        <Text fontSize="xs" color="gray.300">•</Text>
-        <Text fontSize="xs" color="gray.500" fontWeight="500">
-          Risk levels are guidance, not a guarantee
-        </Text>
-      </Flex>
+          <chakra.input
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            disabled={disabled}
+            placeholder={disabled ? 'Researching, one moment…' : 'Ask for another garment, or refine this one…'}
+            aria-label="Describe the clothing you are looking for"
+            flex={1}
+            minW={0}
+            bg="transparent"
+            border="none"
+            outline="none"
+            color={palette.ink}
+            fontSize="16px"
+            fontWeight="500"
+            css={{
+              '&::placeholder': {
+                fontFamily: 'var(--font-display), Georgia, serif',
+                fontStyle: 'italic',
+                fontSize: '1.12rem',
+                color: '#7b8091',
+                fontWeight: 400,
+              },
+              '&:focus-visible': { outline: 'none' },
+            }}
+          />
+          <chakra.button
+            type="submit"
+            disabled={!canSend}
+            aria-label="Send"
+            w="46px"
+            h="46px"
+            borderRadius="9px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            color={canSend ? palette.paper : palette.textMuted}
+            bg={canSend ? palette.ink : palette.paperDeep}
+            cursor={canSend ? 'pointer' : 'not-allowed'}
+            css={{ transition: 'background 0.25s ease', '&:hover:not(:disabled)': { background: '#1d2d49' } }}
+          >
+            <Icon name="arrowUp" size={19} strokeWidth={1.8} />
+          </chakra.button>
+        </Flex>
+      </chakra.form>
+      <Text mt={2.5} textAlign="center" fontSize="11.5px" color={palette.textMuted}>
+        Clothing only · Risk levels are guidance, not a guarantee
+      </Text>
     </Box>
   )
 }

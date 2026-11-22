@@ -1,14 +1,14 @@
 'use client'
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { riskMeta } from '@/lib/results'
 import type { RiskLevel } from '@/types'
 
-interface RiskPillProps {
+interface RiskTagProps {
   risk: RiskLevel | null
 }
 
-export function RiskPill({ risk }: RiskPillProps) {
+export function RiskTag({ risk }: RiskTagProps) {
   const meta = riskMeta(risk)
 
   return (
@@ -16,19 +16,19 @@ export function RiskPill({ risk }: RiskPillProps) {
       as="span"
       display="inline-flex"
       alignItems="center"
-      gap={1.5}
       px={2.5}
-      py={1}
-      borderRadius="full"
+      py="3px"
+      borderRadius="4px"
       bg={meta.bg}
       color={meta.fg}
       borderWidth="1px"
       borderColor={meta.border}
-      fontSize="xs"
+      fontSize="10.5px"
       fontWeight="700"
+      letterSpacing="0.1em"
+      textTransform="uppercase"
       whiteSpace="nowrap"
     >
-      <Box w="6px" h="6px" borderRadius="full" bg={meta.dot} />
       {meta.label}
     </Flex>
   )
