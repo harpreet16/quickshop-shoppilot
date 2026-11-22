@@ -7,6 +7,7 @@ from strands import tool
 import httpx
 
 from quickshop.schemas import Listing
+from quickshop.tools import search_snapshot
 
 load_dotenv()
 
@@ -72,6 +73,13 @@ def search_listings(query: str, max_results: int = 20) -> list:
         A list of listings with title, price, merchant, domain, rating, reviews and url.
         Returns an empty list if the search fails.
     """
+    # Frozen mode: use only saved searches, never call SerpAPI
+    if search_snapshot.replay_on():
+        saved = search_snapshot.load(query, max_results)
+        if saved is None:
+            return [{"error": "No saved search for this query. Run it once without --frozen first.", "available": False}]
+        return saved
+
     api_key = os.getenv("SERPAPI_KEY")
     if not api_key:
         return [{"error": "SERPAPI_KEY not configured", "available": False}]
@@ -96,9 +104,15 @@ def search_listings(query: str, max_results: int = 20) -> list:
         if not listings:
             if "error" in data:
                 return [{"error": data["error"], "available": False}]
-            return []
+            listings = []
 
-        return listings[:max_results]
+        listings = listings[:max_results]
+        # save it so a later --frozen run gets exactly these listings
+        try:
+            search_snapshot.save(query, max_results, listings)
+        except OSError:
+            pass  # a failed save must not break the search
+        return listings
 
     except httpx.TimeoutException:
         return [{"error": "Search timed out", "available": False}]

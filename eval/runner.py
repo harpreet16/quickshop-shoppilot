@@ -13,14 +13,33 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from eval.benchmark import BENCHMARK_QUERIES, get_queries_by_category, get_query_by_id
+from eval.dataset2 import (
+    DATASET2_QUERIES,
+    get_queries_by_category as get_d2_queries_by_category,
+    get_query_by_id as get_d2_query_by_id,
+)
+
+
+def _firecrawl_credits_used() -> int:
+    # total Firecrawl credits spent so far in this process (0 if it cannot be read)
+    try:
+        from quickshop.evidence.tool import get_usage
+        return int(get_usage()["firecrawl"]["credits_used"] or 0)
+    except Exception:
+        return 0
 
 
 def run_quickshop(query: str, timeout: int = 120) -> dict:
     from quickshop.agent.orchestrator import build_agent
+    from eval.recorder import ToolRecorder
 
     start = time.time()
+    credits_before = _firecrawl_credits_used()
     try:
         agent = build_agent(credits=5)
+        # keep every tool input and result, so eval/metrics.py can use the real scores
+        recorder = ToolRecorder()
+        agent.hooks.add_hook(recorder)
         result = agent(query)
         elapsed = time.time() - start
 
@@ -29,6 +48,8 @@ def run_quickshop(query: str, timeout: int = 120) -> dict:
             "output": str(result) if result else "[No output captured]",
             "tool_calls": len(agent.trace.calls),
             "elapsed_seconds": round(elapsed, 2),
+            "firecrawl_credits": _firecrawl_credits_used() - credits_before,
+            "tool_log": recorder.calls,
         }
     except Exception as e:
         return {
@@ -165,6 +186,7 @@ def run_evaluation(
     queries: list[str] = None,
     category: str = None,
     output_dir: str = None,
+    dataset: int = 1,
 ) -> dict:
     """
     Run evaluation across systems and queries.
@@ -174,6 +196,7 @@ def run_evaluation(
         queries: List of query IDs to run, or None for all
         category: Filter queries by category
         output_dir: Directory to save results
+        dataset: 1 for the original benchmark, 2 for the Reddit-sourced dataset2
 
     Returns:
         Evaluation results dict
@@ -181,15 +204,25 @@ def run_evaluation(
     if systems is None:
         systems = ["quickshop", "b0", "b1", "b2"]
 
-    if queries:
-        benchmark = [get_query_by_id(q) for q in queries if get_query_by_id(q)]
-    elif category:
-        benchmark = get_queries_by_category(category)
+    if dataset == 2:
+        all_queries = DATASET2_QUERIES
+        _get_by_id = get_d2_query_by_id
+        _get_by_category = get_d2_queries_by_category
     else:
-        benchmark = BENCHMARK_QUERIES
+        all_queries = BENCHMARK_QUERIES
+        _get_by_id = get_query_by_id
+        _get_by_category = get_queries_by_category
+
+    if queries:
+        benchmark = [_get_by_id(q) for q in queries if _get_by_id(q)]
+    elif category:
+        benchmark = _get_by_category(category)
+    else:
+        benchmark = all_queries
 
     results = {
         "timestamp": datetime.now().isoformat(),
+        "dataset": dataset,
         "systems": systems,
         "queries": [q["id"] for q in benchmark],
         "runs": [],
@@ -272,14 +305,35 @@ def main():
         action="store_true",
         help="List available benchmark queries and exit",
     )
+    parser.add_argument(
+        "--frozen",
+        action="store_true",
+        help="QuickShop uses saved searches and saved page evidence only (no SerpAPI or Firecrawl calls)",
+    )
+    parser.add_argument(
+        "--dataset",
+        "-d",
+        type=int,
+        choices=[1, 2],
+        default=1,
+        help="Which query dataset to use: 1 = original benchmark (default), 2 = Reddit-sourced dataset",
+    )
 
     args = parser.parse_args()
+
+    if args.frozen:
+        from quickshop.__main__ import use_frozen_mode
+        use_frozen_mode()
 
     if args.list:
         print("Available benchmark queries:")
         print("-" * 60)
-        for q in BENCHMARK_QUERIES:
-            print(f"  {q['id']:4} [{q['category']:8}] {q['query']}")
+        queries_to_list = DATASET2_QUERIES if args.dataset == 2 else BENCHMARK_QUERIES
+        label = f"Dataset {args.dataset}"
+        print(f"{label}:")
+        for q in queries_to_list:
+            src = f"  [{q.get('source','')}]" if args.dataset == 2 else ""
+            print(f"  {q['id']:6} [{q['category']:8}] {q['query']}{src}")
         return
 
     run_evaluation(
@@ -287,6 +341,7 @@ def main():
         queries=args.queries,
         category=args.category,
         output_dir=args.output,
+        dataset=args.dataset,
     )
 
 

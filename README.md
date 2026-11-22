@@ -46,7 +46,16 @@ pip install -e .
 cp .env.example .env  # Add: API_KEY, SERPAPI_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
 
 # Run QuickShop agent (interactive, output to terminal)
-python -m quickshop "black jeans under $80"
+python -m quickshop 'black jeans under $80'
+
+# Use single quotes, or zsh turns "$80" into "0".
+# Run it again with the same results and no API calls (--frozen).
+# Run the query once without --frozen first, so there is something saved.
+python -m quickshop --frozen 'black jeans under $80'
+python -m eval.runner --systems quickshop --frozen
+
+# Turn the newest results file in eval/results/ into a results table (also saved as a .md file)
+python -m eval.metrics
 
 # Run baselines (output written to baselines/b*/output.txt)
 python baselines/b0/run.py
@@ -114,6 +123,44 @@ half second as tools start and finish. Search/model spending is not capped by th
 
 Offline UI tests: install `pip install -e '.[dev,ui]'`, then run
 `pytest tests/test_web.py`. No paid API calls are required by these tests.
+### Evaluation (results tables)
+
+Compare QuickShop with the three baselines on the benchmark queries in `eval/benchmark.py`.
+
+```bash
+# 1. Run every system on every query, live, once. Results go to eval/results/eval_<date>.json
+python -m eval.runner
+
+# Only some systems, some queries, or one category:
+python -m eval.runner --systems quickshop b1 --queries q1 q6
+python -m eval.runner --category trust
+python -m eval.runner --list            # show all benchmark queries
+
+# 2. Run QuickShop again on the same saved data, to check the results repeat (no API calls)
+python -m eval.runner --systems quickshop --frozen
+
+# 3. Make the results table from the newest results file (or name the files you want)
+python -m eval.metrics
+python -m eval.metrics eval/results/eval_20261122_140000.json
+```
+
+`eval.metrics` prints two tables and saves them as `eval/results/metrics_<results file>.md`:
+
+- **Summary:** one column per system. Risky sellers in the top 3, sellers blocked by the
+  legitimacy gate, fabric verified from the product page, picks within budget, items
+  recommended, tool calls, page reads, Firecrawl credits and seconds per query.
+- **Per query:** one row per query and system, for checking the numbers by hand.
+
+Good to know:
+
+- QuickShop's numbers come from its real tool results, which the runner saves. Results files
+  made before this was added have no tool log, so run the evaluation again.
+- B0 and B1 numbers are read from their output text. B2 describes sellers in words, so its
+  risky-seller column says "check by hand".
+- "Fabric verified" only counts fabric read from the product page. The baselines never read
+  pages, so theirs is always 0.
+- Run each query live only once. A second live run replaces the saved searches, and the
+  results will no longer match.
 
 ### Scoring (the key design decision)
 
@@ -193,6 +240,8 @@ could not be read. `composition_confidence` is `explicit`, `ambiguous` (e.g. per
 | `FIRECRAWL_API_KEY` | `.env` | empty. Without it the tool returns `unavailable`, it does not crash. |
 | `QUICKSHOP_EVIDENCE_CACHE` | `.env` | `.cache/evidence.sqlite3` |
 | `QUICKSHOP_EVIDENCE_REPLAY=1` | `.env` | off. Serve only from the cache, never call Firecrawl (reproducible evaluation). |
+| `QUICKSHOP_SEARCH_SNAPSHOT` | `.env` | `.cache/search_snapshot.json`. Where saved searches are kept. |
+| `QUICKSHOP_SEARCH_REPLAY=1` | `.env` | off. Use only saved searches, never call SerpAPI. `--frozen` turns this on, along with `QUICKSHOP_EVIDENCE_REPLAY`. |
 
 **Cost.** A fresh page read is about 5 Firecrawl credits (1 + 4 for JSON extraction). Cached reads are
 free. For the budget hook, `quickshop.evidence.tool.get_usage()` returns Firecrawl calls and credits

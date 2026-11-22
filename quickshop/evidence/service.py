@@ -16,6 +16,7 @@ from quickshop.evidence.cache import DEFAULT_DB_PATH, EvidenceCache, canonicaliz
 from quickshop.evidence.fabric import find_composition_text, parse_composition
 from quickshop.evidence.firecrawl_client import FirecrawlClient, RawExtraction
 from quickshop.evidence.schema import EvidenceRecord, Price, ReturnPolicy, ReviewSummary
+from quickshop.evidence.text_fix import looks_garbled, repair_text
 
 load_dotenv()   # QUICKSHOP_EVIDENCE_* settings come from .env too
 
@@ -35,8 +36,18 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
     if not raw.ok:
         return EvidenceRecord.unavailable(url, canonical_url, raw.error_reason or "page unavailable", now)
 
-    f = raw.fields or {}
+    f = dict(raw.fields or {})
     notes: list[str] = []
+    # repair encoding damage before anything is parsed or compared with the page
+    markdown = raw.markdown
+    repaired = False
+    if looks_garbled(markdown):
+        markdown, repaired = repair_text(markdown), True
+    for key, value in list(f.items()):
+        if isinstance(value, str) and looks_garbled(value):
+            f[key], repaired = repair_text(value), True
+    if repaired:
+        notes.append("text encoding was repaired before parsing")
     snippets: dict[str, str] = {}
     if raw.extraction_error:
         notes.append(raw.extraction_error)
@@ -59,15 +70,15 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
     from_markdown = False
     force_ambiguous = False
     if comp_raw is None:
-        found, blocks = find_composition_text(raw.markdown)
+        found, blocks = find_composition_text(markdown)
         if found:
             comp_raw, from_markdown = found, True
             notes.append("composition read from page markdown (extractor returned none)")
             if blocks > 1:
                 notes.append(f"{blocks} different composition blocks on the page")
                 force_ambiguous = True
-    elif raw.markdown and not pf.appears_verbatim(comp_raw, raw.markdown):
-        if _numbers_on_page(comp_raw, raw.markdown):
+    elif markdown and not pf.appears_verbatim(comp_raw, markdown):
+        if _numbers_on_page(comp_raw, markdown):
             notes.append("composition text is reworded, not verbatim; its numbers do appear on the page")
             force_ambiguous = True
         else:
@@ -133,6 +144,7 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
             price=price, in_stock=in_stock,
             composition=parsed.components, composition_raw=comp_raw if parsed.components or comp_raw else None,
             composition_confidence=confidence, main_part=parsed.main_part,
+            fibers_mentioned=parsed.fibers_mentioned, composition_hint=parsed.composition_hint,
             natural_fiber_pct=parsed.natural_fiber_pct,
             regenerated_fiber_pct=parsed.regenerated_fiber_pct if parsed.main_part else None,
             synthetic_fiber_pct=parsed.synthetic_fiber_pct if parsed.main_part else None,

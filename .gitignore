@@ -6,6 +6,10 @@
 .streamlit
 .pi
 
+# Claude Code local files (never committed)
+CLAUDE.md
+.claude/
+
 # Harness sessions
 .sessions/
 .agent/

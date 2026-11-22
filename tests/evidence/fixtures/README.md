@@ -29,3 +29,27 @@ Written by hand to mimic real page structure (bullet list, table, missing compos
 non-product page, extractor miss, invented composition). Retailer names use placeholder `example.test`
 domains. No real missing-composition or blocked page has been captured yet: every real page tried so
 far was readable. Replace these when a real one turns up.
+
+## Milestone 2 failure reproductions (synthetic)
+
+Hand-written to reproduce the two failures in the Milestone 2 report. They are NOT live captures:
+replace them with real captures of the Gap Factory and Levi's pages when Firecrawl credits allow.
+
+| File | Reproduces | Expected |
+|------|------------|----------|
+| `gap_factory_garbled.json` | Double-encoded dashes (`Ã¢â‚¬â€œ`) next to "cotton blend" | Encoding repaired; no percentage, so `natural_fiber_pct` is null, confidence `ambiguous`, hint says "blend" |
+| `levis_slash_no_percentages.json` | "Cotton/Denim/Polyester" | `natural_fiber_pct` null, `fibers_mentioned` = cotton, polyester in page order, hint says order is not a share |
+
+## Live Gap Factory and Levi's captures (2026-11-22, one scrape each, 5 credits)
+
+| File | Page | Result |
+|------|------|--------|
+| `live_gap_factory_straight_pid5245.json` | High Rise '90s Slim Straight Jeans | 93% cotton, 5% recycled cotton, 2% elastane, explicit |
+| `live_gap_factory_soft_wear_pid1179.json` | Straight Jeans | "- 98% Cotton, 2% Spandex", explicit |
+| `live_gap_factory_classic_straight.json` | Mid Rise Classic Straight Jeans | No fabric text in the scrape: composition missing, never guessed |
+| `live_gap_factory_curvy_straight.json` | Mid Rise Curvy Classic Straight | Sold out; the page is not a product page, so unavailable |
+| `live_levis_724_black.json` | 724 High Rise Straight, Black | 78% cotton, 21% polyester, 1% elastane |
+| `live_levis_tailored_724_white.json` | Tailored 724 High Rise Straight, White | 97% cotton, 3% elastane |
+
+None of these reproduced the Milestone 2 garbled text or the no-percentage "Cotton/Denim/Polyester"
+line, so those two failures stay covered by the synthetic fixtures above.
