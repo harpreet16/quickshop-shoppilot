@@ -5,9 +5,10 @@ from queue import Empty
 
 import streamlit as st
 
-from quickshop.web import PILOT_QUERY, WebSession, results_to_cards
+from quickshop.ui import render_product_cards, render_tool_card
+from quickshop.web import PILOT_QUERY, WebSession
 
-st.set_page_config(page_title="QuickShop", page_icon="🛍️")
+st.set_page_config(page_title="QuickShop", page_icon="🛍️", layout="wide")
 st.title("QuickShop")
 st.caption("Find clothing, compare evidence, and spot seller risks.")
 st.caption("Local pilot • merchant signals are heuristics, not verified safety guarantees.")
@@ -16,8 +17,8 @@ if "shop" not in st.session_state:
     st.session_state.shop = WebSession(frozen="--frozen" in sys.argv)
     st.session_state.messages = []
     st.session_state.calls = []
-    st.session_state.progress = []
     st.session_state.question = None
+st.session_state.setdefault("running_tools", {})
 shop = st.session_state.shop
 with st.sidebar:
     st.header("Shopping session")
@@ -28,40 +29,11 @@ with st.sidebar:
         st.session_state.shop = WebSession(frozen=frozen)
         st.session_state.messages = []
         st.session_state.calls = []
-        st.session_state.progress = []
+        st.session_state.running_tools = {}
         st.session_state.question = None
         st.rerun()
     st.caption("Mode changes start a fresh conversation. Keys stay on the server.")
     st.code(PILOT_QUERY, language=None)
-
-
-def render_cards(calls):
-    recommended, rejected = results_to_cards(calls)
-    for heading, cards in (("Recommendations", recommended), ("Not recommended", rejected)):
-        if not cards:
-            continue
-        st.subheader(heading)
-        for card in cards:
-            with st.container(border=True):
-                st.text(card["title"])
-                st.text(
-                    f"Price: {card['price'] if card['price'] is not None else 'unknown'} USD · {card['merchant']}"
-                )
-                score = card["scores"]
-                st.text(
-                    f"P/Q/L: {score.get('price', '?')} / {score.get('quality', '?')} / "
-                    f"{score.get('legitimacy', '?')} out of 5 · Overall: {score.get('overall', '?')}"
-                )
-                if heading == "Not recommended":
-                    st.error(f"Not recommended · {score.get('risk', 'unknown')} risk")
-                else:
-                    st.text(f"Risk: {score.get('risk', 'unknown')}")
-                for evidence in card["evidence"]:
-                    st.text(f"• {evidence}")
-                if card["url"]:
-                    st.link_button(
-                        "Product page" if not shop.frozen else "Demo placeholder link", card["url"]
-                    )
 
 
 @st.fragment(run_every=0.5)
@@ -74,59 +46,59 @@ def conversation():
         if kind == "question":
             st.session_state.question = value
             st.session_state.messages.append(("assistant", value))
+        elif kind == "tool_start":
+            st.session_state.running_tools[value["tool_id"]] = value
         elif kind == "call":
+            st.session_state.running_tools.pop(value.get("tool_id"), None)
             st.session_state.calls.append(value)
-            name, args = value["tool"], value["input"]
-            reads = sum(
-                c["tool"] == "fetch_product_evidence" and not c["blocked"]
-                for c in st.session_state.calls
-            )
-            label = {
-                "search_listings": "Search completed",
-                "check_merchant": f"Checked {args.get('merchant', 'seller')}",
-                "fetch_product_evidence": f"Read page {reads} of 5",
-                "score_product": "Product scored",
-                "ask_user": "Clarification received",
-            }.get(name, name)
-            st.session_state.progress.append(
-                label if not value["blocked"] else "Page-read budget exhausted"
-            )
         elif kind in ("message", "error"):
             st.session_state.messages.append(("assistant" if kind == "message" else "error", value))
         elif kind == "done":
             st.session_state.question = None
+            st.session_state.running_tools = {}
             st.rerun()
-    if shop.frozen:
-        st.info(
-            "Frozen demo: synthetic black-jeans data only. No SerpAPI or Firecrawl calls; model calls remain live."
+
+    chat, activity = st.columns([3, 2], gap="large")
+    with chat:
+        st.subheader("Conversation")
+        if shop.frozen:
+            st.info(
+                "Frozen demo: synthetic black-jeans data. Only the ASU model makes live API calls."
+            )
+        with st.container(height=650, border=False):
+            for role, text in st.session_state.messages:
+                with st.chat_message("assistant" if role == "error" else role):
+                    if role == "error":
+                        st.error(text)
+                    else:
+                        st.text(text)
+            if shop.busy:
+                st.info("Waiting for your reply…" if shop.waiting else "QuickShop is working…")
+        prompt = st.chat_input(
+            "Reply to QuickShop" if shop.waiting else "What clothing are you looking for?",
+            disabled=shop.busy and not shop.waiting,
         )
-    for role, text in st.session_state.messages:
-        with st.chat_message("assistant" if role == "error" else role):
-            if role == "error":
-                st.error(text)
+        if prompt:
+            st.session_state.messages.append(("user", prompt))
+            if shop.waiting:
+                shop.answer(prompt)
+                st.session_state.question = None
             else:
-                st.text(text)
-    if st.session_state.progress:
-        with st.expander("Tool progress", expanded=shop.busy):
-            for label in st.session_state.progress:
-                st.text(label)
-    if shop.busy:
-        st.info("Waiting for your reply…" if shop.waiting else "QuickShop is working…")
-    render_cards(st.session_state.calls)
-    prompt = st.chat_input(
-        "Reply to QuickShop" if shop.waiting else "What clothing are you looking for?",
-        disabled=shop.busy and not shop.waiting,
-    )
-    if prompt:
-        st.session_state.messages.append(("user", prompt))
-        if shop.waiting:
-            shop.answer(prompt)
-            st.session_state.question = None
-        else:
-            st.session_state.calls = []
-            st.session_state.progress = []
-            shop.start(prompt)
-        st.rerun()
+                st.session_state.calls = []
+                st.session_state.running_tools = {}
+                shop.start(prompt)
+            st.rerun()
+    with activity:
+        st.subheader("Live activity")
+        st.caption("Tool calls, evidence and results • updates every half second")
+        with st.container(height=750, border=False):
+            render_product_cards(st.session_state.calls, frozen=shop.frozen)
+            if not st.session_state.calls and not st.session_state.running_tools:
+                st.info("Tool activity will appear here when you start shopping.")
+            for call in st.session_state.running_tools.values():
+                render_tool_card(call)
+            for call in reversed(st.session_state.calls):
+                render_tool_card(call)
 
 
 @st.fragment(run_every=0.5)

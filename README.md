@@ -82,8 +82,10 @@ Keep `QUICKSHOP_EVIDENCE_REPLAY=0` for fresh live evidence.
 
 Try: **black straight-leg jeans, size 32 waist, under $80**. Reply to clarification
 questions in the chat box; the same agent invocation continues. Follow-up requests
-reuse the conversation. The page shows completed tool calls, scored product cards,
-and rejected sellers separately. Cards use tool results, not parsed AI prose.
+reuse the conversation. Session controls stay on the left, replies and questions in
+center chat, and live tool/result cards in the right column. Activity cards show
+running/completed calls with expandable inputs and outputs, category colors and
+risk indicators; rejected products appear in red. Cards use tool results, not parsed AI prose.
 Merchant signals remain heuristics, not verified seller safety. Unscored candidates
 are not promoted into recommendation cards.
 
@@ -96,8 +98,8 @@ conversation; they are disabled while work is active. Answer pending questions
 within five minutes. Closing the browser does not cancel an in-flight API request.
 
 The sidebar page-read counter resets per shopping turn and counts evidence tool
-calls (including cache hits), not provider billing credits. Progress updates after
-tool completion. Search/model spending is not capped by this counter.
+calls (including cache hits), not provider billing credits. Activity refreshes every
+half second as tools start and finish. Search/model spending is not capped by this counter.
 
 Offline UI tests: install `pip install -e '.[dev,ui]'`, then run
 `pytest tests/test_web.py`. No paid API calls are required by these tests.

@@ -175,6 +175,7 @@ class WebSession:
                 )
                 self.agent = self.factory(tools=[*tools, show_results], instructions=instructions)
                 self.agent.trace.on_call = lambda call: self.events.put(("call", call))
+                self.agent.trace.on_start = lambda call: self.events.put(("tool_start", call))
             self.events.put(("message", str(self.agent(request))))
         except Exception:  # noqa: BLE001 — redact provider failures at the browser boundary.
             # Provider exception text can include request URLs or credentials. Keep it server-side.
