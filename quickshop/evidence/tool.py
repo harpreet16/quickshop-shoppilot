@@ -46,7 +46,8 @@ def fetch_product_evidence(url: str) -> dict:
         An evidence record. status is "ok", "partial" or "unavailable" (with error_reason).
         composition_raw is the exact fabric text from the page. natural_fiber_pct is the share of
         natural fiber in the main fabric, or null if the fabric is unknown. Unknown fields are null,
-        never guessed.
+        never guessed. If the page names fibers but gives no percentages, natural_fiber_pct is
+        null and fibers_mentioned / composition_hint say what the page did state.
     """
     try:
         return get_service().get_evidence(url).model_dump(mode="json")

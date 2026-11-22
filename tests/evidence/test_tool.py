@@ -306,3 +306,62 @@ def test_site_homepage_is_rejected_without_calling_firecrawl(make_service):
         r = service.get_evidence(u)
         assert r.status == "unavailable" and "homepage" in r.error_reason
     assert scraper.calls == []
+
+
+# ---- Milestone 2 failures: Gap Factory (garbled text) and Levi's direct (no percentages)
+
+def test_gap_factory_garbled_page_is_repaired_and_honest(make_service):
+    r = make_service(load_fixture("gap_factory_garbled"))[0].get_evidence(URL)
+    assert "â€" not in (r.composition_raw or "") and "Ã" not in (r.composition_raw or "")
+    assert "cotton blend" in r.composition_raw
+    assert r.natural_fiber_pct is None and r.composition_confidence == "ambiguous"
+    assert r.fibers_mentioned == ["cotton"] and "blend" in r.composition_hint
+    assert any("encoding was repaired" in n for n in r.parse_notes)
+    assert r.status == "partial" and r.price.amount == 29.99
+
+
+def test_levis_slash_list_reports_fibers_without_inventing_a_share(make_service):
+    r = make_service(load_fixture("levis_slash_no_percentages"))[0].get_evidence(URL)
+    assert r.composition_raw == "Cotton/Denim/Polyester"
+    assert r.natural_fiber_pct is None and r.composition_confidence == "ambiguous"
+    assert r.fibers_mentioned == ["cotton", "polyester"]
+    assert "does not prove" in r.composition_hint
+
+
+def test_pages_with_explicit_percentages_have_no_hint(make_service):
+    r = make_service(load_fixture("blend_tee"))[0].get_evidence(URL)
+    assert r.fibers_mentioned == [] and r.composition_hint is None
+
+
+# ---- real Gap Factory and Levi's pages captured live on 2026-11-22
+
+def test_live_levis_724_black(make_service):
+    r = make_service(load_fixture("live_levis_724_black"))[0].get_evidence(URL)
+    assert r.status == "ok" and r.composition_confidence == "explicit"
+    assert r.natural_fiber_pct == 78.0 and r.synthetic_fiber_pct == 22.0   # polyester 21 + elastane 1
+    assert r.price.amount == 44.97 and r.fibers_mentioned == []
+
+
+def test_live_levis_tailored_724_white(make_service):
+    r = make_service(load_fixture("live_levis_tailored_724_white"))[0].get_evidence(URL)
+    assert r.status == "ok" and r.natural_fiber_pct == 97.0 and r.origin_country == "Sri Lanka"
+
+
+@pytest.mark.parametrize("name, natural", [
+    ("live_gap_factory_straight_pid5245", 98.0),     # 93% cotton + 5% recycled cotton + 2% elastane
+    ("live_gap_factory_soft_wear_pid1179", 98.0),    # "- 98% Cotton, 2% Spandex" (leading bullet)
+])
+def test_live_gap_factory_pages_with_composition(make_service, name, natural):
+    r = make_service(load_fixture(name))[0].get_evidence(URL)
+    assert r.status == "ok" and r.composition_confidence == "explicit" and r.natural_fiber_pct == natural
+
+
+def test_live_gap_factory_page_without_fabric_text_is_missing_not_guessed(make_service):
+    r = make_service(load_fixture("live_gap_factory_classic_straight"))[0].get_evidence(URL)
+    assert r.status == "partial" and r.composition_confidence == "missing"
+    assert r.natural_fiber_pct is None and r.fibers_mentioned == [] and r.price.amount == 39.99
+
+
+def test_live_gap_factory_sold_out_page_is_unavailable(make_service):
+    r = make_service(load_fixture("live_gap_factory_curvy_straight"))[0].get_evidence(URL)
+    assert r.status == "unavailable" and "not a product page" in r.error_reason

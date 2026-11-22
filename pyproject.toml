@@ -12,6 +12,7 @@ dependencies = [
     "python-dotenv",
     "pydantic",
     "firecrawl-py==4.54.0",
+    "ftfy>=6.1,<7",
 ]
 
 [project.optional-dependencies]

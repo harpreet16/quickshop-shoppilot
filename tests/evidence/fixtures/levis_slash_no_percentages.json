@@ -1,0 +1,21 @@
+{
+ "markdown": "# 724 High-Rise Straight Women's Jeans\n\n$73.98\n\nMaterial\n\nCotton/Denim/Polyester\n\nMachine wash cold.\n",
+ "json": {
+  "is_product_page": true,
+  "title": "724 High-Rise Straight Women's Jeans",
+  "brand": null,
+  "price_amount": 73.98,
+  "price_currency": "USD",
+  "price_text": "$73.98",
+  "composition_text": "Cotton/Denim/Polyester",
+  "origin_text": null,
+  "return_policy_text": null,
+  "rating": 4.2,
+  "review_count": 80,
+  "in_stock": true
+ },
+ "metadata": {
+  "status_code": 200,
+  "credits_used": 5
+ }
+}
