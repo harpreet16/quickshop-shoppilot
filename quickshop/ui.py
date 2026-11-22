@@ -1,6 +1,7 @@
 """Streamlit cards for the activity column; no worker-thread UI calls."""
 
 from html import escape
+from urllib.parse import urlsplit
 
 import streamlit as st
 
@@ -41,6 +42,13 @@ UI_STYLES = """
   .qs-summary table {table-layout: fixed;}
   .qs-summary td:nth-child(2) {width: 45%;}
 }
+.qs-options {font-size: .75rem; max-height: 240px; overflow: auto;}
+.qs-options table {width: 100%; table-layout: fixed; border-collapse: collapse;}
+.qs-options th {position: sticky; top: 0; background: var(--background-color); text-align: left;}
+.qs-options td, .qs-options th {padding: .35rem; border-bottom: 1px solid #8883; vertical-align: top; overflow-wrap: anywhere;}
+.qs-options .qs-link {display: inline-block; padding: .05rem .3rem; font-size: .7rem; border: 1px solid currentColor;
+  border-radius: 999px; text-decoration: none; white-space: nowrap;}
+.qs-options .qs-link:focus-visible {outline: 2px solid currentColor; outline-offset: 2px;}
 </style>
 """
 
@@ -108,6 +116,56 @@ def event_summary_html(calls):
         '<div class="qs-summary"><table aria-label="Live event summary">'
         "<thead><tr><th>Type</th><th>Subject</th><th>Event</th></tr></thead>"
         "<tbody>" + "".join(rows) + "</tbody></table></div>"
+    )
+
+
+def options_table_html(calls):
+    listings, evidence, scored = {}, {}, set()
+    for call in calls:
+        data = result_data(call)
+        if call["tool"] == "search_listings" and isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict) and isinstance(item.get("url"), str):
+                    listings[item["url"]] = item
+        elif isinstance(data, dict) and data.get("url"):
+            if call["tool"] == "fetch_product_evidence":
+                evidence[data["url"]] = data
+            elif call["tool"] == "score_product":
+                scored.add(data["url"])
+    recommended, rejected = results_to_cards(calls)
+    verdicts = {card["url"]: ("success", "Recommended") for card in recommended}
+    verdicts.update({card["url"]: ("error", "Not recommended") for card in rejected})
+    rows = []
+    for url, item in listings.items():
+        facts = evidence.get(url, {})
+        brand = facts.get("brand") or item.get("brand") or "—"
+        title = item.get("title") or facts.get("title") or "Unknown product"
+        tone, verdict = verdicts.get(
+            url, ("info", "Awaiting verdict" if url in scored else "Not reviewed")
+        )
+        try:
+            parsed = urlsplit(url)
+            safe = parsed.scheme in ("https", "http") and bool(parsed.netloc)
+        except ValueError:
+            safe = False
+        link = (
+            f'<a class="qs-link" href="{escape(url, quote=True)}" target="_blank" '
+            f'rel="noopener noreferrer" aria-label="Open product: {escape(str(title), quote=True)}">Open</a>'
+            if safe
+            else "—"
+        )
+        rows.append(
+            f"<tr><td>{escape(str(brand))}</td><td>{escape(str(title))}</td>"
+            f'<td>{link}</td><td class="qs-{tone}">{escape(verdict)}</td></tr>'
+        )
+    return (
+        '<div class="qs-options"><table aria-label="Options">'
+        '<colgroup><col style="width:18%"><col style="width:36%">'
+        '<col style="width:16%"><col style="width:30%"></colgroup>'
+        "<thead><tr><th>Brand</th><th>Title</th><th>Link</th><th>Verdict</th></tr></thead>"
+        "<tbody>"
+        + ("".join(rows) or '<tr><td colspan="4">No options found yet.</td></tr>')
+        + "</tbody></table></div>"
     )
 
 

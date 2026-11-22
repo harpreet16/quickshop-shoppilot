@@ -86,6 +86,10 @@ reuse the conversation. Session controls stay on the left, replies and questions
 center chat, and live tool/result cards in the right column. Activity cards show
 running/completed calls with expandable inputs and outputs, category colors and
 risk indicators; rejected products appear in red. Cards use tool results, not parsed AI prose.
+The **Options** table below the events table lists discovered products with brand,
+wrapped title, a small product-link pill, and the current verdict. Brands come only
+from explicit tool data (otherwise `—`); products remain unreviewed or awaiting a
+verdict until assessed. Rejections appear in red.
 A compact table inside the main chat feed summarizes the ten latest events (for example,
 "Editorialist — Unrecognized seller"). Conversation and activity feeds auto-scroll
 to new content; activity is chronological. Evidence and raw tool payloads stay

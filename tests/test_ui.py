@@ -9,7 +9,7 @@ pytest.importorskip("streamlit")
 from streamlit.testing.v1 import AppTest
 
 from quickshop.agent.hooks import TraceLogger
-from quickshop.ui import event_summary_html, tool_presentation
+from quickshop.ui import event_summary_html, options_table_html, tool_presentation
 
 
 def completed(tool, data, **extra):
@@ -125,6 +125,66 @@ def test_events_table_is_in_chat_and_both_feeds_follow_updates():
     ]
     assert len(feeds) == 2
     assert all(feed.autoscroll for feed in feeds)
+    assert not app.exception
+
+
+def test_options_update_brand_and_verdict_without_treating_seller_as_brand():
+    url = "https://example.com/jeans"
+    calls = [
+        completed(
+            "search_listings", [{"url": url, "title": "Cotton jeans", "merchant": "Seller only"}]
+        )
+    ]
+    assert "Not reviewed" in options_table_html(calls)
+    assert "Seller only" not in options_table_html(calls)
+    calls.extend(
+        [
+            completed("fetch_product_evidence", {"url": url, "brand": "Levi's"}),
+            completed(
+                "score_product", {"url": url, "eligible": True, "available": True, "risk": "low"}
+            ),
+        ]
+    )
+    assert "Awaiting verdict" in options_table_html(calls)
+    calls.append(completed("show_results", {"recommendations": [url]}))
+    html = options_table_html(calls)
+    assert "Levi&#x27;s" in html and "Recommended" in html
+    assert 'class="qs-link"' in html and 'rel="noopener noreferrer"' in html
+    calls.append(completed("show_results", {"not_recommended": {url: "Wrong fit"}}))
+    assert 'class="qs-error">Not recommended' in options_table_html(calls)
+
+
+def test_options_escape_content_and_reject_executable_links():
+    calls = [
+        completed(
+            "search_listings",
+            [
+                {
+                    "url": "javascript:alert(1)",
+                    "title": "<script>bad</script>",
+                    "brand": '<img src=x onerror="bad">',
+                }
+            ],
+        )
+    ]
+    html = options_table_html(calls + calls)
+    assert "<a " not in html and "<script>" not in html and "<img " not in html
+    assert "&lt;script&gt;" in html
+    assert html.count("<tr>") == 2  # Header and one deduplicated option.
+
+
+def test_options_table_follows_events_inside_chat():
+    app = AppTest.from_file("../app.py").run()
+    app.session_state.calls = [
+        completed("search_listings", [{"url": "https://example.com/p", "title": "Jeans"}])
+    ]
+    app.run()
+    chat, activity = app.get("column")
+    tables = [item.value for item in chat.get("html")]
+    assert "Live event summary" in tables[0]
+    assert 'aria-label="Options"' in tables[1]
+    assert "Jeans" in tables[1]
+    assert not any('aria-label="Options"' in item.value for item in activity.get("html"))
     assert not app.exception
 
 

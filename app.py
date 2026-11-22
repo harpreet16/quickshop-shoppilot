@@ -8,6 +8,7 @@ import streamlit as st
 from quickshop.ui import (
     UI_STYLES,
     event_summary_html,
+    options_table_html,
     render_product_cards,
     render_tool_card,
 )
@@ -84,6 +85,8 @@ def conversation():
                     [*st.session_state.calls, *st.session_state.running_tools.values()]
                 )
             )
+            st.caption("Options")
+            st.html(options_table_html(st.session_state.calls))
             if shop.busy:
                 st.info("Waiting for your reply…" if shop.waiting else "QuickShop is working…")
         prompt = st.chat_input(
