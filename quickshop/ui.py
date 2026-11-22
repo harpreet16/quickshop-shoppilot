@@ -32,9 +32,9 @@ UI_STYLES = """
 .qs-warning {color: var(--orange-text-color, #a65b00);}
 .qs-error {color: var(--red-text-color, #b42318);}
 .qs-success {color: var(--green-text-color, #16803c);}
-.qs-summary {max-height: 140px; overflow: auto; font-size: .75rem;}
+.qs-summary {font-size: .75rem;}
 .qs-summary table {width: 100%; border-collapse: collapse;}
-.qs-summary th {position: sticky; top: 0; background: var(--background-color); text-align: left;}
+.qs-summary th {text-align: left;}
 .qs-summary td, .qs-summary th {padding: .2rem .35rem; border-bottom: 1px solid #8883;}
 .qs-summary td:nth-child(2) {max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 @media (max-width: 1200px) {
@@ -42,9 +42,9 @@ UI_STYLES = """
   .qs-summary table {table-layout: fixed;}
   .qs-summary td:nth-child(2) {width: 45%;}
 }
-.qs-options {font-size: .75rem; max-height: 240px; overflow: auto;}
+.qs-options {font-size: .75rem;}
 .qs-options table {width: 100%; table-layout: fixed; border-collapse: collapse;}
-.qs-options th {position: sticky; top: 0; background: var(--background-color); text-align: left;}
+.qs-options th {text-align: left;}
 .qs-options td, .qs-options th {padding: .35rem; border-bottom: 1px solid #8883; vertical-align: top; overflow-wrap: anywhere;}
 .qs-options .qs-link {display: inline-block; padding: .05rem .3rem; font-size: .7rem; border: 1px solid currentColor;
   border-radius: 999px; text-decoration: none; white-space: nowrap;}

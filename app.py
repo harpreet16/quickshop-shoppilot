@@ -26,6 +26,7 @@ if "shop" not in st.session_state:
     st.session_state.calls = []
     st.session_state.question = None
 st.session_state.setdefault("running_tools", {})
+st.session_state.setdefault("show_activity", True)
 shop = st.session_state.shop
 with st.sidebar:
     st.header("Shopping session")
@@ -40,6 +41,9 @@ with st.sidebar:
         st.session_state.question = None
         st.rerun()
     st.caption("Mode changes start a fresh conversation. Keys stay on the server.")
+    if st.button("Hide live activity" if st.session_state.show_activity else "Show live activity"):
+        st.session_state.show_activity = not st.session_state.show_activity
+        st.rerun()
     st.code(PILOT_QUERY, language=None)
 
 
@@ -65,7 +69,10 @@ def conversation():
             st.session_state.running_tools = {}
             st.rerun()
 
-    chat, activity = st.columns([3, 2], gap="large")
+    if st.session_state.show_activity:
+        chat, activity = st.columns([3, 2], gap="large")
+    else:
+        chat, activity = st.container(), None
     with chat:
         st.subheader("Conversation")
         if shop.frozen:
@@ -103,16 +110,17 @@ def conversation():
                 st.session_state.running_tools = {}
                 shop.start(prompt)
             st.rerun()
-    with activity:
-        st.subheader("Live activity")
-        with st.container(height=600, border=False, key="activity-feed", autoscroll=True):
-            if not st.session_state.calls and not st.session_state.running_tools:
-                st.info("Tool activity will appear here when you start shopping.")
-            for call in st.session_state.calls:
-                render_tool_card(call)
-            for call in st.session_state.running_tools.values():
-                render_tool_card(call)
-            render_product_cards(st.session_state.calls, frozen=shop.frozen)
+    if activity is not None:
+        with activity:
+            st.subheader("Live activity")
+            with st.container(height=600, border=False, key="activity-feed", autoscroll=True):
+                if not st.session_state.calls and not st.session_state.running_tools:
+                    st.info("Tool activity will appear here when you start shopping.")
+                for call in st.session_state.calls:
+                    render_tool_card(call)
+                for call in st.session_state.running_tools.values():
+                    render_tool_card(call)
+                render_product_cards(st.session_state.calls, frozen=shop.frozen)
 
 
 @st.fragment(run_every=0.5)

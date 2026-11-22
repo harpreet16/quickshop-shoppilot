@@ -107,6 +107,30 @@ def test_activity_updates_are_separate_from_central_chat():
     assert not activity.chat_input
 
 
+def test_hiding_activity_reflows_chat_without_resetting_live_session():
+    app = AppTest.from_file("../app.py").run()
+    session = app.session_state.shop
+    app.session_state.messages = [("assistant", "What size?")]
+    session.busy = True
+    app.run()
+    next(button for button in app.button if button.label == "Hide live activity").click().run()
+    assert not app.exception
+    assert not app.get("column")
+    assert app.session_state.shop is session
+    assert session.busy
+    assert any(text.value == "What size?" for text in app.text)
+    session.events.put(
+        ("call", completed("check_merchant", {"merchant": "Editorialist", "known_brand": False}))
+    )
+    app.run()
+    assert any("Editorialist" in item.value for item in app.get("html"))
+    next(button for button in app.button if button.label == "Show live activity").click().run()
+    assert len(app.get("column")) == 2
+    assert len(app.session_state.calls) == 1
+    assert app.session_state.messages == [("assistant", "What size?")]
+    assert not app.exception
+
+
 def test_events_table_is_in_chat_and_both_feeds_follow_updates():
     app = AppTest.from_file("../app.py").run()
     app.session_state.shop.events.put(
