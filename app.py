@@ -5,10 +5,16 @@ from queue import Empty
 
 import streamlit as st
 
-from quickshop.ui import render_product_cards, render_tool_card
+from quickshop.ui import (
+    UI_STYLES,
+    event_summary_html,
+    render_product_cards,
+    render_tool_card,
+)
 from quickshop.web import PILOT_QUERY, WebSession
 
 st.set_page_config(page_title="QuickShop", page_icon="🛍️", layout="wide")
+st.html(UI_STYLES)
 st.title("QuickShop")
 st.caption("Find clothing, compare evidence, and spot seller risks.")
 st.caption("Local pilot • merchant signals are heuristics, not verified safety guarantees.")
@@ -65,7 +71,7 @@ def conversation():
             st.info(
                 "Frozen demo: synthetic black-jeans data. Only the ASU model makes live API calls."
             )
-        with st.container(height=650, border=False):
+        with st.container(height=600, border=False, key="conversation-feed", autoscroll=True):
             for role, text in st.session_state.messages:
                 with st.chat_message("assistant" if role == "error" else role):
                     if role == "error":
@@ -89,16 +95,19 @@ def conversation():
                 shop.start(prompt)
             st.rerun()
     with activity:
+        st.caption("Latest events")
+        st.html(
+            event_summary_html([*st.session_state.calls, *st.session_state.running_tools.values()])
+        )
         st.subheader("Live activity")
-        st.caption("Tool calls, evidence and results • updates every half second")
-        with st.container(height=750, border=False):
-            render_product_cards(st.session_state.calls, frozen=shop.frozen)
+        with st.container(height=460, border=False, key="activity-feed", autoscroll=True):
             if not st.session_state.calls and not st.session_state.running_tools:
                 st.info("Tool activity will appear here when you start shopping.")
+            for call in st.session_state.calls:
+                render_tool_card(call)
             for call in st.session_state.running_tools.values():
                 render_tool_card(call)
-            for call in reversed(st.session_state.calls):
-                render_tool_card(call)
+            render_product_cards(st.session_state.calls, frozen=shop.frozen)
 
 
 @st.fragment(run_every=0.5)

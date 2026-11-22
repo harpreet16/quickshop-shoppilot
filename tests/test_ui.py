@@ -9,7 +9,7 @@ pytest.importorskip("streamlit")
 from streamlit.testing.v1 import AppTest
 
 from quickshop.agent.hooks import TraceLogger
-from quickshop.ui import tool_presentation
+from quickshop.ui import event_summary_html, tool_presentation
 
 
 def completed(tool, data, **extra):
@@ -91,7 +91,7 @@ def test_activity_updates_are_separate_from_central_chat():
     chat, activity = app.get("column")
     assert [item.value for item in chat.text] == ["Find jeans", "What size?"]
     assert not chat.json
-    assert any("Running" in item.value for item in activity.info)
+    assert any("Running" in item.value for item in activity.get("html"))
     assert "search-1" in app.session_state.running_tools
 
     result = completed("search_listings", [{"title": "Jeans"}], tool_id="search-1")
@@ -101,10 +101,29 @@ def test_activity_updates_are_separate_from_central_chat():
     assert not app.exception
     assert not app.session_state.running_tools
     assert [item.value for item in chat.text] == ["Find jeans", "What size?"]
-    assert any("Completed" in item.value for item in activity.info)
+    assert any("Completed" in item.value for item in activity.get("html"))
     assert json.loads(activity.json[-1].value) == [{"title": "Jeans"}]
     assert len(chat.chat_input) == 1
     assert not activity.chat_input
+
+
+def test_summary_is_compact_and_escapes_seller_content():
+    calls = [
+        completed("check_merchant", {"merchant": f"Seller {i}", "known_brand": True})
+        for i in range(12)
+    ]
+    calls.append(
+        completed(
+            "check_merchant",
+            {"merchant": "Editorialist <script>alert(1)</script>", "known_brand": False},
+        )
+    )
+    html = event_summary_html(calls)
+    assert html.count("<tr class=") == 10
+    assert "Seller 0</td>" not in html
+    assert "Editorialist &lt;script&gt;" in html
+    assert "Unrecognized seller" in html
+    assert "<script>" not in html
 
 
 def test_rejection_cards_are_red_in_activity_not_chat():

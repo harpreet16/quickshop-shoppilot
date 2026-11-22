@@ -16,7 +16,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest"]
-ui = ["streamlit>=1.37,<2"]
+ui = ["streamlit>=1.67,<2"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
