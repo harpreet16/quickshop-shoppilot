@@ -86,7 +86,7 @@ reuse the conversation. Session controls stay on the left, replies and questions
 center chat, and live tool/result cards in the right column. Activity cards show
 running/completed calls with expandable inputs and outputs, category colors and
 risk indicators; rejected products appear in red. Cards use tool results, not parsed AI prose.
-A compact table above activity summarizes the ten latest events (for example,
+A compact table inside the main chat feed summarizes the ten latest events (for example,
 "Editorialist — Unrecognized seller"). Conversation and activity feeds auto-scroll
 to new content; activity is chronological. Evidence and raw tool payloads stay
 collapsed until expanded. The UI extra requires Streamlit 1.67+ for native auto-scroll.

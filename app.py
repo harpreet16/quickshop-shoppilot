@@ -78,6 +78,12 @@ def conversation():
                         st.error(text)
                     else:
                         st.text(text)
+            st.caption("Latest events")
+            st.html(
+                event_summary_html(
+                    [*st.session_state.calls, *st.session_state.running_tools.values()]
+                )
+            )
             if shop.busy:
                 st.info("Waiting for your reply…" if shop.waiting else "QuickShop is working…")
         prompt = st.chat_input(
@@ -95,12 +101,8 @@ def conversation():
                 shop.start(prompt)
             st.rerun()
     with activity:
-        st.caption("Latest events")
-        st.html(
-            event_summary_html([*st.session_state.calls, *st.session_state.running_tools.values()])
-        )
         st.subheader("Live activity")
-        with st.container(height=460, border=False, key="activity-feed", autoscroll=True):
+        with st.container(height=600, border=False, key="activity-feed", autoscroll=True):
             if not st.session_state.calls and not st.session_state.running_tools:
                 st.info("Tool activity will appear here when you start shopping.")
             for call in st.session_state.calls:

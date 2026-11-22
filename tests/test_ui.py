@@ -107,6 +107,27 @@ def test_activity_updates_are_separate_from_central_chat():
     assert not activity.chat_input
 
 
+def test_events_table_is_in_chat_and_both_feeds_follow_updates():
+    app = AppTest.from_file("../app.py").run()
+    app.session_state.shop.events.put(
+        ("call", completed("check_merchant", {"merchant": "Editorialist", "known_brand": False}))
+    )
+    app.run()
+    chat, activity = app.get("column")
+    summaries = [item.value for item in chat.get("html") if "Live event summary" in item.value]
+    assert len(summaries) == 1
+    assert "Editorialist" in summaries[0] and "Unrecognized seller" in summaries[0]
+    assert not any("Live event summary" in item.value for item in activity.get("html"))
+    feeds = [
+        block.proto
+        for block in app.get("flex_container")
+        if block.proto.id.endswith(("conversation-feed", "activity-feed"))
+    ]
+    assert len(feeds) == 2
+    assert all(feed.autoscroll for feed in feeds)
+    assert not app.exception
+
+
 def test_summary_is_compact_and_escapes_seller_content():
     calls = [
         completed("check_merchant", {"merchant": f"Seller {i}", "known_brand": True})
