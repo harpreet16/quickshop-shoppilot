@@ -7,7 +7,15 @@ from quickshop.agent.prompts import build_instructions
 from quickshop.config import build_model
 from quickshop.tools import DEFAULT_TOOLS
 
-def build_agent(tools=None, credits=5, session_id=None, model=None, extra_hooks=None):
+
+def build_agent(
+    tools=None,
+    credits=5,
+    session_id=None,
+    model=None,
+    extra_hooks=None,
+    instructions=None,
+):
     # tools and model can be swapped. extra_hooks are appended after the TraceLogger.
     if tools is None:
         tools = DEFAULT_TOOLS
@@ -19,7 +27,9 @@ def build_agent(tools=None, credits=5, session_id=None, model=None, extra_hooks=
     hooks = [trace] + (list(extra_hooks) if extra_hooks else [])
     agent = create_harness(
         model=model,
-        instructions=instructions if instructions is not None else build_instructions(credits),
+        instructions=instructions
+        if instructions is not None
+        else build_instructions(credits),
         tools=tools,
         builtin_tools=[],  # set no shell, file or web tools
         builtin_plugins=[],
