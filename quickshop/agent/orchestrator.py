@@ -2,7 +2,7 @@
 from strands_harness import create_harness
 
 from quickshop.agent.hooks import TraceLogger
-from quickshop.agent.interventions import CreditBudget
+from quickshop.agent.interventions import CreditBudget, KnownConstraints
 from quickshop.agent.prompts import build_instructions
 from quickshop.config import build_model
 from quickshop.tools import DEFAULT_TOOLS
@@ -14,6 +14,7 @@ def build_agent(tools=None, credits=5, session_id=None, model=None):
     if model is None:
         model = build_model()
     budget = CreditBudget(credits)
+    constraints = KnownConstraints()
     trace = TraceLogger()
     agent = create_harness(
         model=model,
@@ -27,10 +28,11 @@ def build_agent(tools=None, credits=5, session_id=None, model=None):
         # Sessions are saved to disk, and the user's size and height would be saved too.
         # It's off unless a session_id is given.
         session={"id": session_id, "dir": ".sessions"} if session_id else False,
-        interventions=[budget],
+        interventions=[budget, constraints],
         hooks=[trace],
     )
     # the caller can read the budget and the trace after a run
     agent.budget = budget
+    agent.constraints = constraints
     agent.trace = trace
     return agent
