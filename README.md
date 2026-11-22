@@ -46,7 +46,13 @@ pip install -e .
 cp .env.example .env  # Add: API_KEY, SERPAPI_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
 
 # Run QuickShop agent (interactive, output to terminal)
-python -m quickshop "black jeans under $80"
+python -m quickshop 'black jeans under $80'
+
+# Use single quotes, or zsh turns "$80" into "0".
+# Run it again with the same results and no API calls (--frozen).
+# Run the query once without --frozen first, so there is something saved.
+python -m quickshop --frozen 'black jeans under $80'
+python -m eval.runner --systems quickshop --frozen
 
 # Run baselines (output written to baselines/b*/output.txt)
 python baselines/b0/run.py
@@ -140,6 +146,8 @@ could not be read. `composition_confidence` is `explicit`, `ambiguous` (e.g. per
 | `FIRECRAWL_API_KEY` | `.env` | empty. Without it the tool returns `unavailable`, it does not crash. |
 | `QUICKSHOP_EVIDENCE_CACHE` | `.env` | `.cache/evidence.sqlite3` |
 | `QUICKSHOP_EVIDENCE_REPLAY=1` | `.env` | off. Serve only from the cache, never call Firecrawl (reproducible evaluation). |
+| `QUICKSHOP_SEARCH_SNAPSHOT` | `.env` | `.cache/search_snapshot.json`. Where saved searches are kept. |
+| `QUICKSHOP_SEARCH_REPLAY=1` | `.env` | off. Use only saved searches, never call SerpAPI. `--frozen` turns this on, along with `QUICKSHOP_EVIDENCE_REPLAY`. |
 
 **Cost.** A fresh page read is about 5 Firecrawl credits (1 + 4 for JSON extraction). Cached reads are
 free. For the budget hook, `quickshop.evidence.tool.get_usage()` returns Firecrawl calls and credits

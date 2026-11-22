@@ -272,8 +272,17 @@ def main():
         action="store_true",
         help="List available benchmark queries and exit",
     )
+    parser.add_argument(
+        "--frozen",
+        action="store_true",
+        help="QuickShop uses saved searches and saved page evidence only (no SerpAPI or Firecrawl calls)",
+    )
 
     args = parser.parse_args()
+
+    if args.frozen:
+        from quickshop.__main__ import use_frozen_mode
+        use_frozen_mode()
 
     if args.list:
         print("Available benchmark queries:")
