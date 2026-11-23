@@ -1,0 +1,311 @@
+{
+  "timestamp": "2026-11-23T06:18:57.618258",
+  "dataset": 2,
+  "systems": [
+    "b2"
+  ],
+  "queries": [
+    "d2q1",
+    "d2q2",
+    "d2q3",
+    "d2q5",
+    "d2q6",
+    "d2q7",
+    "d2q8",
+    "d2q11",
+    "d2q12",
+    "d2q13",
+    "d2q14",
+    "d2q15",
+    "d2q17",
+    "d2q18",
+    "d2q19",
+    "d2q20",
+    "d2q22",
+    "d2q23",
+    "d2q24",
+    "d2q25"
+  ],
+  "runs": [
+    {
+      "query_id": "d2q1",
+      "query": "straight leg chino pants with more room in the thighs, size 32 waist, under $80",
+      "category": "basic",
+      "expected": "Should find well-fitting chinos from trusted brands within budget",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three straight-leg chino options under $80 that feature majority natural fibers and are designed to provide a bit more room in the thighs. All options are available in a men's 32-inch waist and come from trustworthy merchants.\n\n### 1. Quince Organic Cotton Stretch Chino Pants (Straight Fit)\n* **Price:** ~$49.90\n* **Merchant:** Quince\n* **Link:** [Quince Organic Cotton Stretch Chino Pants](https://www.quince.com)\n* **Price Notes:** Excellent value for organic materials, well under your $80 ceiling. \n* **Quality & Durability:** Made from 97% organic cotton and 3% spandex (8.25 oz mid-weight twill) with a soft peached finish. They feature a classic straight leg designed specifically to be easy and comfortable through the seat and thigh, offering a sturdy yet broken-in feel right out of the box. \n* **Seller Legitimacy:** Highly reputable, known for ethical manufacturing transparency and reliable direct-to-consumer e-commerce.\n\n### 2. Goodfellow & Co Men's Straight Fit Hennepin Chino Pants\n* **Price:** ~$35.00\n* **Merchant:** Target\n* **Link:** [Target - Goodfellow & Co Chinos](https://www.target.com)\n* **Price Notes:** Highly budget-friendly and frequently goes on sale below $30.\n* **Quality & Durability:** Constructed from a stretch-cotton twill blend. The \"Straight Fit\" Hennepin cut is intentionally designed to stay full through the hip and thigh with a traditional straight leg opening, making it ideal if you need extra room for athletic thighs without transitioning into a baggy look. \n* **Seller Legitimacy:** Extremely trustworthy major US national retailer.\n\n### 3. Abercrombie & Fitch Classic Straight Chino \n* **Price:** Typically ranges $70 \u2013 $80 (often found on markdown)\n* **Merchant:** Abercrombie & Fitch\n* **Link:** [Abercrombie & Fitch Men's Pants](https://www.abercrombie.com)\n* **Price Notes:** Sits right at the upper limit of your $80 budget, but worth keeping an eye on for seasonal sales.\n* **Quality & Durability:** Premium everyday cotton twill blend (majority natural cotton with minimal elastane for comfort). The classic straight fit provides a relaxed, roomier cut through the thighs and seat compared to their slim or athletic-taper options, resulting in a cleaner drape and solid long-term durability.\n* **Seller Legitimacy:** Highly established, trusted global apparel brand with secure fulfillment and straightforward return policies.",
+          "elapsed_seconds": 7.19,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q2",
+      "query": "men's t-shirts that don't shrink or go wavy at the collar after washing, under $40",
+      "category": "basic",
+      "expected": "Should prioritise 100% cotton or long-staple cotton options from trusted sellers",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "To avoid the dreaded \"bacon neck\" (wavy, stretched-out collars) and severe shrinkage, look for tees with **tighter collar ribbing, reinforced neck-tape seams, pre-washed/pre-shrunk natural fibers, or high-density cotton/poly-blends** that add dimensional stability. \n\nHere are three trustworthy t-shirt options under $40 that utilize high-grade natural fibers (or stable natural-dominant blends) and come from reputable merchants:\n\n### 1. Uniqlo Supima Cotton Crew Neck Short-Sleeve T-Shirt\n* **Price:** ~$25\n* **Merchant:** Uniqlo\n* **Link:** [Uniqlo Supima Cotton Crew Neck T-Shirt](https://www.uniqlo.com)\n* **Notes:**\n  * **Price:** Exceptional value for 100% premium long-staple cotton.\n  * **Quality:** Made from 100% extra-long staple Supima cotton, which resists pilling, maintains its smooth texture, and holds its shape much better than standard cheap cotton. The collar features clean, tight stitching designed to lay flat. *Tip: Wash cold and dry on low or air-dry to prevent minor cotton relaxation.*\n  * **Seller Legitimacy:** Highly trustworthy global retailer known for consistent quality control and reliable fulfillment.\n\n### 2. Mott & Bow Classic Crew Driggs Tee\n* **Price:** $35\n* **Merchant:** Mott & Bow\n* **Link:** [Mott & Bow Classic Crew Driggs Tee](https://www.mottandbow.com)\n* **Notes:**\n  * **Price:** Comfortably within the budget at $35.\n  * **Quality:** Crafted from 100% combed Peruvian cotton (about 140\u2013150 GSM). Crucially for your requirements, these shirts are **prewashed** prior to shipping specifically to minimize post-purchase shrinkage, and they feature a bound, structured neck collar designed to stay put rather than warp or wave. \n  * **Seller Legitimacy:** Highly reputable direct-to-consumer apparel brand famous for premium denim and meticulous basic staples with reliable customer service.\n\n### 3. INTO THE AM Classic Crew Basic Tee (60/40 Cotton-Poly Blend)\n* **Price:** ~$25 to $30 (frequently bundled in multi-packs)\n* **Merchant:** INTO THE AM\n* **Link:** [INTO THE AM Basic Tee](https://www.intotheam.com)\n* **Notes:**\n  * **Price:** Affordable, with multi-pack bundles offering even better value.\n  * **Quality:** If pure 100% cotton has burned you with shrinkage in the past, this 60% combed ring-spun cotton / 40% polyester blend is the ideal compromise. The cotton provides a soft, natural-fiber feel against the skin, while the synthetic blend locks in dimensional stability\u2014virtually eliminating length shrinkage and collar wave.\n  * **Seller Legitimacy:** Highly rated, legitimate brand with tens of thousands of verified customer reviews for their tees.",
+          "elapsed_seconds": 6.99,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q3",
+      "query": "white oxford cloth button-down shirt, slightly wider in the shoulders, under $120",
+      "category": "basic",
+      "expected": "Should find cotton shirts from established brands that fit broader shoulders",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three great white oxford cloth button-down shirts (OCBDs) from trustworthy merchants that feature natural fibers, fit your budget under $120, and offer a slightly more relaxed or forgiving shoulder cut.\n\n### 1. J.Crew Broken-In Organic Cotton Oxford Shirt (Relaxed Fit)\n* **Price:** ~$98 (frequently found on promotion)\n* **Merchant:** [J.Crew](https://www.jcrew.com)\n* **Link:** [J.Crew Broken-In Organic Cotton Oxford Shirt](https://www.jcrew.com)\n* **Notes:** \n  * *Price:* Comfortably under budget at retail, and often discounted.\n  * *Quality:* Made from 100% organic cotton with a garment-washed, \"broken-in\" feel right out of the box. It has a sturdy mid-weight oxford weave that holds up well to regular laundering. \n  * *Legitimacy:* J.Crew is a globally recognized, highly trusted heritage retailer with secure checkout and reliable customer service.\n  * *Fit:* While they offer slim and classic cuts, their **Relaxed Fit** option provides a roomier body and slightly wider, drop-shoulder comfort without looking sloppy.\n\n### 2. Spier & Mackay Oxford Cloth Button Down (Contemporary / Custom Fit)\n* **Price:** ~$68\n* **Merchant:** [Spier & Mackay](https://www.spierandmackay.com)\n* **Link:** [Spier & Mackay OCBDs](https://www.spierandmackay.com)\n* **Notes:**\n  * *Price:* Excellent value for the tier of construction.\n  * *Quality:* Features 100% heavy-duty cotton oxford cloth, single-needle stitching, and a stunning unlined collar that produces a natural \"roll\". It punches well above its weight class, rivaling shirts twice the price.\n  * *Legitimacy:* Spier & Mackay is a respected independent menswear brand known for traditional tailoring and transparent, reliable online operations.\n  * *Fit:* Their Contemporary fit offers a classic, generous cut through the chest and shoulders compared to modern hyper-slim shirts.\n\n### 3. Abercrombie & Fitch Oxford Button-Up Shirt (Relaxed Fit)\n* **Price:** ~$70\u2013$80 \n* **Merchant:** [Abercrombie & Fitch](https://www.abercrombie.com)\n* **Link:** [Abercrombie & Fitch Oxford Button-Up](https://www.abercrombie.com)\n* **Notes:**\n  * *Price:* Well within your budget.\n  * *Quality:* Crafted from a comfortable, breathable 100% cotton oxford cloth designed with a vintage-archive drape. The fabric strikes a balance between soft hand-feel and structural durability.\n  * *Legitimacy:* Abercrombie is a premier mainstream lifestyle brand with robust purchase protection and secure global fulfillment.\n  * *Fit:* Specifically cut in a **relaxed silhouette** inspired by vintage archive pieces, meaning it naturally features a slightly wider shoulder and easier drape.",
+          "elapsed_seconds": 6.76,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q5",
+      "query": "women's cotton or linen tops for a long torso under $70",
+      "category": "basic",
+      "expected": "Should find natural-fiber tops long enough to stay tucked for a longer torso",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding tops specifically tailored for a \"long torso\" can be a bit challenging, as standard fast-fashion brands often cut shirts quite short. However, targeting brands that offer dedicated **Tall sizes** (which proportionately lengthen both the body and sleeves) or naturally longer **tunic silhouettes** crafted from breathable, high-quality natural fibers yields great options under $70. \n\nThree trustworthy recommendations fitting these criteria include:\n\n### 1. Quince 100% European Linen Long Sleeve Shirt\n* **Price:** ~$42\n* **Merchant:** [Quince](https://quince.com)\n* **Link:** [Quince 100% European Linen Long Sleeve Shirt](https://quince.com)\n* **Notes:** \n  * *Price:* Exceptionally budget-friendly for pure, high-grade European flax linen.\n  * *Quality:* Made from 100% pre-washed European linen, making it soft, breathable, and durable. Linen naturally softens and improves with every wash cycle. While styled as a relaxed, boyfriend-fit button-down, its longer hip-coverage cut works well for providing extra length on a longer torso.\n  * *Seller Legitimacy:* Highly reputable, transparent direct-to-consumer brand known for ethical manufacturing and reliable shipping/return policies.\n\n### 2. Long Tall Sally Short Sleeve Linen-Blend Shirt\n* **Price:** ~$28 \u2013 $35 (depending on current promotions)\n* **Merchant:** [Long Tall Sally](https://www.longtallsally.com)\n* **Link:** [Long Tall Sally Linen Tops](https://www.longtallsally.com)\n* **Notes:** \n  * *Price:* Very affordable for specialized sizing.\n  * *Quality:* Specially engineered for frames 5'8\" and over, meaning the shoulder seams, armholes, and torso length are genuinely extended rather than just manufacturing a standard shirt wider. It features a breathable linen-blend composition that balances the crispness of linen with easy-care durability. \n  * *Seller Legitimacy:* Long Tall Sally is a well-established, globally trusted heritage brand dedicated exclusively to tall women's apparel.\n\n### 3. Lands' End Supima Cotton Long Sleeve Crew Neck Tunic\n* **Price:** ~$27 \u2013 $45 (frequently on sale)\n* **Merchant:** [Lands' End](https://www.landsend.com)\n* **Link:** [Lands' End Supima Cotton Tunic](https://www.landsend.com)\n* **Notes:** \n  * *Price:* Mid-range value, frequently discounted below $35.\n  * *Quality:* Crafted from 100% Supima cotton, which uses extra-long staple fibers. This makes the fabric significantly softer, more vibrant, and much more durable against pilling and thinning than standard cotton tees. Designed specifically as a tunic silhouette, it provides the extra vertical inches needed to comfortably accommodate a long torso.\n  * *Seller Legitimacy:* An iconic, highly trusted American retailer renowned for consistent sizing, durable everyday basics, and robust customer service.",
+          "elapsed_seconds": 6.74,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q6",
+      "query": "loose-fitting men's shirt in linen or 100% cotton, under $200",
+      "category": "quality",
+      "expected": "Should prioritise 100% natural-fiber shirts and penalise synthetic blends",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three great, loose-fitting men\u2019s shirts made from 100% natural fibers (linen and cotton), well under your $200 budget. All options are sourced from reputable, highly trusted direct-to-consumer and heritage brands.\n\n### 1. Quince 100% European Linen Relaxed Long-Sleeve Shirt\n* **Price:** ~$42\n* **Merchant:** [Quince](https://quince.com)\n* **Link:** [Quince 100% European Linen Relaxed Long-Sleeve Shirt](https://quince.com)\n* **Notes:** \n  * *Price:* Exceptionally budget-friendly for pure European linen.\n  * *Quality:* Made from 100% genuine long-staple European flax, pre-washed for a soft, \"lived-in\" hand feel right out of the box. It features a genuinely relaxed, airy cut that handles summer and warm weather effortlessly.\n  * *Legitimacy:* Quince is a well-established, highly trusted direct-to-consumer brand widely praised by major media and consumers alike for reliable shipping, ethical manufacturing, and transparent pricing.\n\n### 2. J.Crew Baird McNutt Irish Linen Shirt\n* **Price:** ~$71 \u2013 $118 (frequently on promotion)\n* **Merchant:** [J.Crew](https://jcrew.com)\n* **Link:** [J.Crew Baird McNutt Irish Linen Shirt](https://jcrew.com)\n* **Notes:**\n  * *Price:* Sits safely in the middle of your budget, with frequent site sales lowering the cost. \n  * *Quality:* Crafted from legendary Baird McNutt Irish linen\u2014widely regarded as some of the finest, most durable linen in the world. It features a crisp yet soft drape that improves and softens further with every wash. Available in multiple cuts, including relaxed and classic fits.\n  * *Legitimacy:* J.Crew is a globally recognized, premier heritage apparel retailer with secure checkout and robust customer service standards.\n\n### 3. Buck Mason Surf Cotton Popover (or Cotton Twill Field Shirt)\n* **Price:** ~$115 \u2013 $140\n* **Merchant:** [Buck Mason](https://buckmason.com)\n* **Link:** [Buck Mason Men's Shirts](https://buckmason.com)\n* **Notes:**\n  * *Price:* Comfortably under your $200 ceiling for premium-grade construction.\n  * *Quality:* If you prefer heavy-duty natural cotton over linen, Buck Mason specializes in rugged, mid-to-heavyweight 100% cotton shirts. Their fabrics have a substantial, structured hand-feel designed for high durability and a timeless, slightly relaxed drape that holds its shape for years.\n  * *Legitimacy:* Buck Mason is a heavily vetted, premier American menswear brand known for exceptional build quality, transparent sourcing, and stellar buyer reviews.",
+          "elapsed_seconds": 4.76,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q7",
+      "query": "100% cashmere scarf under $150",
+      "category": "quality",
+      "expected": "Should find genuine cashmere and flag likely blends or suspect sellers",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three high-quality, 100% natural-fiber cashmere scarves from reputable and trustworthy merchants, all priced comfortably under your $150 budget:\n\n1. **The Cashmere Scarf by Everlane**\n   * **Price:** ~$105\n   * **Merchant:** [Everlane](https://www.everlane.com)\n   * **Quality & Material:** Made from Grade-A, 100% Mongolian cashmere. It offers a soft, lightweight feel with a clean, classic drape that provides exceptional warmth for its weight. With proper care (hand washing or dry cleaning), Grade-A cashmere resists pilling significantly better than lower grades and lasts for years.\n   * **Seller Legitimacy:** Everlane is a globally recognized, highly trusted apparel brand known for transparent pricing and ethical production standards. \n\n2. **Naadam Cashmere Scarf**\n   * **Price:** ~$89 \u2013 $148 (frequently on sale within this range)\n   * **Merchant:** [Naadam](https://naadam.co)\n   * **Quality & Material:** Crafted from 100% inner Mongolian cashmere fibers. Naadam sources directly from herders, bypassing middlemen, which yields a remarkably plush, dense, and luxuriously soft yarn that holds up well to daily winter wear.\n   * **Seller Legitimacy:** Naadam is a reputable, well-established direct-to-consumer brand specializing sustainably in pure cashmere products.\n\n3. **COS Pure Cashmere Scarf**\n   * **Price:** ~$135\n   * **Merchant:** [COS](https://www.cos.com)\n   * **Quality & Material:** Designed with a heavier, more substantial hand-feel using 100% pure cashmere. It features a dense knit that excels at blocking wind and maintains its structure and rich texture over multiple seasons.\n   * **Seller Legitimacy:** COS is a globally trusted high-end fashion retailer (sister brand to H&M) known for premium contemporary wardrobe staples and reliable customer service.",
+          "elapsed_seconds": 3.89,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q8",
+      "query": "merino wool or cashmere crewneck sweater for a smart-casual wardrobe under $200",
+      "category": "quality",
+      "expected": "Should prioritise high natural wool/cashmere content and established brands",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three trustworthy recommendations for a merino wool or cashmere crewneck sweater under $200 that fit seamlessly into a smart-casual wardrobe:\n\n### 1. Quince Mongolian Cashmere Crewneck\n* **Price:** ~$50\n* **Merchant:** Quince\n* **Link:** [Quince Mongolian Cashmere Crewneck](https://quince.com)\n* **Notes:**\n  * **Price:** An exceptional value that defies traditional cashmere pricing by cutting out the middleman. \n  * **Quality:** Made from 100% Grade-A Mongolian cashmere. It is lightweight, remarkably soft against the skin, and designed with proper tighter-gauge knitting to resist excessive pilling while offering great warmth-to-weight performance.\n  * **Seller Legitimacy:** Highly reputable direct-to-consumer brand known for transparent manufacturing, reliable customer service, and generous return policies.\n\n### 2. Everlane The Cashmere Crew\n* **Price:** ~$89 \u2013 $148 *(frequently featured in seasonal promotions well under your budget)*\n* **Merchant:** Everlane\n* **Link:** [Everlane The Cashmere Crew](https://everlane.com)\n* **Notes:**\n  * **Price:** Sits comfortably under the $200 threshold, offering mid-tier luxury pricing.\n  * **Quality:** Crafted from Grade-A cashmere (often incorporating certified recycled cashmere blends for enhanced structural durability). It provides a clean, modern silhouette that isn't too boxy or too tight\u2014ideal for layering over an oxford shirt or under a blazer.\n  * **Seller Legitimacy:** Highly trusted retailer famous for its \"radical transparency\" model regarding factories, ethical sourcing, and sustainable standards.\n\n### 3. J.Crew Cashmere Classic-Fit Crewneck Sweater\n* **Price:** ~$110 \u2013 $152 (varies by sales and colorways)\n* **Merchant:** J.Crew\n* **Link:** [J.Crew Cashmere Classic-Fit Crewneck Sweater](https://jcrew.com)\n* **Notes:**\n  * **Price:** Comfortably below your $200 cap, especially given J.Crew's frequent site-wide promotions.\n  * **Quality:** 100% pure cashmere with a traditional, tailored fit that defines smart-casual. It features a fine weave that drapes smoothly, holds its shape well over time, and handles dry cleaning or careful hand-washing gracefully.\n  * **Seller Legitimacy:** A heritage retail institution with secure ordering, established customer protection, and a long-standing track record for classic knitwear.",
+          "elapsed_seconds": 7.13,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q11",
+      "query": "women's wool-blend coat that actually keeps you warm in winter, under $300",
+      "category": "quality",
+      "expected": "Should prioritise high wool percentage and flag mostly-polyester coats",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three warm, majority natural-fiber winter coats under $300 from reliable, established retailers. \n\n### 1. **Everlane The Italian ReWool Overcoat**\n* **Price:** ~$298\n* **Merchant:** Everlane\n* **Link:** [Everlane Italian ReWool Overcoat](https://www.everlane.com)\n* **Price Notes:** Positioned right at the ceiling of your budget, but offers proper mid-tier construction that rivals much more expensive boutique brands. \n* **Quality & Material:** Features a heavy, structured shell made of **62% recycled Italian wool and 38% recycled nylon/polyamide**. It includes a smooth Bemberg rayon and recycled polyester lining to block the wind. Independent testing and user reviews note that the dense Melton wool weave offers great thermal retention and durability for standard winter commutes.\n* **Seller Legitimacy:** **Highly Trustworthy.** Everlane is a globally recognized, transparent apparel brand known for direct-to-consumer ethical manufacturing.\n\n### 2. **Uniqlo Wool-Blend Chester Long Coat**\n* **Price:** ~$130\u2013$150 (varies by seasonal promotion)\n* **Merchant:** Uniqlo\n* **Link:** [Uniqlo Wool-Blend Chester Coat](https://www.uniqlo.com)\n* **Price Notes:** An exceptional value option that performs well above its price point.\n* **Quality & Material:** Typically utilizes a **50% wool / 50% polyester** blend (and sometimes features wool-cashmere variants). The double-faced fabric construction gives it a clean finish, and it includes a smooth inner lining that makes layering over thick sweaters easy without catching. While a 50% blend has slightly less pure insulation than a 100% wool coat, consumer and thermal panels rate it as surprisingly warm and wind-resistant for freezing transitional weather.\n* **Seller Legitimacy:** **Highly Trustworthy.** Uniqlo is a massive, trusted international staple brand with robust customer service and easy return policies.\n\n### 3. **Quince Double-Faced Merino Wool Scarf Coat**\n* **Price:** ~$190\n* **Merchant:** Quince\n* **Link:** [Quince Double-Faced Merino Wool Scarf Coat](https://www.quince.com)\n* **Price Notes:** Inexpensive for a heavy merino wool garment, utilizing a direct-to-consumer model to cut out markups.\n* **Quality & Material:** Crafted from **100% Merino wool** (double-faced). Merino wool is prized for being exceptionally soft against the skin without the scratchiness of traditional heavy wool. Because it is double-faced and tightly woven, it acts as a strong natural barrier against biting wind, though you will want to layer a heavy sweater underneath for deep-freeze winter days.\n* **Seller Legitimacy:** **Highly Trustworthy.** Quince is a well-established e-commerce retailer famous for transparent pricing, high natural-material percentages, and reliable shipping/returns.",
+          "elapsed_seconds": 5.88,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q12",
+      "query": "silk blouse for the office from a reputable brand under $120",
+      "category": "quality",
+      "expected": "Should distinguish 100% silk from polyester 'satin' imposters and flag unknown sellers",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three recommended silk blouses for the office from reputable, transparent brands that fit comfortably under your $120 budget:\n\n### 1. Quince \u2013 Washable Stretch Silk Notch Collar Blouse\n* **Price:** Around $70 \u2013 $90 (varies slightly by style)\n* **Merchant:** [Quince](https://www.quince.com)\n* **Quality (Material & Durability):** Crafted from 90% Grade 6A Mulberry silk and 10% spandex for a subtle stretch that prevents stress tears at the seams during long office hours. Unlike traditional silk, it is treated to be machine-washable on a gentle cycle, lowering long-term dry-cleaning maintenance costs.\n* **Seller Legitimacy:** Highly reputable. Quince is well-known for its radical transparency, ethical manufacturing standards, and direct-to-consumer model that cuts out traditional retail markups.\n\n### 2. Everlane \u2013 The V-Neck Blouse in Washable Silk (or select Clean Silk styles on promotion)\n* **Price:** Often marked down to around $42 \u2013 $90 depending on current promotions (regularly around $98\u2013$150)\n* **Merchant:** [Everlane](https://www.everlane.com)\n* **Quality (Material & Durability):** Made from 100% lightweight washable silk. It has a refined, fluid drape that looks professional tucked into trousers or skirts, and the fabric holds up well to regular wear when cared for according to instructions.\n* **Seller Legitimacy:** Highly trustworthy. Everlane is a pioneer of \"radical transparency,\" partnering with ethical factories worldwide and publishing detailed breakdowns of their true costs and environmental practices.\n\n### 3. Lilysilk \u2013 Basic Silk Button-Up / Office Blouses\n* **Price:** Frequently on sale between $80 \u2013 $110 (depending on the style)\n* **Merchant:** [Lilysilk](https://www.lilysilk.com)\n* **Quality (Material & Durability):** Typically constructed from 100% natural Mulberry silk (ranging from 16 to 22 momme weights depending on the specific shirt line). The higher momme weights offer a more substantial, opaque feel ideal for professional environments, minimizing sheer issues under office lighting. \n* **Seller Legitimacy:** Reputable and globally recognized. Lilysilk specializes entirely in natural silk garments, holds OEKO-TEX Standard 100 certifications (free from harmful chemicals), and features clear customer review channels and reliable global shipping.",
+          "elapsed_seconds": 5.2,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q13",
+      "query": "classic mac coat or short trench coat in natural fabric under $350",
+      "category": "trust",
+      "expected": "Should verify seller legitimacy carefully; classic trench territory has counterfeit risk",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three classic mac and short trench coat options made primarily from natural fibers, all priced well under your $350 budget from trustworthy merchants:\n\n### 1. **The Mac Coat**\n* **Merchant:** Everlane\n* **Price:** ~$198\n* **Link:** [Everlane The Mac Coat](https://www.everlane.com)\n* **Brief Notes:**\n  * **Price:** Excellent value for a brand-new, sustainably produced mid-length coat that sits well below your budget cap.\n  * **Quality:** Crafted from a 100% organic cotton shell with a water-repellent finish, paired with a Bemberg-and-cotton blend lining. It offers structured durability without the stiff, plastic feel of synthetic raincoats. \n  * **Seller Legitimacy:** Everlane is an established, highly trusted direct-to-consumer brand widely recognized for supply chain transparency and reliable customer service.\n\n### 2. **The Drew Short Trench Coat**\n* **Merchant:** Tuckernuck\n* **Price:** ~$168\n* **Link:** [Tuckernuck Khaki Drew Short Trench Coat](https://www.tnuck.com)\n* **Brief Notes:**\n  * **Price:** Comfortably mid-budget, hitting a sweet spot for a trendy yet classic cropped silhouette.\n  * **Quality:** Features a 100% cotton outer shell, giving it an authentic, breathable hand-feel and classic structure. It includes button-tab sleeve cinches and a smooth lining (note that the lining and secondary components use synthetic blends for slip and comfort, but the primary exterior is pure natural fiber).\n  * **Seller Legitimacy:** Tuckernuck is a reputable, well-known lifestyle and apparel retailer with secure operations and strong consumer trust.\n\n### 3. **The Finch Trench Coat (Short/Classic Line)**\n* **Merchant:** Aritzia\n* **Price:** ~$265\n* **Link:** [Aritzia The Finch Trench Coat](https://www.aritzia.com)\n* **Brief Notes:**\n  * **Price:** Sits comfortably under your $350 maximum while leaning into a higher-tier contemporary aesthetic.\n  * **Quality:** Expertly tailored from \"City Twill\"\u2014a slick, water-repellent 100% cotton twill sourced from a premier Italian mill. It handles like a luxury heritage piece and ages gracefully with proper care.\n  * **Seller Legitimacy:** Aritzia is a premier, globally trusted fashion retailer known for high-end mall and online boutique shopping with robust return policies.",
+          "elapsed_seconds": 5.95,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q14",
+      "query": "slim-fit henley shirt in 100% cotton under $60 from a trusted brand",
+      "category": "trust",
+      "expected": "Should check seller credibility and reject cheap synthetic blends",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three great options for a 100% cotton slim-fit henley from trusted brands under $60:\n\n1. **J.Crew Garment-Dyed Henley Tee**\n   * **Price:** ~$53.50 (often eligible for further promotions)\n   * **Merchant:** [J.Crew](https://www.jcrew.com)\n   * **Quality & Material:** Made from 100% soft slub cotton jersey. Garment-dyeing gives it a broken-in, vintage feel right out of the box with rich color depth, while maintaining sturdy everyday durability. \n   * **Seller Legitimacy:** Highly trusted, well-established direct retailer with secure checkout and reliable customer service.\n\n2. **Rag & Bone Classic Cotton Slub Jersey Henley (via Nordstrom Rack)**\n   * **Price:** ~$59.97 (marked down from its higher original boutique price)\n   * **Merchant:** [Nordstrom Rack](https://www.nordstromrack.com)\n   * **Quality & Material:** Premium 100% cotton slub jersey. Rag & Bone is known for exceptionally soft, tailored, and premium-draping casual wear with a modern slim silhouette. \n   * **Seller Legitimacy:** Perfectly trustworthy; Nordstrom Rack is a major, highly reputable off-price department store subsidiary of Nordstrom.\n\n3. **Joe's Jeans Long Sleeve Henley T-Shirt (via Nordstrom Rack)**\n   * **Price:** ~$39.97\n   * **Merchant:** [Nordstrom Rack](https://www.nordstromrack.com)\n   * **Quality & Material:** Crafted from 100% cotton knit designed with a more fitted, streamlined cut that hugs the body nicely without feeling restrictive. Durable stitching built for frequent rotation.\n   * **Seller Legitimacy:** Fully legitimate and secure major retailer.",
+          "elapsed_seconds": 5.94,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q15",
+      "query": "quality cotton button-down dress shirt, comparable to Buck Mason, under $100",
+      "category": "trust",
+      "expected": "Should find legitimate brands at this price point and explain quality differences",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three high-quality, 100% natural-fiber cotton button-down shirts priced under $100 that offer the clean aesthetic, durable weight, and refined structure expected from brands like Buck Mason:\n\n### 1. The Classic Oxford Shirt\n* **Merchant:** [Everlane](https://www.everlane.com) (Product page: [Everlane The Classic Oxford](https://www.everlane.com))\n* **Price:** ~$80\u2013$90\n* **Price Notes:** Positioned safely under your budget while offering transparently sourced luxury basics.\n* **Quality & Material:** Crafted from 100% organic cotton. It utilizes a mid-weight basketweave Oxford cloth that balances a crisp look with rugged durability, making it feel substantial\u2014much like Buck Mason's heavy-duty basics. \n* **Seller Legitimacy:** Highly trustworthy. Everlane is a globally recognized direct-to-consumer sustainable apparel brand famous for radical transparency and ethical factory partnerships.\n\n### 2. Everyday Oxford Shirt\n* **Merchant:** [Bonobos](https://bonobos.com) (Product page: [Bonobos Everyday Oxford Shirt](https://bonobos.com))\n* **Price:** ~$89 (often found on markdown or via partner retailers like [Nordstrom](https://www.nordstrom.com))\n* **Price Notes:** Sits right near the upper ceiling of your $100 budget, matching the mid-tier investment level of heritage menswear.\n* **Quality & Material:** 100% breathable cotton featuring a sturdy yet soft Oxford weave. It includes a slight stretch or tailored structure depending on the chosen fit line, holding its shape well through repeated machine washing. \n* **Seller Legitimacy:** Highly trustworthy. Bonobos is a premier, established US-based menswear brand known for consistent sizing infrastructure and reliable customer service.\n\n### 3. Non-Iron Stretch Oxford Shirt\n* **Merchant:** [Charles Tyrwhitt](https://www.charlestyrwhitt.com) (Product page: [Charles Tyrwhitt Oxford Shirt](https://www.charlestyrwhitt.com))\n* **Price:** ~$59 \u2013 $69 (frequently featured on introductory or multi-buy promotions)\n* **Price Notes:** Excellent value for money, frequently dropping well below the $100 cap while maintaining premium construction.\n* **Quality & Material:** Made of 100% cotton with a washed Oxford texture. It provides a cleaner dress-casual aesthetic with reinforced seams and robust collar roll that rivals high-end heritage clothiers.\n* **Seller Legitimacy:** Highly trustworthy. Charles Tyrwhitt is an internationally reputable British menswear retailer with a strong track record for reliable online ordering and customer satisfaction guarantees.",
+          "elapsed_seconds": 6.04,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q17",
+      "query": "affordable ethical women's winter jacket from a reputable brand under $200",
+      "category": "trust",
+      "expected": "Should verify brand legitimacy; 'ethical' claims require extra seller scrutiny",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three great winter jacket and coat options for women that blend ethical/sustainable manufacturing, majority natural fibers or eco-conscious construction, and a reputable brand background\u2014all priced under $200.\n\n### 1. Quince \u2013 Australian Wool-Blend / Cashmere Coats (e.g., *Wool Cashmere Cocoon Coat* or *Short Coat*)\n* **Price:** ~$175 \u2013 $185\n* **Merchant:** Quince\n* **Link:** [Quince Women's Wool Coats](https://quince.com/women/jackets/wool-coats)\n* **Notes:**\n  * **Price:** Exceptional value for a wool-blend structured winter coat, sitting well below your $200 budget. \n  * **Quality:** Crafted from a blend of premium wool and cashmere (or double-faced merino wool depending on the specific style). Wool provides natural warmth, breathability, and structure, while the cashmere adds a softer hand-feel. \n  * **Seller Legitimacy:** Quince is a reputable, transparent brand known for partnering with ethical factories that guarantee safe working conditions, fair wages, and environmentally low-impact practices (such as OEKO-TEX certified fabrics and biodegradable packaging).\n\n### 2. Quince \u2013 *Responsible Down Long Puffer Jacket*\n* **Price:** ~$149 - $170 (often listed around $150\u2013$200 depending on sales)\n* **Merchant:** Quince\n* **Link:** [Quince Women's Outerwear](https://quince.com/women/jackets)\n* **Notes:**\n  * **Price:** Highly affordable for a heavy-duty, long-length winter puffer.\n  * **Quality:** Filled with certified ethical, traceable goose/duck down (Responsible Down Standard) offering high-fill power warmth, paired with a water-repellent shell made from recycled materials. It also features practical cold-weather elements like storm cuffs.\n  * **Seller Legitimacy:** Highly trustworthy direct-to-consumer brand with transparent supply chains and thousands of verified positive customer reviews for winter outerwear durability.\n\n### 3. L.L.Bean \u2013 *Mountain Classic Puffer Coat* or *Fleece-Lined Insulated Jackets*\n* **Price:** ~$120 \u2013 $160\n* **Merchant:** L.L.Bean\n* **Link:** [L.L.Bean Women's Jackets & Coats](https://www.llbean.com/llb/shop/50667?page=womens-outerwear)\n* **Notes:**\n  * **Price:** Sits safely within a moderate mid-tier budget under $200.\n  * **Quality:** Built for actual cold-weather endurance. While synthetic, many of their line items feature 100% recycled polyester shells and warm, recycled synthetic insulations (like PrimaLoft) or dense fleece linings designed to block wind and moisture while lasting for years. \n  * **Seller Legitimacy:** L.L.Bean is an iconic, highly reputable heritage brand backed by a strong commitment to environmental stewardship, durable craftsmanship, and a dependable customer satisfaction guarantee.",
+          "elapsed_seconds": 6.58,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q18",
+      "query": "jeans for men with big thighs and a narrow waist, size 32 waist, under $100",
+      "category": "edge",
+      "expected": "Should handle unusual fit requirements and may note limited options",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "To address the classic \"big thighs and narrow waist\" fit challenge (often called the waist-gap problem), the best category of jeans to look for is **Athletic Fit** or **Athletic Taper**. These are specifically designed with a roomier seat and thigh area while keeping a tailored, narrower cut at the waist and a clean taper toward the ankle. \n\nTo honor your preferences, the options below heavily feature natural cotton fibers blended with a small amount of stretch (elastane, spandex, or lyocell) to accommodate large quads without compromising durability, and all are from highly trusted, legitimate merchants under $100.\n\n---\n\n### 1. Levi's 541 Athletic Taper Fit Jeans\n* **Price:** ~$75 - $80 (frequently on sale for less)\n* **Merchant:** [Levi's Official Store](https://www.levi.com) (or authorized major retailers like Macy's/Amazon)\n* **Quality & Material:** Typically composed of **70% Cotton and 28% Lenzing Tencel\u2122 Lyocell** (a soft, natural fiber derived from sustainable wood sources) with 2% Lycra\u00ae spandex for stretch. Levi's is the blueprint for the athletic cut; the fabric strikes a great balance of structural durability with enough flexibility to move comfortably over larger thighs without bagging out at a size 32 waist.\n* **Seller Legitimacy:** Highly trustworthy ( globally recognized flagship brand).\n\n### 2. American Eagle Athletic Fit Jean\n* **Price:** ~$50 - $60 (often marked down to $30\u2013$40)\n* **Merchant:** [American Eagle](https://www.ae.com)\n* **Quality & Material:** Made predominantly with high-cotton denim blends (typically around 99% cotton and 1% elastane, or high-stretch variants). Reviewers consistently praise American Eagle's athletic fit for catering heavily to men with larger lower bodies, offering a very soft, broken-in feel right out of the box while maintaining structural integrity through heavy wear.\n* **Seller Legitimacy:** Highly trustworthy (established, mainstream mall and e-commerce retailer).\n\n### 3. Gap Athletic Taper Jeans with GapFlex\n* **Price:** ~$70 - $80 (frequently discounted during site promotions)\n* **Merchant:** [Gap](https://www.gap.com)\n* **Quality & Material:** Crafted with roughly **93%\u201395% cotton**, supplemented by poly/elastane or GapFlex technology for added mobility. The high natural cotton composition ensures breathability and an authentic denim look and feel, while the stretch fibers prevent the thighs from feeling constricted. \n* **Seller Legitimacy:** Highly trustworthy (legacy staple brand with secure checkout and reliable customer service).",
+          "elapsed_seconds": 5.45,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q19",
+      "query": "warm waterproof winter jacket for temperatures around -15 Celsius under $200",
+      "category": "edge",
+      "expected": "May note that synthetic insulation is more practical; should not penalise heavily for synthetic fill",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding a fully waterproof jacket that is genuinely warm down to **-15\u00b0C (5\u00b0F)** while staying **under $200** is quite challenging, as most extreme-cold waterproof alpine parkas easily clear the $250\u2013$400 mark. Furthermore, strict 100% natural-fiber options (like heavy wool or pure cotton shells) are rarely truly waterproof or warm enough for -15\u00b0C without soaking through or freezing. Instead, reliable outdoor brands use high-performance synthetic weather-shells paired with natural down insulation (or high-grade synthetic fill) to balance weather protection and warmth.\n\nBelow are two trustworthy options from reputable outdoor merchants that meet your safety/warmth requirements near or under your budget. *(Note: At under $200, true sub-zero technical waterproof jackets lean heavily on sales or trusted mid-tier outdoors retailers).*\n\n---\n\n### 1. Eddie Bauer Men's Superior Down Waterproof Hooded Parka\n* **Price:** ~$170 (frequently on sale down from $349)\n* **Merchant:** [Eddie Bauer](https://www.eddiebauer.com)\n* **Link:** [Eddie Bauer Superior Down Parka](https://www.eddiebauer.com)\n* **Price Notes:** Exceptionally good value when found on sale (which Eddie Bauer runs frequently, landing it safely under your $200 ceiling). \n* **Quality & Material:** Features a fully seam-sealed waterproof nylon shell utilizing their proprietary *WeatherEdge* technology. It is insulated with premium goose down, providing the high loft needed to easily handle biting winds and sub-zero temperatures down to -15\u00b0C and below. \n* **Seller Legitimacy:** High. Eddie Bauer is a century-old, highly trusted heritage outdoor brand with robust customer service, clear return policies, and dependable product warranties.\n\n### 2. REI Co-op Stormhenge 850 Down Hybrid Parka (Look for Outlet/Member Sales)\n* **Price:** Retails around $299, but frequently drops closer to $224 on sale or can be found via the **REI Outlet** section closer to your target budget. \n* **Merchant:** [REI](https://www.rei.com)\n* **Link:** [REI Co-op Stormhenge Parka](https://www.rei.com)\n* **Price Notes:** Right at the edge of your budget if caught on promotion. Given its exceptional build quality, it punches well above its weight class compared to $400+ competitors.\n* **Quality & Material:** Employs a hybrid insulation design combining high-loft **850-fill-power goose down** (a natural fiber) in the core with body-mapped synthetic insulation in moisture-prone areas (hood, underarms) so it retains warmth even if damp. The outer shell uses a 2-layer *HydroWall* waterproof barrier with fully taped seams. \n* **Seller Legitimacy:** Impeccable. REI is a premier member-owned co-op known for its stellar customer trust, transparent ethical sourcing, and generous member return policies.\n\n---\n\n### Important Shopping Assistant Note on Budget & Temperature:\nIf you find that standard retail prices push these options slightly over $200 on any given day, **avoid unverified third-party sellers on marketplaces like Amazon or eBay** that promise extreme -15\u00b0C waterproof warmth for $60\u2013$80. Those listings typically use misleading temperature ratings, substandard non-waterproof coatings, and lack ethical supply chains. Sticking with established co-ops and outdoor outfitters (even if buying a slightly lighter-weight jacket to layer under) ensures you actually stay dry and warm.",
+          "elapsed_seconds": 7.38,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q20",
+      "query": "women's business formal dress trousers that fit comfortably, natural fabric preferred, under $120",
+      "category": "edge",
+      "expected": "Should attempt natural fibers in a formal trouser; may flag limited options",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three trustworthy recommendations for women's business formal dress trousers featuring natural fibers, comfort-focused designs, and staying well under your $120 budget:\n\n### 1. Italian Wool Slim Leg Ankle Pants\n* **Merchant:** Quince\n* **Price:** $89.90\n* **Link:** [Quince Italian Wool Slim Leg Ankle Pants](https://quince.com/women/italian-wool-slim-leg-ankle-pant)\n* **Price Notes:** Excellent value for premium fabric, sitting comfortably below the $120 mark.\n* **Quality & Durability:** Crafted from washable Italian wool (sourced from premier mills), offering a structured, professional look while maintaining breathability and a soft hand-feel. Wool inherently resists wrinkles and provides great longevity with proper care.\n* **Seller Legitimacy:** Highly reputable direct-to-consumer brand known for transparent manufacturing and reliable customer service.\n\n### 2. Italian Wool Pleated Trouser\n* **Merchant:** Quince\n* **Price:** $99.90\n* **Link:** [Quince Italian Wool Pleated Trouser](https://quince.com/women/italian-wool-pleated-trouser)\n* **Price Notes:** Well within budget at just under $100.\n* **Quality & Durability:** Features a more relaxed, modern wide-leg silhouette with front pleats that allow for effortless movement and all-day office comfort. Made of high-end Italian wool, providing a classic drape that holds its shape cleanly through long workdays.\n* **Seller Legitimacy:** Highly trustworthy and well-established online retailer known for delivering luxury-grade natural fabrics at accessible prices.\n\n### 3. Australian Merino Wool Wide Leg Pants\n* **Merchant:** Quince\n* **Price:** $80.00\n* **Link:** [Quince Australian Merino Wool Wide Leg Pants](https://quince.com/women/australian-merino-wool-wide-leg-pants)\n* **Price Notes:** Affordable luxury fitting comfortably under your $120 limit.\n* **Quality & Durability:** Knit from fine Australian Merino wool, which provides temperature-regulating comfort, incredible softness without scratchiness, and natural stretch. The wide-leg cut makes it a comfortable statement piece for formal business environments.\n* **Seller Legitimacy:** Highly trusted merchant with transparent shipping practices and a dependable return policy.",
+          "elapsed_seconds": 5.15,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q22",
+      "query": "men's suit for a larger build, plus-size friendly, under $400",
+      "category": "edge",
+      "expected": "Should handle plus-size suit request and prioritise retailers with extended sizing",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding a quality, plus-size-friendly men's suit made primarily from natural fibers (like wool blends) under $400 can be challenging, but trusted retailers offer reliable options using suit separates or extended sizing. Suit separates are especially recommended for larger builds because they allow you to pick different sizes for the jacket and trousers.\n\nHere are three trustworthy product recommendations from established merchants:\n\n### 1. Michael Kors Big + Tall Suit Separates (Available at DXL)\n* **Price:** Approximately $280\u2013$350 for a full set ( Jacket ~$280 + matching trousers sold separately) \n* **Merchant:** [DXL (Destination XL)](https://www.dxl.com)\n* **Quality & Material:** Typically crafted from a smooth, lightweight stretch-blend featuring natural-fiber elements or performance viscose/elastane combinations designed for breathability and ease of movement. DXL specializes exclusively in extended sizes, meaning the internal structure, armholes, and waistbands are proportioned correctly for larger frames rather than just scaled up.\n* **Seller Legitimacy:** Highly trustworthy. DXL is the premier specialty-retailer for men\u2019s big and tall apparel in the United States, known for reliable customer service and physical store support.\n\n### 2. Jos. A. Bank 1905 Collection Tailored-Fit Suit Separates (Big & Tall)\n* **Price:** Often heavily discounted on promotion, ranging between **$200\u2013$350** for the jacket and trousers combined.\n* **Merchant:** [Jos. A. Bank](https://www.josbank.com)\n* **Quality & Material:** Wool and wool-blend options are widely available in this line. Wool provides superior breathability, a sharp drape, and natural wrinkle resistance compared to 100% synthetic alternatives. The \"Regal\" and \"Traditional\" big-and-tall cuts offer extra room through the midsection and shoulders.\n* **Seller Legitimacy:** Highly trustworthy. Jos. A. Bank is a legacy menswear retailer with secure online ordering and robust brick-and-mortar return/tailoring policies.\n\n### 3. JOE Joseph Abboud Wool-Blend Suit Separates (Available at Men\u2019s Wearhouse)\n* **Price:** Around **$250\u2013$380** for jacket and pant combinations when utilizing standard store promotions.\n* **Merchant:** [Men's Wearhouse](https://www.menswearhouse.com)\n* **Quality & Material:** Frequently features fine wool blends (such as wool-polyester-spandex mixes). This gives you the luxurious feel and temperature-regulating benefits of natural wool while adding modern mechanical stretch, which drastically improves comfort and durability for broader builds. \n* **Seller Legitimacy:** Highly trustworthy. A nationally recognized formalwear authority with secure checkout and comprehensive customer support. \n\n*Shopping Tip:* Because fit is especially critical for larger builds, purchasing through these established merchants allows you to easily exchange sizes or take advantage of in-store tailoring options to get a custom look well within your budget.",
+          "elapsed_seconds": 8.63,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q23",
+      "query": "100% cashmere luxury sweater under $50",
+      "category": "abstain",
+      "expected": "Should abstain or warn strongly \u2014 genuine cashmere at this price is implausible",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding a **100% cashmere sweater for under $50** is exceptionally difficult because genuine cashmere is a luxury natural fiber that typically starts around $75 to $150 even for entry-level brands. Most sub-$50 sweaters marketed online either use synthetic blends (like polyester and acrylic) or come from unverified fast-fashion third-party sellers on marketplaces where fiber authenticity cannot be trusted. \n\nHowever, there is one major exception on the market that meets your criteria safely:\n\n### 1. Quince Mongolian Cashmere Crewneck / V-Neck Sweater\n* **Price:** $50.00\n* **Merchant:** Quince\n* **Link:** [Quince Mongolian Cashmere Sweater](https://quince.com/women/mongolian-cashmere-crewneck-sweater)\n* **Price Notes:** At exactly $50, this hits the absolute ceiling of your budget. It is widely considered an industry anomaly for offering pure cashmere at this price point.\n* **Quality (Material & Durability):** Made from 100% Grade-A Mongolian cashmere (specifically disclosing a fine micron count of 15.8\u201316.2 and staple length of 34\u201336mm). It is lightweight, remarkably soft for the price, and a true natural fiber. Because it is a budget-weight fine-gauge knit, it requires gentle hand-washing and will pill slightly with heavy friction over time\u2014standard for entry-level cashmere.\n* **Seller Legitimacy:** Highly trustworthy. Quince is a well-established direct-to-consumer brand known for supply-chain transparency and reliable customer service.\n\n---\n\n### Alternative Options / Market Reality Check\nBecause finding multiple trustworthy 100% cashmere options under $50 is nearly impossible without venturing into risky, unverified dropshippers or synthetic blends (such as cotton-cashmere blends containing only 3% cashmere), **only one reliable recommendation** fits your exact parameters. \n\nIf you are open to stretching your budget slightly ($75\u2013$98 range), reliable alternatives like **Naadam Essential Cashmere** or **J.Crew** (on deep clearance) become available, but for a strict hard cap of $50 with guaranteed 100% natural fibers and a legitimate seller, Quince is your sole safe harbor.",
+          "elapsed_seconds": 5.76,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q24",
+      "query": "fully canvassed wool suit jacket under $100",
+      "category": "abstain",
+      "expected": "Should abstain \u2014 fully canvassed wool construction is not available at this price",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding a **fully canvassed wool suit jacket** for **under $100** brand new at retail is virtually impossible. True full-canvas construction (where a hand-stitched horsehair canvas layer runs the entire length of the jacket, allowing it to mold to your body over time) is an expensive, premium tailoring method typically reserved for luxury suits costing $500 to $1,000+. Budget-friendly or off-the-rack retail options under $100 are almost exclusively fused (glued) or, at best, half-canvassed, and often heavily blended with synthetics like polyester.\n\nTo get a fully canvassed wool jacket under $100, your only viable route is the **secondhand/vintage market**, where high-end menswear deprecates significantly. \n\nHere are three trustworthy secondhand options/merchants where you can source pre-owned, high-quality, fully canvassed wool suit jackets well within your budget:\n\n### 1. Pre-Owned Hickey Freeman \"Boardroom\" or Hand-Tailored Line Suit Jacket\n* **Price:** ~$45 \u2013 $90 (commonly found via resale)\n* **Merchant:** eBay (Trusted independent sellers with high ratings)\n* **Link:** [eBay - Hickey Freeman Wool Suit Jacket Search](https://www.ebay.com/sch/i.html?_nkw=Hickey+Freeman+wool+suit+jacket+full+canvas)\n* **Notes:** \n  * **Price:** Exceptional value for garments that originally retailed over $1,000.\n  * **Quality:** Hickey Freeman\u2019s mainline and Boardroom suits are famously **fully canvassed** using premium, natural 100% wool fabrics (like lightweight wool or wool flannel). Durability is top-tier due to traditional bench-crafting.\n  * **Seller Legitimacy:** eBay has robust buyer protection. Stick to established sellers with 98%+ positive feedback and clear photos of the interior label and fabric tag.\n\n### 2. Vintage Hart Schaffner & Marx \"Gold Trumpeter\" Suit Jacket\n* **Price:** ~$30 \u2013 $75\n* **Merchant:** eBay / Poshmark\n* **Link:** [Poshmark - Hart Schaffner Marx Wool Blazer](https://poshmark.com/search?query=Hart%20Schaffner%20Marx%20wool%20suit%20jacket)\n* **Notes:**\n  * **Price:** Heavily discounted on the secondhand market, usually selling for a fraction of its original cost.\n  * **Quality:** Their higher-end lines (such as Gold Trumpeter) historically feature traditional full-canvas or high-end half-canvas construction using fine 100% worsted wool. They hold their shape exceptionally well.\n  * **Seller Legitimacy:** Poshmark and eBay provide secure transactions and standard consumer protections if items are mislabeled. \n\n### 3. Pre-Owned Brooks Brothers \"1818\" or Makers Line Wool Suit Jacket\n* **Price:** ~$50 \u2013 $95\n* **Merchant:** eBay\n* **Link:** [eBay - Brooks Brothers 1818 Wool Suit Jacket](https://www.ebay.com/v/search?kw=Brooks+Brothers+1818+wool+suit+jacket)\n* **Notes:**\n  * **Price:** Easily found under $100 in the secondary market.\n  * **Quality:** Brooks Brothers' older USA-made or high-end Italian-made \"1818\" and \"Makers\" lines feature natural 100% wool construction and traditional canvassing that provides an immaculate drape. \n  * **Seller Legitimacy:** Buy from top-rated tier sellers on eBay who specialize in classic men's apparel and explicitly photograph garment tags.",
+          "elapsed_seconds": 6.47,
+          "exit_code": 0
+        }
+      }
+    },
+    {
+      "query_id": "d2q25",
+      "query": "real 100% silk blouse under $20",
+      "category": "abstain",
+      "expected": "Should abstain \u2014 100% silk at this price is almost certainly mislabelled or counterfeit",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Finding a **brand-new, 100% real silk blouse for under $20** from a trustworthy standard retail merchant is practically impossible, as genuine silk is a luxury natural fiber that typically commands a much higher retail price point (usually starting at $60\u2013$100+ for budget brands). \n\nHowever, you *can* occasionally find real silk garments under $20 by looking at reputable secondhand and resale platforms where pre-owned designer or vintage silk pieces are heavily discounted. \n\nHere is an assessment of trustworthy marketplaces where you can search for pre-owned 100% silk blouses within your budget, along with notes on what to expect:\n\n### 1. Secondhand Silk Blouses via Poshmark\n* **Price:** Often found between $10 \u2013 $20 (plus shipping).\n* **Merchant:** [Poshmark](https://poshmark.com) (A trusted social commerce marketplace for secondhand fashion with buyer protection policies).\n* **Quality & Material:** Varies widely by listing, but you can filter your searches specifically for \"100% silk\". Vintage silk brands (like Jones New York, Liz Claiborne, or Express from the 90s) are frequently constructed of thick, durable, high-quality sandwashed silk and regularly get cleared out cheap by closet declutterers. \n* **Seller Legitimacy:** Poshmark acts as an escrow intermediary; your payment isn't released to the individual seller until you receive and inspect the item, making it a relatively safe platform as long as you buy from active sellers with good ratings.\n\n### 2. Pre-owned Silk Blouses via eBay\n* **Price:** Frequently listed at auction or \"Buy It Now\" for $10 \u2013 $20.\n* **Merchant:** [eBay](https://www.ebay.com)\n* **Quality & Material:** You can find major mall brands and vintage 100% silk shirts. Always check the garment tag photo provided by the seller to verify it reads \"100% Silk\" rather than \"silk-blend\" or \"satin\" (which is usually synthetic polyester). \n* **Seller Legitimacy:** Stick to established sellers with high positive feedback ratings (>95%) and clear return policies. eBay also offers strong money-back guarantees if an item is misrepresented (e.g., if a synthetic shirt is falsely sold as real silk).\n\n### 3. Thrift and Resale Finds via Etsy (Vintage)\n* **Price:** Occasionally, budget-focused vintage shops list smaller or simpler 100% silk shells/blouses around $15\u2013$20.\n* **Merchant:** [Etsy](https://www.etsy.com) \n* **Quality & Material:** Vintage 100% silk tends to be surprisingly resilient if cared for properly (hand-washed or dry-cleaned), though older items may occasionally show minor signs of wear. \n* **Seller Legitimacy:** Etsy features individual vintage curators. Look for shops with extensive star reviews and clear descriptions verifying fiber content via photos of the interior tags.\n\n**Shopping Tip:** When browsing budget resale sites for real silk, always message the seller or check photos to request a close-up of the **content tag**. Many fast-fashion listings misuse the word \"silky\" to describe cheap polyester satin, so confirming the physical tag says \"100% silk\" is essential.",
+          "elapsed_seconds": 6.24,
+          "exit_code": 0
+        }
+      }
+    }
+  ]
+}

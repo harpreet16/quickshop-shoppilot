@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-11-23T06:17:00.599811",
+  "dataset": 2,
+  "systems": [
+    "b2"
+  ],
+  "queries": [
+    "d2q7"
+  ],
+  "runs": [
+    {
+      "query_id": "d2q7",
+      "query": "100% cashmere scarf under $150",
+      "category": "quality",
+      "expected": "Should find genuine cashmere and flag likely blends or suspect sellers",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three 100% cashmere (or premier natural-fiber) scarf options priced under $150 from reputable, specialized cashmere merchants:\n\n1. **Gobi Cashmere Fringed Scarf**\n   * **Merchant:** Gobi Cashmere\n   * **Price:** ~$119\n   * **Link:** [Gobi Cashmere Scarves & Shawls](https://gobicashmere.com)\n   * **Notes:** \n     * *Price:* Comfortably below the $150 budget.\n     * *Quality:* Crafted from 100% authentic Mongolian cashmere. Mongolian fibers are renowned for their long staple length, providing lightweight warmth, superior softness, and resilience against pilling. \n     * *Legitimacy:* Gobi is a globally recognized, vertically integrated manufacturer sourcing directly from Mongolia with transparent production and reliable customer service.\n\n2. **Dalle Piane Cashmere Men's/Women's Skinny or Classic 100% Cashmere Scarf**\n   * **Merchant:** Dalle Piane Cashmere\n   * **Price:** Generally ranges from $90 to $130 depending on the specific weave.\n   * **Link:** [Dalle Piane Cashmere Scarves](https://www.dallepianecashmere.com)\n   * **Notes:** \n     * *Price:* Well within the budget for their standard 100% pure cashmere lines.\n     * *Quality:* Knitted in Prato, Italy, frequently using two-ply virgin cashmere yarn certified by OEKO-TEX Standard 100 (tested for harmful chemicals) and the Good Cashmere Standard. Two-ply construction means better shape retention and durability over time.\n     * *Legitimacy:* A trusted, long-standing Italian family-run brand known for complete supply chain transparency and direct-to-consumer reliability.\n\n3. **Alashan Cashmere Woven Scarf**\n   * **Merchant:** Alashan Cashmere (available via authorized partners like Peter Glenn or specialty boutiques)\n   * **Price:** ~$110 \u2013 $130\n   * **Link:** [Alashan Cashmere Company](https://alashancashmere.com)\n   * **Notes:** \n     * *Price:* Fits safely under the $150 threshold.\n     * *Quality:* Woven from 100% super-fine Inner Mongolian cashmere. Features high weaving density that yields a plush, silk-like hand feel while remaining durable for everyday winter wear. *(Note: Ensure you select their 100% cashmere line rather than their merino-cashmere blends, though both use fine natural fibers).*\n     * *Legitimacy:* Alashan is a well-established, highly reputable cashmere specialist brand with strict animal welfare and fiber-sourcing standards (partnered with The Good Cashmere Standard).",
+          "elapsed_seconds": 11.6,
+          "exit_code": 0
+        }
+      }
+    }
+  ]
+}
