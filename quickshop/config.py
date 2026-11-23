@@ -28,6 +28,7 @@ def build_model():
         return GeminiModel(
             model_id=GEMINI_MODEL_ID,
             api_key=gemini_key,
+            context_window_limit=1_000_000,   # Gemini 1.5/2.0 supports 1M tokens
         )
     elif asu_key:
         from strands.models.openai import OpenAIModel
@@ -36,6 +37,7 @@ def build_model():
             client_args={"base_url": ASU_BASE_URL, "api_key": asu_key},
             model_id=MODEL_ID,
             params={"temperature": 0},
+            context_window_limit=128_000,
         )
     else:
         raise RuntimeError("No API key found. Set GEMINI_API_KEY or API_KEY in .env")
