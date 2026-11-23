@@ -318,6 +318,16 @@ def main():
         default=1,
         help="Which query dataset to use: 1 = original benchmark (default), 2 = Reddit-sourced dataset",
     )
+    parser.add_argument(
+        "--from-id",
+        dest="from_id",
+        help="Skip all queries before this ID and start from here (e.g. --from-id d2q3)",
+    )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Load the latest results file and skip already-completed queries",
+    )
 
     args = parser.parse_args()
 
@@ -342,6 +352,8 @@ def main():
         category=args.category,
         output_dir=args.output,
         dataset=args.dataset,
+        from_id=args.from_id,
+        resume=args.resume,
     )
 
 
