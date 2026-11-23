@@ -187,19 +187,23 @@ def run_evaluation(
     category: str = None,
     output_dir: str = None,
     dataset: int = 1,
+    from_id: str = None,
+    resume: bool = False,
 ) -> dict:
     """
     Run evaluation across systems and queries.
 
-    Args:
-        systems: List of systems to evaluate ["quickshop", "b0", "b1", "b2"]
-        queries: List of query IDs to run, or None for all
-        category: Filter queries by category
-        output_dir: Directory to save results
-        dataset: 1 for the original benchmark, 2 for the Reddit-sourced dataset2
+    Saves results incrementally after every query so a crash only loses the
+    query currently running. Use --resume to continue from where it stopped.
 
-    Returns:
-        Evaluation results dict
+    Args:
+        systems:    Systems to evaluate. Default: all four.
+        queries:    Specific query IDs to run. Default: all in the dataset.
+        category:   Filter by category instead of running all.
+        output_dir: Where to write results JSON.
+        dataset:    1 = original benchmark, 2 = Reddit-sourced dataset2.
+        from_id:    Skip every query whose ID comes before this one.
+        resume:     Load the latest results file and skip completed queries.
     """
     if systems is None:
         systems = ["quickshop", "b0", "b1", "b2"]
@@ -220,7 +224,44 @@ def run_evaluation(
     else:
         benchmark = all_queries
 
-    results = {
+    # --from-id: skip everything before the given query
+    if from_id:
+        ids = [q["id"] for q in benchmark]
+        if from_id not in ids:
+            print(f"Warning: --from-id '{from_id}' not found. Running all queries.")
+        else:
+            cut = ids.index(from_id)
+            if cut:
+                print(f"Skipping {cut} queries before {from_id}: {ids[:cut]}")
+            benchmark = benchmark[cut:]
+
+    # --resume: load latest partial file and skip already-completed queries
+    existing_results = None
+    save_path = None
+
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
+        if resume:
+            existing = sorted(Path(output_dir).glob("eval_*.json"))
+            if existing:
+                save_path = str(existing[-1])
+                existing_results = json.loads(Path(save_path).read_text())
+                done = {r["query_id"] for r in existing_results.get("runs", [])}
+                before = len(benchmark)
+                benchmark = [q for q in benchmark if q["id"] not in done]
+                print(f"Resuming {Path(save_path).name}: "
+                      f"{before - len(benchmark)} done, {len(benchmark)} remaining.")
+            else:
+                print("--resume: no results file found, starting fresh.")
+
+        if not save_path:
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            save_path = os.path.join(output_dir, f"eval_{ts}.json")
+
+        print(f"Saving incrementally to: {save_path}\n")
+
+    results = existing_results or {
         "timestamp": datetime.now().isoformat(),
         "dataset": dataset,
         "systems": systems,
@@ -228,12 +269,13 @@ def run_evaluation(
         "runs": [],
     }
 
-    for query_info in benchmark:
-        query_id = query_info["id"]
+    total = len(benchmark)
+    for idx, query_info in enumerate(benchmark, 1):
+        query_id   = query_info["id"]
         query_text = query_info["query"]
 
         print(f"\n{'=' * 60}")
-        print(f"Query {query_id}: {query_text}")
+        print(f"[{idx}/{total}] {query_id}: {query_text}")
         print(f"Expected: {query_info['expected_behavior']}")
         print(f"{'=' * 60}")
 
@@ -247,9 +289,9 @@ def run_evaluation(
 
         for system in systems:
             print(f"\n  Running {system}...")
-            runner = RUNNERS.get(system)
-            if runner:
-                result = runner(query_text)
+            runner_fn = RUNNERS.get(system)
+            if runner_fn:
+                result = runner_fn(query_text)
                 query_results["system_results"][system] = result
                 status = "✓" if result["success"] else "✗"
                 print(f"  {status} {system}: {result.get('elapsed_seconds', '?')}s")
@@ -260,13 +302,14 @@ def run_evaluation(
 
         results["runs"].append(query_results)
 
-    if output_dir:
-        os.makedirs(output_dir, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_path = os.path.join(output_dir, f"eval_{timestamp}.json")
-        with open(output_path, "w") as f:
-            json.dump(results, f, indent=2)
-        print(f"\nResults saved to {output_path}")
+        # Write after every query — a crash only loses the one in progress
+        if save_path:
+            with open(save_path, "w") as f:
+                json.dump(results, f, indent=2)
+            print(f"  💾 saved ({idx}/{total} queries done)")
+
+    if save_path:
+        print(f"\nAll done. Results in {save_path}")
 
     return results
 
@@ -311,12 +354,17 @@ def main():
         help="QuickShop uses saved searches and saved page evidence only (no SerpAPI or Firecrawl calls)",
     )
     parser.add_argument(
-        "--dataset",
-        "-d",
-        type=int,
-        choices=[1, 2],
-        default=1,
-        help="Which query dataset to use: 1 = original benchmark (default), 2 = Reddit-sourced dataset",
+        "--dataset", "-d",
+        type=int, choices=[1, 2], default=1,
+        help="1 = original benchmark (default), 2 = Reddit-sourced dataset",
+    )
+    parser.add_argument(
+        "--from-id", dest="from_id",
+        help="Skip all queries before this ID (e.g. --from-id d2q3)",
+    )
+    parser.add_argument(
+        "--resume", action="store_true",
+        help="Load the latest results file and skip already-completed queries",
     )
 
     args = parser.parse_args()
@@ -342,6 +390,8 @@ def main():
         category=args.category,
         output_dir=args.output,
         dataset=args.dataset,
+        from_id=getattr(args, "from_id", None),
+        resume=getattr(args, "resume", False),
     )
 
 
