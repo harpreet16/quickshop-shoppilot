@@ -1,11 +1,20 @@
-# Dataset 2 — 25 real shopping requests collected from Reddit (r/malefashionadvice and
+# Dataset 2 — 20 real shopping requests collected from Reddit (r/malefashionadvice and
 # r/femalefashionadvice). PII (names, body measurements, specific usernames) has been removed.
 # Each entry records the source subreddit so the origin of the request is traceable.
+#
+# 5 queries removed from the original 25:
+#   d2q4  (basic)   — knee-high boots: footwear, out of scope for a clothing assistant
+#   d2q9  (quality) — wool scarf: duplicate of d2q7 (both are natural-fiber scarves)
+#   d2q10 (quality) — women's soft blouse: covered by d2q5 and d2q12
+#   d2q16 (trust)   — ankle boots: footwear again
+#   d2q21 (edge)    — fleece tights: all-synthetic by definition, quality score is misleading
+#
+# Final distribution: basic 4 · quality 5 · trust 4 · edge 4 · abstain 3 = 20
 #
 # Format matches eval/benchmark.py exactly so the same runner and metrics code works on both.
 
 DATASET2_QUERIES = [
-    # ------------------------------------------------------------------ basic
+    # ------------------------------------------------------------------ basic (4)
     {
         "id": "d2q1",
         "query": "straight leg chino pants with more room in the thighs, size 32 waist, under $80",
@@ -28,20 +37,13 @@ DATASET2_QUERIES = [
         "source": "r/malefashionadvice — 'OCBDs in the $70–$130 that fits slightly broad shoulders'",
     },
     {
-        "id": "d2q4",
-        "query": "women's knee-high boots, comfortable for all-day wear, under $200",
-        "category": "basic",
-        "expected_behavior": "Should find boots from reputable brands with strong reviews",
-        "source": "r/femalefashionadvice — 'Recommendations on what style and where to get knee high leather boots'",
-    },
-    {
         "id": "d2q5",
         "query": "women's cotton or linen tops for a long torso under $70",
         "category": "basic",
         "expected_behavior": "Should find natural-fiber tops long enough to stay tucked for a longer torso",
         "source": "r/femalefashionadvice — 'Places to buy shirts for long torso?'",
     },
-    # ------------------------------------------------------------------ quality
+    # ------------------------------------------------------------------ quality (5)
     {
         "id": "d2q6",
         "query": "loose-fitting men's shirt in linen or 100% cotton, under $200",
@@ -64,20 +66,6 @@ DATASET2_QUERIES = [
         "source": "r/malefashionadvice — 'Is it actually cheaper to dress well in Italy compared to France? (Sartorial / quality fabrics)'",
     },
     {
-        "id": "d2q9",
-        "query": "wool scarf to wear with a navy peacoat, natural fiber only, under $80",
-        "category": "quality",
-        "expected_behavior": "Should find 100% wool scarves and discard synthetic alternatives",
-        "source": "r/malefashionadvice — 'Looking for scarf suggestions'",
-    },
-    {
-        "id": "d2q10",
-        "query": "women's soft, long-lasting blouse or top in natural fabric under $80",
-        "category": "quality",
-        "expected_behavior": "Should score composition heavily; penalise viscose-heavy or polyester blends",
-        "source": "r/femalefashionadvice — 'Long lasting, ultra soft fabrics'",
-    },
-    {
         "id": "d2q11",
         "query": "women's wool-blend coat that actually keeps you warm in winter, under $300",
         "category": "quality",
@@ -91,7 +79,7 @@ DATASET2_QUERIES = [
         "expected_behavior": "Should distinguish 100% silk from polyester 'satin' imposters and flag unknown sellers",
         "source": "r/femalefashionadvice — general office wear thread",
     },
-    # ------------------------------------------------------------------ trust
+    # ------------------------------------------------------------------ trust (4)
     {
         "id": "d2q13",
         "query": "classic mac coat or short trench coat in natural fabric under $350",
@@ -114,20 +102,13 @@ DATASET2_QUERIES = [
         "source": "r/malefashionadvice — 'Is it worth spending more?' (Abercrombie vs Buck Mason)",
     },
     {
-        "id": "d2q16",
-        "query": "functional waterproof women's ankle boots from a legitimate brand under $150",
-        "category": "trust",
-        "expected_behavior": "Should prioritise established footwear brands and flag unknown dropship shops",
-        "source": "r/femalefashionadvice — 'Boots that are aesthetic AND functional'",
-    },
-    {
         "id": "d2q17",
         "query": "affordable ethical women's winter jacket from a reputable brand under $200",
         "category": "trust",
         "expected_behavior": "Should verify brand legitimacy; 'ethical' claims require extra seller scrutiny",
         "source": "r/femalefashionadvice — 'Affordable European fashion brands'",
     },
-    # ------------------------------------------------------------------ edge
+    # ------------------------------------------------------------------ edge (4)
     {
         "id": "d2q18",
         "query": "jeans for men with big thighs and a narrow waist, size 32 waist, under $100",
@@ -150,20 +131,13 @@ DATASET2_QUERIES = [
         "source": "r/femalefashionadvice — 'Been awhile since I\\'ve shopped for business formal'",
     },
     {
-        "id": "d2q21",
-        "query": "women's fleece-lined thermal tights that don't pill, under $40",
-        "category": "edge",
-        "expected_behavior": "Fleece tights are inherently synthetic; agent should not over-penalise quality score for this category",
-        "source": "r/femalefashionadvice — 'fleece tights that don\\'t pill'",
-    },
-    {
         "id": "d2q22",
         "query": "men's suit for a larger build, plus-size friendly, under $400",
         "category": "edge",
         "expected_behavior": "Should handle plus-size suit request and prioritise retailers with extended sizing",
         "source": "r/malefashionadvice — 'Wedding suits for a fat guy?'",
     },
-    # ------------------------------------------------------------------ abstain
+    # ------------------------------------------------------------------ abstain (3)
     {
         "id": "d2q23",
         "query": "100% cashmere luxury sweater under $50",
