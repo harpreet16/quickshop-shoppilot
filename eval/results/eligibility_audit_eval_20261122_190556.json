@@ -1,0 +1,4031 @@
+{
+  "source": "eval/results/eval_20261122_190556.json",
+  "mode": "offline_saved_artifact_audit",
+  "threshold": 3,
+  "method": "Human-reviewed recommendation inventory; current check_merchant and _score_legitimacy; non-products excluded before gate; no invented seller identities or URLs; gate passes are heuristics, not safety findings.",
+  "primary_priority": [
+    "not_a_product",
+    "not_assessable",
+    "merchant_gate_rejected",
+    "other_failures",
+    "no_offline_failure_found"
+  ],
+  "summaries": {
+    "quickshop": {
+      "recommendations": 48,
+      "gate": {
+        "passed": 44,
+        "rejected": 0,
+        "not_applicable": 4,
+        "unknown": 0
+      },
+      "primary": {
+        "not_a_product": 4,
+        "merchant_gate_rejected": 0,
+        "not_assessable": 0,
+        "other_failures": 28,
+        "no_offline_failure_found": 16
+      },
+      "flags": {
+        "natural_fiber_majority_unverified": 20,
+        "exact_usd_price_unverified": 15,
+        "structured_fiber_conflict": 2,
+        "no_usable_saved_page": 11,
+        "not_a_product": 4,
+        "page_http_404": 2,
+        "missing_final_product_link": 7,
+        "brand_substring_false_positive": 1,
+        "unverified_currency_conversion": 2,
+        "ethical_requirement_unverified": 2,
+        "explicit_size_mismatch": 1,
+        "missing_price": 0,
+        "merchant_gate_rejected": 0,
+        "unclear_product_identity": 0,
+        "approximate_or_range_price": 0,
+        "unresolved_grounding_redirect": 0,
+        "synthetic_catalog": 0
+      }
+    },
+    "b0": {
+      "recommendations": 3,
+      "gate": {
+        "passed": 0,
+        "rejected": 0,
+        "not_applicable": 0,
+        "unknown": 3
+      },
+      "primary": {
+        "not_a_product": 0,
+        "merchant_gate_rejected": 0,
+        "not_assessable": 3,
+        "other_failures": 0,
+        "no_offline_failure_found": 0
+      },
+      "flags": {
+        "natural_fiber_majority_unverified": 3,
+        "exact_usd_price_unverified": 3,
+        "structured_fiber_conflict": 0,
+        "no_usable_saved_page": 3,
+        "not_a_product": 0,
+        "page_http_404": 0,
+        "missing_final_product_link": 3,
+        "brand_substring_false_positive": 0,
+        "unverified_currency_conversion": 0,
+        "ethical_requirement_unverified": 0,
+        "explicit_size_mismatch": 0,
+        "missing_price": 0,
+        "merchant_gate_rejected": 0,
+        "unclear_product_identity": 0,
+        "approximate_or_range_price": 0,
+        "unresolved_grounding_redirect": 0,
+        "synthetic_catalog": 3
+      }
+    },
+    "b1": {
+      "recommendations": 42,
+      "gate": {
+        "passed": 0,
+        "rejected": 1,
+        "not_applicable": 40,
+        "unknown": 1
+      },
+      "primary": {
+        "not_a_product": 40,
+        "merchant_gate_rejected": 1,
+        "not_assessable": 1,
+        "other_failures": 0,
+        "no_offline_failure_found": 0
+      },
+      "flags": {
+        "natural_fiber_majority_unverified": 42,
+        "exact_usd_price_unverified": 42,
+        "structured_fiber_conflict": 0,
+        "no_usable_saved_page": 42,
+        "not_a_product": 40,
+        "page_http_404": 0,
+        "missing_final_product_link": 42,
+        "brand_substring_false_positive": 0,
+        "unverified_currency_conversion": 0,
+        "ethical_requirement_unverified": 0,
+        "explicit_size_mismatch": 0,
+        "missing_price": 42,
+        "merchant_gate_rejected": 1,
+        "unclear_product_identity": 1,
+        "approximate_or_range_price": 0,
+        "unresolved_grounding_redirect": 0,
+        "synthetic_catalog": 0
+      }
+    },
+    "b2": {
+      "recommendations": 15,
+      "gate": {
+        "passed": 8,
+        "rejected": 7,
+        "not_applicable": 0,
+        "unknown": 0
+      },
+      "primary": {
+        "not_a_product": 0,
+        "merchant_gate_rejected": 7,
+        "not_assessable": 0,
+        "other_failures": 8,
+        "no_offline_failure_found": 0
+      },
+      "flags": {
+        "natural_fiber_majority_unverified": 15,
+        "exact_usd_price_unverified": 15,
+        "structured_fiber_conflict": 0,
+        "no_usable_saved_page": 15,
+        "not_a_product": 0,
+        "page_http_404": 0,
+        "missing_final_product_link": 0,
+        "brand_substring_false_positive": 0,
+        "unverified_currency_conversion": 0,
+        "ethical_requirement_unverified": 0,
+        "explicit_size_mismatch": 0,
+        "missing_price": 0,
+        "merchant_gate_rejected": 7,
+        "unclear_product_identity": 0,
+        "approximate_or_range_price": 8,
+        "unresolved_grounding_redirect": 6,
+        "synthetic_catalog": 0
+      }
+    }
+  },
+  "pipeline": {
+    "status": {
+      "partial": 41,
+      "ok": 36,
+      "unavailable": 23
+    },
+    "unavailable": {
+      "not a product page": 14,
+      "page returned HTTP 404": 8,
+      "Firecrawl server error (HTTP 500) after 4 tries": 1
+    },
+    "partial": {
+      "composition ambiguous": 20,
+      "composition ambiguous; price missing": 4,
+      "composition missing": 14,
+      "price missing": 3
+    },
+    "denied": 22,
+    "validation": 24
+  },
+  "recommendations": [
+    {
+      "query_id": "d2q1",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Gap Modern Straight Khakis",
+      "merchant": "Gap",
+      "url": "https://www.gap.com/browse/product.do?pid=472757612&vid=1&tid=gpns000044",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 47,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.gap.com/browse/product.do?pid=472757612&vid=1&tid=gpns000044",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 47,
+          "currency": "USD"
+        },
+        "composition_raw": "98% Cotton, 2% Elastane.",
+        "natural_fiber_pct": 98
+      }
+    },
+    {
+      "query_id": "d2q1",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Old Navy Straight Rotation Chino Pants",
+      "merchant": "Old Navy",
+      "url": "https://oldnavy.gap.com/browse/product.do?pid=408049002&vid=1&tid=onns000009",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 24.99,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Old Navy",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://oldnavy.gap.com/browse/product.do?pid=408049002&vid=1&tid=onns000009",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 24.99,
+          "currency": "USD"
+        },
+        "composition_raw": "- soft-washed twill\n- 98% cotton\n- 2% spandex",
+        "natural_fiber_pct": 98
+      }
+    },
+    {
+      "query_id": "d2q1",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Old Navy Athletic Taper Rotation Chino Pants",
+      "merchant": "Old Navy",
+      "url": "https://oldnavy.gap.com/browse/product.do?pid=408050012&vid=1&tid=onns000009",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 24.99,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Old Navy",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://oldnavy.gap.com/browse/product.do?pid=408050012&vid=1&tid=onns000009",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 24.99,
+          "currency": "USD"
+        },
+        "composition_raw": "98% cotton, 2% spandex",
+        "natural_fiber_pct": 98
+      }
+    },
+    {
+      "query_id": "d2q1",
+      "system": "quickshop",
+      "rank": 4,
+      "title": "Bonobos The Chino 2.0 (Athletic Fit)",
+      "merchant": "Bonobos",
+      "url": "https://bonobos.com/products/stretch-washed-chino-brickbreakers-0?color=Brickbreakers&pant-waist=31&pant-fit=Athletic&pant-length=28",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 55.3,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Bonobos",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://bonobos.com/products/stretch-washed-chino-brickbreakers-0?color=Brickbreakers&pant-waist=31&pant-fit=Athletic&pant-length=28",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 55.3,
+          "currency": "USD"
+        },
+        "composition_raw": "92% Cotton | 8% Spandex",
+        "natural_fiber_pct": 92
+      }
+    },
+    {
+      "query_id": "d2q1",
+      "system": "quickshop",
+      "rank": 5,
+      "title": "Banana Republic Factory Athletic Lived-In Chino",
+      "merchant": "Banana Republic Factory",
+      "url": "https://bananarepublicfactory.gapfactory.com/browse/product.do?pid=400028161&vid=1&tid=bfns000001",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 38,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Banana Republic Factory",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://bananarepublicfactory.gapfactory.com/browse/product.do?pid=400028161&vid=1&tid=bfns000001",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 38,
+          "currency": "USD"
+        },
+        "composition_raw": "97% cotton, 3% spandex.",
+        "natural_fiber_pct": 97
+      }
+    },
+    {
+      "query_id": "d2q2",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Carhartt Men's Iconic K87 Loose Fit Heavyweight Pocket T-Shirt",
+      "merchant": "Carhartt",
+      "url": "https://www.carhartt.com/product/K87-RG0XSREG",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 19.99,
+      "flags": [
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Carhartt",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.carhartt.com/product/K87-RG0XSREG",
+        "status": "partial",
+        "error_reason": "composition ambiguous; price missing",
+        "price": null,
+        "composition_raw": "All colors are 100% cotton jersey knit unless specified differently below. Heather Gray 90% cotton/10% polyester. All other heathers & Brite Lime, Brite Orange: 60% cotton/40% polyester",
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q2",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Levi's Boxy Short-Sleeve T-Shirt",
+      "merchant": "Levi's",
+      "url": "https://www.levi.com/US/en_US/clothing/men/shirts/basic-t-shirts/boxy-short-sleeve-t-shirt/p/0049F0042?srsltid=AYCX9vKo5YYYP0O1VzgUDEmeTbT1v_s4YqxF9u2nsQ47fA5Y6JAmi1RV2kQ",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 21,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Levi's",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.levi.com/US/en_US/clothing/men/shirts/basic-t-shirts/boxy-short-sleeve-t-shirt/p/0049F0042?srsltid=AYCX9vKo5YYYP0O1VzgUDEmeTbT1v_s4YqxF9u2nsQ47fA5Y6JAmi1RV2kQ",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 21,
+          "currency": "USD"
+        },
+        "composition_raw": "100% Cotton\nJersey\nCrewneck\nShort sleeves\nImported",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q2",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Gap Adult Organic Cotton Pocket T-Shirt",
+      "merchant": "Gap",
+      "url": "https://www.gap.com/browse/product.do?pid=878111232&vid=1&tid=gpns000044",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 24.95,
+      "flags": [
+        "natural_fiber_majority_unverified",
+        "structured_fiber_conflict"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.gap.com/browse/product.do?pid=878111232&vid=1&tid=gpns000044",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 24.95,
+          "currency": "USD"
+        },
+        "composition_raw": "Made with 100% organically grown cotton which is grown without the use of synthetic pesticides and fertilizers.",
+        "natural_fiber_pct": 0
+      }
+    },
+    {
+      "query_id": "d2q3",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Uniqlo Oxford Cotton Shirt",
+      "merchant": "Uniqlo",
+      "url": "https://www.uniqlo.com/us/en/products/E450260-000",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 49.9,
+      "flags": [
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Uniqlo",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.uniqlo.com/us/en/products/E450260-000",
+        "status": "partial",
+        "error_reason": "composition missing",
+        "price": {
+          "amount": 49.9,
+          "currency": "USD"
+        },
+        "composition_raw": null,
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q3",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Gap Relaxed Fit Oxford Shirt",
+      "merchant": "Gap",
+      "url": "https://www.gap.com/browse/product.do?pid=703386002",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 59.95,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q3",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Banana Republic Organic Cotton Oxford Shirt",
+      "merchant": "Banana Republic",
+      "url": "https://www.bananarepublic.gap.com/browse/product.do?pid=818320002",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 79.5,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Banana Republic",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q3",
+      "system": "quickshop",
+      "rank": 4,
+      "title": "J.Crew Organic Cotton Oxford Shirt",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/oxford/organic-cotton-oxford-shirt/BW677",
+      "url_source": "final_answer",
+      "page_kind": "non_product",
+      "classification_basis": "Saved extractor explicitly returned 'not a product page'; this signal is not independently confirmed",
+      "claimed_price": 89.5,
+      "flags": [
+        "not_a_product",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "reasons": [],
+      "primary_outcome": "not_a_product",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/oxford/organic-cotton-oxford-shirt/BW677",
+        "status": "unavailable",
+        "error_reason": "not a product page",
+        "price": null,
+        "composition_raw": null,
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q3",
+      "system": "quickshop",
+      "rank": 5,
+      "title": "Everlane Heavyweight Oxford Shirt",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/mens-heavyweight-oxford-shirt-white",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 98,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified",
+        "page_http_404"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/mens-heavyweight-oxford-shirt-white",
+        "status": "unavailable",
+        "error_reason": "page returned HTTP 404",
+        "price": null,
+        "composition_raw": null,
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q5",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Target Women's Tall Cotton Top",
+      "merchant": "Target",
+      "url": "https://www.target.com/p/womens-tall-cotton-top",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 28,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Target",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Gap Women's Long Torso Cotton Top",
+      "merchant": "Gap",
+      "url": "https://www.gap.com/top",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 45,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Everlane Women's Organic Cotton Tunic Top",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/womens-organic-cotton-tunic",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 58,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified",
+        "page_http_404"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/womens-organic-cotton-tunic",
+        "status": "unavailable",
+        "error_reason": "page returned HTTP 404",
+        "price": null,
+        "composition_raw": null,
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q5",
+      "system": "quickshop",
+      "rank": 4,
+      "title": "ASOS Tall Linen Shirt",
+      "merchant": "ASOS",
+      "url": "https://www.asos.com/top",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 65,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "ASOS",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "quickshop",
+      "rank": 5,
+      "title": "J.Crew Tall Organic Linen Blend Shirt",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/womens/categories/clothing/shirts-and-tops/linen/tall-classic-fit-organic-linen-shirt/CA665",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 68,
+      "flags": [
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/womens/categories/clothing/shirts-and-tops/linen/tall-classic-fit-organic-linen-shirt/CA665",
+        "status": "partial",
+        "error_reason": "price missing",
+        "price": null,
+        "composition_raw": "97% cotton/3% elastane.",
+        "natural_fiber_pct": 97
+      }
+    },
+    {
+      "query_id": "d2q6",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Gap Men's 100% Cotton Loose Fit Shirt",
+      "merchant": "Gap",
+      "url": "https://www.gap.com/browse/product.do?pid=856721",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 49.99,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q6",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "J.Crew Baird McNutt Irish Linen Shirt",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/linen/BW668",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 70.8,
+      "flags": [
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/linen/BW668",
+        "status": "partial",
+        "error_reason": "composition missing",
+        "price": {
+          "amount": 70.8,
+          "currency": "USD"
+        },
+        "composition_raw": null,
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q6",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Everlane Men's Linen Short-Sleeve Shirt",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/mens-linen-short-sleeve-shirt-navy",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 88,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q6",
+      "system": "quickshop",
+      "rank": 4,
+      "title": "Ralph Lauren Classic Fit Linen Shirt",
+      "merchant": "Ralph Lauren",
+      "url": "https://www.ralphlauren.com/men-clothing-button-down-shirts/classic-fit-linen-shirt/654321.html",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 148,
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Ralph Lauren",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": null
+    },
+    {
+      "query_id": "d2q7",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Everlane “The Cashmere Scarf” - Black",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/womens-cashmere-scarf-2-black",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 77,
+      "flags": [
+        "missing_final_product_link",
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/womens-cashmere-scarf-2-black",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 77,
+          "currency": "USD"
+        },
+        "composition_raw": "Materials:\n- 100% Cashmere (70% Recycled)",
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q7",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Dalle Piane “Unisex 100 % Cashmere Scarf”",
+      "merchant": "Dalle Piane Cashmere",
+      "url": "https://www.dallepianecashmere.com/products/unisex-100-cashmere-scarf",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 85.49,
+      "flags": [
+        "missing_final_product_link",
+        "brand_substring_false_positive"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Dalle Piane Cashmere",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.dallepianecashmere.com/products/unisex-100-cashmere-scarf",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 85.49,
+          "currency": "USD"
+        },
+        "composition_raw": "100% Cashmere",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q7",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Nordstrom “Cashmere Scarf”",
+      "merchant": "Nordstrom",
+      "url": "https://www.nordstrom.com/s/nordstrom-cashmere-scarf/5872577",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": "€93.71 ≈ $101",
+      "flags": [
+        "missing_final_product_link",
+        "exact_usd_price_unverified",
+        "unverified_currency_conversion"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Nordstrom",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.nordstrom.com/s/nordstrom-cashmere-scarf/5872577?srsltid=AYCX9vKot9R12UrypGH6CQR_HPQJvrQTqXrbM8WydlvBmrHVsdC6fhPu",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 93.71,
+          "currency": "EUR"
+        },
+        "composition_raw": "55% recycled cashmere, 45% cashmere",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q8",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Banana Republic Merino Wool Crew-Neck Sweater (extra-fine merino)",
+      "merchant": "Banana Republic",
+      "url": "https://bananarepublic.gap.com/browse/product.do?pid=815791092",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 72,
+      "flags": [
+        "natural_fiber_majority_unverified",
+        "structured_fiber_conflict"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Banana Republic",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://bananarepublic.gap.com/browse/product.do?pid=815791092",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 72,
+          "currency": "USD"
+        },
+        "composition_raw": "100% extra-fine Merino wool.",
+        "natural_fiber_pct": 0
+      }
+    },
+    {
+      "query_id": "d2q8",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Everlane Cashmere Crew-Neck Sweater (100 % cashmere)",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/mens-cashmere-crew-tnavy",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 89,
+      "flags": [
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/mens-cashmere-crew-tnavy",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 89,
+          "currency": "USD"
+        },
+        "composition_raw": "Materials:\n- 100% Cashmere (70% Recycled)",
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q11",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Sam Edelman Women’s Wool-Blend Coat (95 % wool, 5 % nylon)",
+      "merchant": "Nordstrom Rack",
+      "url": "https://www.nordstromrack.com/s/sam-edelman-womens-wool-blend-coat-plus-size/5710491",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 139.97,
+      "flags": [
+        "missing_final_product_link"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Nordstrom Rack",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.nordstromrack.com/s/sam-edelman-womens-wool-blend-coat-plus-size/5710491",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 139.97,
+          "currency": "USD"
+        },
+        "composition_raw": "95% wool, 5% nylon",
+        "natural_fiber_pct": 95
+      }
+    },
+    {
+      "query_id": "d2q11",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "J.Crew Bianca Plaid Wool-Blend Coat (80 % wool, 20 % nylon)",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/womens/categories/clothing/jackets/coats/wool-and-wool-blend/bianca-coat-in-plaid-drapey-wool-blend/CW419",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 178.8,
+      "flags": [
+        "missing_final_product_link"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/womens/categories/clothing/jackets/coats/wool-and-wool-blend/bianca-coat-in-plaid-drapey-wool-blend/CW419",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 178.8,
+          "currency": "USD"
+        },
+        "composition_raw": "80% wool/20% nylon",
+        "natural_fiber_pct": 80
+      }
+    },
+    {
+      "query_id": "d2q12",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "The Everyday Silk Shirt (silk blouse) - 100 % silk, machine-washable",
+      "merchant": "Banana Republic",
+      "url": "https://bananarepublic.gap.com/browse/product.do?pid=709208002",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 106.8,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Banana Republic",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://bananarepublic.gap.com/browse/product.do?pid=709208002",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 106.8,
+          "currency": "USD"
+        },
+        "composition_raw": "100% silk.",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q13",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Everlane - Cotton-Twill Mac Coat",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/womens-cotton-twill-mac-coat-beech",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 119,
+      "flags": [
+        "missing_final_product_link"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/womens-cotton-twill-mac-coat-beech",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 119,
+          "currency": "USD"
+        },
+        "composition_raw": "- Shell: 100% Organic Cotton Lining: 55% Bemberg, 45% Cotton",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q13",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Brooks Brothers - Classic Double-Faced Mac Coat",
+      "merchant": "Brooks Brothers",
+      "url": "https://www.brooksbrothers.com/classic-double-faced-mac-coat/WW00341.html",
+      "url_source": "score_tool_log",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 124.99,
+      "flags": [
+        "missing_final_product_link"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Brooks Brothers",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.brooksbrothers.com/classic-double-faced-mac-coat/WW00341.html",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 124.99,
+          "currency": "USD"
+        },
+        "composition_raw": "- 78% Cotton, 22% Polyamide",
+        "natural_fiber_pct": 78
+      }
+    },
+    {
+      "query_id": "d2q14",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Men’s Slim-Fit Henley (white, long-sleeve)",
+      "merchant": "Walmart",
+      "url": "https://www.walmart.com/c/kp/mens-slim-fit-henleys",
+      "url_source": "final_answer",
+      "page_kind": "non_product",
+      "classification_basis": "Recommended URL is a category/filter route",
+      "claimed_price": 16.95,
+      "flags": [
+        "not_a_product"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.walmart.com/c/kp/mens-slim-fit-henleys",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 16.95,
+          "currency": "USD"
+        },
+        "composition_raw": "100% Cotton",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q14",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Midweight Cotton Slub Henley T-Shirt",
+      "merchant": "Banana Republic",
+      "url": "https://bananarepublic.gap.com/browse/product.do?pid=8944450220001",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 36,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Banana Republic",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://bananarepublic.gap.com/browse/product.do?pid=8944450220001",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 36,
+          "currency": "USD"
+        },
+        "composition_raw": "100% cotton.",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q15",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Levi’s Authentic Button-Down Shirt - 100 % cotton",
+      "merchant": "Levi's",
+      "url": "https://www.levi.com/US/en_US/clothing/men/shirts/button-up-shirts/c/levi_clothing_men_button_up_shirts/facets/feature-apparel-features/100%25%20cotton",
+      "url_source": "final_answer",
+      "page_kind": "non_product",
+      "classification_basis": "Recommended URL is a category/filter route",
+      "claimed_price": 42,
+      "flags": [
+        "not_a_product"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.levi.com/US/en_US/clothing/men/shirts/button-up-shirts/c/levi_clothing_men_button_up_shirts/facets/feature-apparel-features/100%25%20cotton?srsltid=AYCX9vL6KWDTk1RoouB4lWF6S-apsSK3Dyh-uCEpb7f-GOHWED9WsKqR",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 42,
+          "currency": "USD"
+        },
+        "composition_raw": "100% cotton",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q15",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Everlane Slim Oxford Shirt - 100 % organic cotton",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/mens-slim-oxford-white",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 39,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/mens-slim-oxford-white",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 39,
+          "currency": "USD"
+        },
+        "composition_raw": "Materials:\n- 100% Organic Cotton",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q15",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "J.Crew Poplin Shirt with Button-Down Collar - 100 % cotton",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/poplin-shirt-with-button-down-collar/CT996",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 53.7,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/poplin-shirt-with-button-down-collar/CT996",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 53.7,
+          "currency": "USD"
+        },
+        "composition_raw": "100% cotton.",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q17",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "J.Crew Car coat in Italian boiled wool (100 % wool shell, polyester lining)",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/womens/categories/clothing/coats-and-jackets/topcoat/car-coat-in-italian-boiled-wool/CM730",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 196.8,
+      "flags": [
+        "ethical_requirement_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.jcrew.com/p/womens/categories/clothing/coats-and-jackets/topcoat/car-coat-in-italian-boiled-wool/CM730",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 196.8,
+          "currency": "USD"
+        },
+        "composition_raw": "100% wool shell.\n100% polyester lining.",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q17",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Lauren Ralph Lauren Wool-Blend Tweed Coat (53 % wool, 40 % polyester, 5 % acrylic, 2 % other)",
+      "merchant": "Nordstrom",
+      "url": "https://www.nordstrom.com/s/lauren-ralph-lauren-wool-blend-tweed-coat/8275098",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 162,
+      "flags": [
+        "exact_usd_price_unverified",
+        "unverified_currency_conversion",
+        "ethical_requirement_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Nordstrom",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.nordstrom.com/s/lauren-ralph-lauren-wool-blend-tweed-coat/8275098",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 150.07,
+          "currency": "EUR"
+        },
+        "composition_raw": "53% wool, 40% polyester, 5% acrylic, 2% other fibers",
+        "natural_fiber_pct": 53
+      }
+    },
+    {
+      "query_id": "d2q18",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Wrangler Men’s Relaxed-Fit Straight Jeans - Dark Wash (32 × 32) - <https://www.target.com/p/wranglers-men-39-s-relaxed-fit-straight-jeans-dark-wash-32x32/-/A-90919096>",
+      "merchant": "Target",
+      "url": "https://www.target.com/p/wranglers-men-39-s-relaxed-fit-straight-jeans-dark-wash-32x32/-/A-90919096",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 29.99,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Target",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.target.com/p/wranglers-men-39-s-relaxed-fit-straight-jeans-dark-wash-32x32/-/A-90919096",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 29.99,
+          "currency": "USD"
+        },
+        "composition_raw": "Midweight Denim, 99% Cotton, 1% Elastane, Machine Washable",
+        "natural_fiber_pct": 99
+      }
+    },
+    {
+      "query_id": "d2q18",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Old Navy Athletic Taper Built-In Flex Jeans (32 × 32) - <https://oldnavy.gap.com/browse/product.do?pid=508526002>",
+      "merchant": "Old Navy",
+      "url": "https://oldnavy.gap.com/browse/product.do?pid=508526002",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 24.99,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Old Navy",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://oldnavy.gap.com/browse/product.do?pid=508526002",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 24.99,
+          "currency": "USD"
+        },
+        "composition_raw": "- 94% cotton\n- 5% recycled cotton\n- 1% spandex\n- built-in flex for comfort and movement",
+        "natural_fiber_pct": 99
+      }
+    },
+    {
+      "query_id": "d2q18",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Levi’s 511 Slim-Fit Stretch Jeans - Dark Wash (32 × 32) - <https://www.kohls.com/product/prd-323407/levis-511-slim-jeans-men.jsp>",
+      "merchant": "Kohl's",
+      "url": "https://www.kohls.com/product/prd-323407/levis-511-slim-jeans-men.jsp",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 37.47,
+      "flags": [
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Kohl's",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.kohls.com/product/prd-323407/levis-511-slim-jeans-men.jsp",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 37.47,
+          "currency": "USD"
+        },
+        "composition_raw": "Cotton, elastane",
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q20",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Barrel-Leg Pant - Organic Cotton Sateen",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/womens-barrel-pant-organic-cotton-sateen-bone",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 59,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 5
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/womens-barrel-pant-organic-cotton-sateen-bone",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 59,
+          "currency": "USD"
+        },
+        "composition_raw": "- 95% Organic Cotton, 5% Elastane",
+        "natural_fiber_pct": 95
+      }
+    },
+    {
+      "query_id": "d2q20",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "Everywhere Pant - Organic Cotton & Linen",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/womens-everywhere-pant-black",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 88,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.everlane.com/products/womens-everywhere-pant-black",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 88,
+          "currency": "USD"
+        },
+        "composition_raw": "- 94% Organic Cotton, 6% Linen",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q20",
+      "system": "quickshop",
+      "rank": 3,
+      "title": "Incredible Stretch Bootcut Pull-On Pants (Cotton)",
+      "merchant": "Macy's",
+      "url": "https://www.macys.com/shop/womens/clothing/pants/dress-pants/Fabric/Cotton?id=339122",
+      "url_source": "final_answer",
+      "page_kind": "non_product",
+      "classification_basis": "Recommended URL is a category/filter route",
+      "claimed_price": 34.75,
+      "flags": [
+        "not_a_product",
+        "natural_fiber_majority_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.macys.com/shop/womens/clothing/pants/dress-pants/Fabric/Cotton?id=339122",
+        "status": "partial",
+        "error_reason": "composition ambiguous",
+        "price": {
+          "amount": 34.75,
+          "currency": "USD"
+        },
+        "composition_raw": "Cotton",
+        "natural_fiber_pct": null
+      }
+    },
+    {
+      "query_id": "d2q22",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Men's 3-pc Modern-Fit Wool Suit Set (jacket, trousers, vest) - 100 % wool, size 46",
+      "merchant": "Kohl's",
+      "url": "https://www.kohls.com/product/prd-7773341/mens-3-pc-modern-fit-wool-suit-set.jsp",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 209.99,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Kohl's",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.kohls.com/product/prd-7773341/mens-3-pc-modern-fit-wool-suit-set.jsp",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 209.99,
+          "currency": "USD"
+        },
+        "composition_raw": "100% Wool",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q23",
+      "system": "quickshop",
+      "rank": 1,
+      "title": "Free Assembly Women’s Cashmere Sweater (Long-sleeve)",
+      "merchant": "Walmart",
+      "url": "https://www.walmart.com/ip/Free-Assembly-Women-s-and-Women-s-Plus-Cashmere-Sweater-with-Long-Sleeves-Sizes-XS-4X/19975969128",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 39,
+      "flags": [],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Walmart",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "no_offline_failure_found",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 4
+      },
+      "source_page": {
+        "url": "https://www.walmart.com/ip/Free-Assembly-Women-s-and-Women-s-Plus-Cashmere-Sweater-with-Long-Sleeves-Sizes-XS-4X/19975969128",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 39,
+          "currency": "USD"
+        },
+        "composition_raw": "Material: 100% Cashmere body; Ribbed trim: 98% Cashmere/1% Spandex/1% Other fibers",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q23",
+      "system": "quickshop",
+      "rank": 2,
+      "title": "A New Day™ Women’s Cashmere Crewneck Pullover (Black, size 2X)",
+      "merchant": "Target",
+      "url": "https://www.target.com/p/women-39-s-cashmere-crewneck-pullover-sweater-a-new-day-8482-black-2x/-/A-95299229",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Individual product claimed; live existence not verified",
+      "claimed_price": 45,
+      "flags": [
+        "explicit_size_mismatch"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Target",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": {
+        "eligible": true,
+        "legitimacy": 3
+      },
+      "source_page": {
+        "url": "https://www.target.com/p/women-39-s-cashmere-crewneck-pullover-sweater-a-new-day-8482-black-2x/-/A-95299229",
+        "status": "ok",
+        "error_reason": null,
+        "price": {
+          "amount": 45,
+          "currency": "USD"
+        },
+        "composition_raw": "Lightweight 100% cashmere material",
+        "natural_fiber_pct": 100
+      }
+    },
+    {
+      "query_id": "d2q7",
+      "system": "b1",
+      "rank": 1,
+      "title": "Cashmere Scarves & Wraps for Women",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q7",
+      "system": "b1",
+      "rank": 2,
+      "title": "Cashmere Scarf Women - $50 To $100: Clothing, Shoes & Jewelry",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q7",
+      "system": "b1",
+      "rank": 3,
+      "title": "Signature Cashmere Ribbed Scarf - NAADAM",
+      "merchant": "Naadam",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual scarf; no link saved",
+      "claimed_price": null,
+      "flags": [
+        "merchant_gate_rejected",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Naadam",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q8",
+      "system": "b1",
+      "rank": 1,
+      "title": "Merino Wool Sweaters & Pullovers for Men & Women",
+      "merchant": "Smartwool",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q8",
+      "system": "b1",
+      "rank": 2,
+      "title": "Affordable Cashmere Sweaters Women Under 100",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q8",
+      "system": "b1",
+      "rank": 3,
+      "title": "Affordable Wool Sweaters | Black Friday",
+      "merchant": "Brooks Brothers",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q11",
+      "system": "b1",
+      "rank": 1,
+      "title": "The Best Women's Wool Coats of 2026 | Reviews by Wirecutter",
+      "merchant": "Wirecutter",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q11",
+      "system": "b1",
+      "rank": 2,
+      "title": "Women's Wool Blend Coats & Jackets",
+      "merchant": "Nordstrom Rack",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q11",
+      "system": "b1",
+      "rank": 3,
+      "title": "The 12 Best Wool Coats That'll Actually Keep You Warm",
+      "merchant": "Byrdie",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q12",
+      "system": "b1",
+      "rank": 1,
+      "title": "Silk Blouses for Work | Black Friday Deals",
+      "merchant": "Brooks Brothers",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q12",
+      "system": "b1",
+      "rank": 2,
+      "title": "Silk Blouses for Women – Washable Styles",
+      "merchant": "Quince",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q12",
+      "system": "b1",
+      "rank": 3,
+      "title": "Women's Luxury Silk Shirts & Blouses | Button-Downs",
+      "merchant": "Silksilky",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q13",
+      "system": "b1",
+      "rank": 1,
+      "title": "Women's Trench Coats",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q13",
+      "system": "b1",
+      "rank": 2,
+      "title": "Classic Trench Coats | Black Friday Deals",
+      "merchant": "Madewell",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q13",
+      "system": "b1",
+      "rank": 3,
+      "title": "Trench Coats | Black Friday Deals",
+      "merchant": "Brooks Brothers",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q14",
+      "system": "b1",
+      "rank": 1,
+      "title": "Men's Henley T Shirts | Black Friday Sale | Banana Republic",
+      "merchant": "Banana Republic",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q14",
+      "system": "b1",
+      "rank": 2,
+      "title": "100 Percent Cotton Henley Shirts For Men",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q14",
+      "system": "b1",
+      "rank": 3,
+      "title": "Men's Henley Shirts",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q15",
+      "system": "b1",
+      "rank": 1,
+      "title": "Men's Cotton Shirts — Flannel, Chambray & Draped Twill",
+      "merchant": "Buck Mason",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q15",
+      "system": "b1",
+      "rank": 2,
+      "title": "The 9 Best Men's Button-Up Shirts of 2026 | Reviews by Wirecutter",
+      "merchant": "Wirecutter",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q15",
+      "system": "b1",
+      "rank": 3,
+      "title": "9 Best Brands Like Buck Mason (2026)",
+      "merchant": "The Good Trade",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q17",
+      "system": "b1",
+      "rank": 1,
+      "title": "$100 To $200 - Editors' Picks: Women's Winter Coats",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q17",
+      "system": "b1",
+      "rank": 2,
+      "title": "Women's Coats Under $200",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q17",
+      "system": "b1",
+      "rank": 3,
+      "title": "Women's Winter Coats Under $200",
+      "merchant": "L.L.Bean",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b1",
+      "rank": 1,
+      "title": "Men's Jeans - Low Rise, Skinny, Boot Cut & More | Old Navy - Gap",
+      "merchant": "Old Navy",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b1",
+      "rank": 2,
+      "title": "The Best Athletic-Fit Jeans for Your Big, Beautiful Thighs",
+      "merchant": "GQ",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b1",
+      "rank": 3,
+      "title": "The Best Jeans for Muscular Legs and a Small Waist",
+      "merchant": "Tailored Athlete",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q20",
+      "system": "b1",
+      "rank": 1,
+      "title": "Women's Semi Formal Pants",
+      "merchant": "L.L.Bean",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q20",
+      "system": "b1",
+      "rank": 2,
+      "title": "Best Women's Wear to Work Pants & Capris",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q20",
+      "system": "b1",
+      "rank": 3,
+      "title": "Women's Work Pants, Trousers and Ankle Pants",
+      "merchant": "Ann Taylor",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q22",
+      "system": "b1",
+      "rank": 1,
+      "title": "Big + Tall Men's Suit Separates",
+      "merchant": "DXL",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q22",
+      "system": "b1",
+      "rank": 2,
+      "title": "Plus Size Suits and Separates",
+      "merchant": "Men's Wearhouse",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q22",
+      "system": "b1",
+      "rank": 3,
+      "title": "Plus Size Suits For Men",
+      "merchant": "Jos. A. Bank",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q23",
+      "system": "b1",
+      "rank": 1,
+      "title": "Cashmere Sweaters for Women",
+      "merchant": "Nordstrom Rack",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q23",
+      "system": "b1",
+      "rank": 2,
+      "title": "Women's Cashmere Sweaters",
+      "merchant": "Macy's",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q23",
+      "system": "b1",
+      "rank": 3,
+      "title": "Women's Cashmere Sweaters",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q24",
+      "system": "b1",
+      "rank": 1,
+      "title": "Men's Under $100 Suits",
+      "merchant": "Men's Wearhouse",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q24",
+      "system": "b1",
+      "rank": 2,
+      "title": "Canvas Suits | Black Friday Deals",
+      "merchant": "Brooks Brothers",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q24",
+      "system": "b1",
+      "rank": 3,
+      "title": "25+ Full Canvas Suit for sale | Updated Nov 2026",
+      "merchant": "eBay marketplace (seller unspecified)",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q25",
+      "system": "b1",
+      "rank": 1,
+      "title": "100% Silk Blouse",
+      "merchant": "Amazon",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "unknown",
+      "classification_basis": "Generic singular title; individual product versus collection unresolved",
+      "claimed_price": null,
+      "flags": [
+        "unclear_product_identity",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "unknown",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_assessable",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q25",
+      "system": "b1",
+      "rank": 2,
+      "title": "Women's Silk Blouses",
+      "merchant": "Nordstrom",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q25",
+      "system": "b1",
+      "rank": 3,
+      "title": "100% Silk Tops | Black Friday Sale - Banana Republic - Gap",
+      "merchant": "Banana Republic",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "non_product",
+      "classification_basis": "Plural category, filtered collection, or editorial roundup in title/reason",
+      "claimed_price": null,
+      "flags": [
+        "not_a_product",
+        "missing_final_product_link",
+        "missing_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "not_applicable",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_a_product",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q1",
+      "system": "b2",
+      "rank": 1,
+      "title": "Levi's XX Chino Authentic Relaxed Pants",
+      "merchant": "Levi's",
+      "url": "https://www.levi.com/US/en_US/clothing/men/pants/chinos/xx-chino-authentic-relaxed-mens-pants/p/A57530054",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$63 (regularly $90)",
+      "flags": [
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Levi's",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q1",
+      "system": "b2",
+      "rank": 2,
+      "title": "Lands' End Men's Knockabout Traditional Fit Chino Pant",
+      "merchant": "Lands' End",
+      "url": "https://www.landsend.com/products/mens-knockabout-traditional-fit-chino-pant/id_501593",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$45 – $65 (depending on ongoing site discounts; retail ~$70)",
+      "flags": [
+        "merchant_gate_rejected",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Lands' End",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q1",
+      "system": "b2",
+      "rank": 3,
+      "title": "Dockers Signature Khakis (Athletic Fit)",
+      "merchant": "Dockers",
+      "url": "https://us.dockers.com/products/signature-khakis-athletic-fit-679760006",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$40 – $50 (regularly $80)",
+      "flags": [
+        "merchant_gate_rejected",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Dockers",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q2",
+      "system": "b2",
+      "rank": 1,
+      "title": "Uniqlo U Crew Neck Short-Sleeve T-Shirt",
+      "merchant": "Uniqlo",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAHvJK7yoSiFpJfXTvyYU1_UY9CCajtyd4JFxlbk_T-YeNnnoGRQrI3EAyTwoO77jMeuvnXtxl96HqSE8H-dRbMEFAf02sMwVUtjAqti_UU9F2DcbsCHDd9Xk-60hB5iSmU3OIs_FsIPK_",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$24.90",
+      "flags": [
+        "unresolved_grounding_redirect",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Uniqlo",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q2",
+      "system": "b2",
+      "rank": 2,
+      "title": "The 1801 - 6.5oz Garment Dye Crew Neck T-Shirt",
+      "merchant": "Los Angeles Apparel",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE56YHguSGByyn9B3rdSUdsxZC72FYxcNENrmxLaL99PW7hc2b1ZvM5dnHsJ22xtuRJiEnmBnngCKZ5xrQBqK-jqP1gqygoQUAxPFL9xa9gb57JQz35ewmexBItzTZFvYkqsXwVuRxnzt_F6Zu5_yfpZdfW-1PjcnpVhUJw9mEyGayiQ9BOOOSeUuyctkSEhZsb47L19reWcO7b9JGDMnVkR6KSL_jAjGu9U9HWN59C8ofD2bwejuD_CTxCGohXOMsvQcGPSflA6A==",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$26.00",
+      "flags": [
+        "merchant_gate_rejected",
+        "unresolved_grounding_redirect",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Los Angeles Apparel",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q2",
+      "system": "b2",
+      "rank": 3,
+      "title": "Carhartt Loose Fit Heavyweight Pocket T-Shirt (K87)",
+      "merchant": "Carhartt",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxZymk_8EbG-AH9iXQmOg7AGOaPqCsADUFxgdTlZloj4Kq1Q8D5iJEP-x_BdaB7d_QFP3RP-kYyXcMq4hopmleXP8PldqZUpJ89Akq38tm-AZpFu-slIBLU8U79tGcXknq_6fmq5pvZsiqmHF1FadArnIakg==",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$19.99",
+      "flags": [
+        "unresolved_grounding_redirect",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Carhartt",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q3",
+      "system": "b2",
+      "rank": 1,
+      "title": "J.Crew Broken-in Organic Cotton Oxford Shirt (Classic Fit)",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/broken-in-oxfords/broken-in-organic-cotton-oxford-shirt/BE996",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$98.00 (regularly discounted around $55–$65 during seasonal promotions)",
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q3",
+      "system": "b2",
+      "rank": 2,
+      "title": "Lands' End Men's Traditional Fit No Iron Supima Oxford Shirt",
+      "merchant": "Lands' End",
+      "url": "https://www.landsend.com/products/mens-traditional-fit-solid-no-iron-supima-oxford-dress-shirt/id_413634",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$79.95 (frequently drops between $35–$50 with sitewide coupons)",
+      "flags": [
+        "merchant_gate_rejected",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Lands' End",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q3",
+      "system": "b2",
+      "rank": 3,
+      "title": "L.L.Bean Men's Wrinkle-Free Classic Oxford Cloth Shirt (Traditional Fit)",
+      "merchant": "L.L.Bean",
+      "url": "https://www.llbean.com/llb/shop/209410",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$69.95 – $74.95",
+      "flags": [
+        "merchant_gate_rejected",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "L.L.Bean",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "b2",
+      "rank": 1,
+      "title": "Lands' End Women's Tall 3/4 Sleeve Cotton Supima Tunic",
+      "merchant": "Lands' End",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE79eBiYYpwlS1LLM5PBPo1XTbeWEJp-dK0866g4PBcQsaS6xo64rDwi0cv-qcp3G_-u_wVsjua9JOHwEd83T-Rhp1fKr35YnyMxm1trHouyr3vVg-g0hWTmcNK7B2qGAqJ4FYtBlORkyLvsk_XBWOkX8N-d_lxcC9Ndcq9zgPWn4erZ5dTJQJmqgiFbzoYyrEu9iku14f1kfIv9SSqZMX8U4zwU-Hhhql9NTou6w==",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$38 – $50 (frequently on sale for $14 – $35 during site promotions)",
+      "flags": [
+        "merchant_gate_rejected",
+        "unresolved_grounding_redirect",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Lands' End",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "b2",
+      "rank": 2,
+      "title": "Gap 100% Linen Oversized Shirt",
+      "merchant": "Gap",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFT9DZQZCzKzIdUK2HkaEjbzpYPLreeTkP2l8OKwR9XtA4fSyxS3q_5Bajek10S-8YeJQK0w2dIQUW9K2NeCQXKLdm7iykuE4nmTsc5jh28_FnK0QhfVkPFpBxKIZBKtq3VYoYw55UDw==",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$45 – $65 (MSRP $80, regularly marked down under $70)",
+      "flags": [
+        "unresolved_grounding_redirect",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "Gap",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q5",
+      "system": "b2",
+      "rank": 3,
+      "title": "J.Crew Factory Tall 100% Cotton Gauze Striped Button-Up Shirt",
+      "merchant": "J.Crew Factory",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEeBdeUu-AKuLNLuFJSOUJzSs0-SXMdFQETX_a2YypcQMAnjmsrdERDxCXQNyM1DqEgqR0Bue7DK8xZQbV2q535LBlCRfCUp7saonTqXh_TD5R2yCpzDjnrs6dUQH5jL8pXzoftLRxzJoHEGgYXxyaeZxFUE7TEh3W_Y1JfwF0=",
+      "url_source": "unresolved_grounding_redirect",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$48.50 (comparable value $98)",
+      "flags": [
+        "unresolved_grounding_redirect",
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 4,
+      "signals": {
+        "merchant": "J.Crew Factory",
+        "known_brand": true,
+        "domain_age_years": null,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "? Domain age unknown",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q6",
+      "system": "b2",
+      "rank": 1,
+      "title": "J.Crew Giant-Fit Oxford Shirt",
+      "merchant": "J.Crew",
+      "url": "https://www.jcrew.com/p/mens/categories/clothing/shirts/oxford/giant-fit-oxford-shirt/BT549",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "~$98.00 – $118.00",
+      "flags": [
+        "approximate_or_range_price",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "J.Crew",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q6",
+      "system": "b2",
+      "rank": 2,
+      "title": "Alex Crane Playa Linen Shirt at Huckberry",
+      "merchant": "Huckberry",
+      "url": "https://huckberry.com/store/alex-crane/category/p/75945-playa-linen-shirt",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$168.00",
+      "flags": [
+        "merchant_gate_rejected",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "rejected",
+      "legitimacy": 1,
+      "signals": {
+        "merchant": "Huckberry",
+        "known_brand": false,
+        "domain_age_years": null,
+        "third_party_reviews": null,
+        "return_policy": false,
+        "available": true
+      },
+      "reasons": [
+        "⚠ Unknown seller",
+        "? Domain age unknown",
+        "? No external review data",
+        "⚠ No return policy found"
+      ],
+      "primary_outcome": "merchant_gate_rejected",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q6",
+      "system": "b2",
+      "rank": 3,
+      "title": "Everlane Relaxed Linen Long-Sleeve Shirt",
+      "merchant": "Everlane",
+      "url": "https://www.everlane.com/products/mens-relaxed-linen-ls-camp-shirt-black",
+      "url_source": "final_answer",
+      "page_kind": "product_like",
+      "classification_basis": "Named individual product; live page not checked",
+      "claimed_price": "$88.00",
+      "flags": [
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "passed",
+      "legitimacy": 5,
+      "signals": {
+        "merchant": "Everlane",
+        "known_brand": true,
+        "domain_age_years": 10,
+        "third_party_reviews": 10000,
+        "return_policy": true,
+        "available": true
+      },
+      "reasons": [
+        "✓ Recognized brand/retailer",
+        "✓ Established domain (10+ years)",
+        "✓ Well-reviewed (10,000+ external reviews)",
+        "✓ Has return policy"
+      ],
+      "primary_outcome": "other_failures",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b0",
+      "rank": 1,
+      "title": "Everyday Cotton Straight Jeans",
+      "merchant": "Established Clothing Co.",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "synthetic",
+      "classification_basis": "Fixed illustrative catalog; no real seller/product URL",
+      "claimed_price": 68,
+      "flags": [
+        "synthetic_catalog",
+        "missing_final_product_link",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "unknown",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_assessable",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b0",
+      "rank": 2,
+      "title": "Essential Straight Jeans",
+      "merchant": "Trusted Apparel",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "synthetic",
+      "classification_basis": "Fixed illustrative catalog; no real seller/product URL",
+      "claimed_price": 52,
+      "flags": [
+        "synthetic_catalog",
+        "missing_final_product_link",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "unknown",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_assessable",
+      "original_gate": null,
+      "source_page": null
+    },
+    {
+      "query_id": "d2q18",
+      "system": "b0",
+      "rank": 3,
+      "title": "Premium Cotton Jeans",
+      "merchant": "Established Denim Co.",
+      "url": null,
+      "url_source": "not_saved",
+      "page_kind": "synthetic",
+      "classification_basis": "Fixed illustrative catalog; no real seller/product URL",
+      "claimed_price": 95,
+      "flags": [
+        "synthetic_catalog",
+        "missing_final_product_link",
+        "no_usable_saved_page",
+        "natural_fiber_majority_unverified",
+        "exact_usd_price_unverified"
+      ],
+      "gate_status": "unknown",
+      "legitimacy": null,
+      "signals": null,
+      "primary_outcome": "not_assessable",
+      "original_gate": null,
+      "source_page": null
+    }
+  ]
+}
