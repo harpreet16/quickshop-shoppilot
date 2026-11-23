@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Protocol
 
 from dotenv import load_dotenv
+from quickshop.evidence.page_fields import material_from_jsonld
 
 load_dotenv()   # makes FIRECRAWL_API_KEY available even if nothing else loaded .env first
 
@@ -76,6 +77,7 @@ class RawExtraction:
     credits_used: int = 0
     extraction_error: str | None = None    # set when the JSON extraction was unusable but markdown exists
     og_image: str | None = None            # page's og:image from Firecrawl metadata: the preferred product photo
+    structured_material: str | None = None  # fabric from the page's own schema.org product data, when it states exactly one
     cacheable: bool = True                 # False for setup problems (no/bad key, no credits) so they are never remembered
 
 
@@ -180,7 +182,7 @@ class FirecrawlClient:
         scraper = self._get_scraper()
         if scraper is None:
             return self._fail(url, "FIRECRAWL_API_KEY is not set")
-        formats = ["markdown", {"type": "json", "schema": RAW_EXTRACTION_SCHEMA, "prompt": EXTRACTION_PROMPT}]
+        formats = ["markdown", {"type": "json", "schema": RAW_EXTRACTION_SCHEMA, "prompt": EXTRACTION_PROMPT}, "rawHtml"]
 
         doc, reason = None, "scrape failed"
         for attempt in range(self.max_retries + 1):
@@ -235,4 +237,5 @@ class FirecrawlClient:
 
         self.usage.add(successes=1)
         return RawExtraction(url, True, None, markdown if has_md else None, fields, status, credits,
-                             extraction_error, og_image=og_image)
+                             extraction_error, og_image=og_image,
+                             structured_material=material_from_jsonld(_attr(doc, "raw_html", "rawHtml")))

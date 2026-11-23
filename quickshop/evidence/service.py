@@ -77,6 +77,9 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
             if blocks > 1:
                 notes.append(f"{blocks} different composition blocks on the page")
                 force_ambiguous = True
+        elif raw.structured_material:
+            comp_raw = raw.structured_material
+            notes.append("composition read from the page's structured product data (extractor and page text had none)")
     elif markdown and not pf.appears_verbatim(comp_raw, markdown):
         if _numbers_on_page(comp_raw, markdown):
             notes.append("composition text is reworded, not verbatim; its numbers do appear on the page")

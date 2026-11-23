@@ -2,6 +2,7 @@
 # Each returns None (never a guess) when the value cannot be read safely.
 from __future__ import annotations
 
+import json
 import re
 
 _CURRENCY_SYMBOLS = {"$": "USD", "£": "GBP", "€": "EUR"}
@@ -125,6 +126,53 @@ def appears_verbatim(snippet: str | None, page_markdown: str | None) -> bool:
     if not snippet or not page_markdown:
         return False
     return _squash(snippet) in _squash(page_markdown)
+
+
+_JSONLD_BLOCK = re.compile(r"<script[^>]+application/ld\+json[^>]*>(.*?)</script>", re.S | re.I)
+_PRODUCT_TYPES = {"product", "individualproduct", "productmodel", "productgroup"}
+
+
+def _jsonld_nodes(data):
+    """The top-level nodes of one JSON-LD document: a list, an object, or the items of an @graph."""
+    if isinstance(data, list):
+        for item in data:
+            yield from _jsonld_nodes(item)
+    elif isinstance(data, dict):
+        if isinstance(data.get("@graph"), list):
+            yield from _jsonld_nodes(data["@graph"])
+        else:
+            yield data
+
+
+def _is_product_node(node: dict) -> bool:
+    kind = node.get("@type")
+    kinds = kind if isinstance(kind, list) else [kind]
+    return any(isinstance(k, str) and k.lower() in _PRODUCT_TYPES for k in kinds)
+
+
+def material_from_jsonld(html: str | None) -> str | None:
+    """The fabric a retailer states in its own schema.org Product data, e.g. "78% Cotton, 1% Elastane".
+    Only the page's top-level product entries count, never nested related products. If the page
+    states more than one different material, that is ambiguous, so the answer is None, not a guess."""
+    if not isinstance(html, str) or "ld+json" not in html.lower():
+        return None
+    found: dict[str, str] = {}
+    for block in _JSONLD_BLOCK.findall(html):
+        try:
+            data = json.loads(block.strip())
+        except ValueError:
+            continue
+        for node in _jsonld_nodes(data):
+            if not _is_product_node(node):
+                continue
+            material = node.get("material")
+            if isinstance(material, list):
+                material = ", ".join(m for m in material if isinstance(m, str))
+            if isinstance(material, str):
+                text = " ".join(material.split())
+                if text:
+                    found.setdefault(text.lower(), text)
+    return next(iter(found.values())) if len(found) == 1 else None
 
 
 def clean_image_url(value, base_url: str | None = None) -> str | None:
