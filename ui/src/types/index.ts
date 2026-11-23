@@ -14,6 +14,7 @@ export interface ScoredProduct {
   rating: number | null
   reviews: number | null
   url: string
+  image_url?: string | null
   scores: ProductScores
   eligible: boolean
   risk: RiskLevel | null

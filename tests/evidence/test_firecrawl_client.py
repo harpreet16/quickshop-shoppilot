@@ -65,7 +65,7 @@ def test_timeout_every_time_gives_up_with_reason():
 
 def test_rate_limit_retries_with_backoff():
     c, scraper, sleeps = client(RateLimitError("429"), RateLimitError("429"), load_fixture("blend_tee"))
-    assert c.scrape_product(URL).ok and sleeps == [1.0, 2.0]
+    assert c.scrape_product(URL).ok and sleeps == [4.0, 8.0]      # 429 waits 4x longer than other errors
 
 
 def test_rate_limit_forever_is_unavailable():
@@ -139,3 +139,37 @@ def test_usage_counts_calls_and_failures():
     c.scrape_product(URL)
     c.scrape_product(URL)
     assert c.usage.snapshot() == {"calls": 2, "successes": 2, "failures": 0, "retries": 0, "credits_used": 10}
+
+
+def test_server_errors_do_not_get_the_longer_rate_limit_wait():
+    class ServerError(Exception):
+        status_code = 500
+
+    c, scraper, sleeps = client(ServerError("boom"), load_fixture("blend_tee"))
+    assert c.scrape_product(URL).ok and sleeps == [1.0]
+
+
+def test_concurrent_scrapes_are_capped():
+    import threading
+    import time
+
+    from quickshop.evidence import firecrawl_client as fc
+
+    state = {"now": 0, "peak": 0}
+    lock = threading.Lock()
+
+    class Slow:
+        def scrape(self, url, *, formats, timeout):
+            with lock:
+                state["now"] += 1
+                state["peak"] = max(state["peak"], state["now"])
+            time.sleep(0.05)
+            with lock:
+                state["now"] -= 1
+            return load_fixture("blend_tee")
+
+    c = FirecrawlClient(scraper=Slow())
+    threads = [threading.Thread(target=c.scrape_product, args=(f"https://shop.test/p/{i}",)) for i in range(8)]
+    [t.start() for t in threads]
+    [t.join() for t in threads]
+    assert 1 <= state["peak"] <= fc.MAX_CONCURRENT_SCRAPES

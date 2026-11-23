@@ -169,3 +169,14 @@ class TestScoringBrackets:
         assert score_product(url="test", natural_fiber_pct=60)["quality"] == 3
         assert score_product(url="test", natural_fiber_pct=40)["quality"] == 2
         assert score_product(url="test", natural_fiber_pct=20)["quality"] == 1
+
+
+def test_search_listing_keeps_a_valid_thumbnail_and_drops_others():
+    from quickshop.tools.search import _extract_listings
+
+    out = _extract_listings({"shopping_results": [
+        {"title": "A", "extracted_price": 10, "source": "X", "link": "https://x.test/a", "thumbnail": "https://img.test/a.jpg"},
+        {"title": "B", "extracted_price": 10, "source": "X", "link": "https://x.test/b", "thumbnail": "data:image/gif;base64,AA"},
+        {"title": "C", "extracted_price": 10, "source": "X", "link": "https://x.test/c"},
+    ]})
+    assert [o["thumbnail"] for o in out] == ["https://img.test/a.jpg", None, None]

@@ -11,6 +11,7 @@ class Listing(BaseModel):
     rating: float | None = None
     reviews: int | None = None
     url: str
+    thumbnail: str | None = None   # search-result photo; shown when no page photo was read
 
 class Evidence(BaseModel):
     url: str

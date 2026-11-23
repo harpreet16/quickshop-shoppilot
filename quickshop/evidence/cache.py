@@ -16,7 +16,7 @@ from quickshop.evidence.schema import EvidenceRecord
 DEFAULT_DB_PATH = ".cache/evidence.sqlite3"
 
 FIELD_GROUPS: dict[str, tuple[str, ...]] = {
-    "static": ("title", "brand", "seller_name", "composition", "origin_country", "care_text", "return_policy"),
+    "static": ("title", "brand", "seller_name", "composition", "origin_country", "care_text", "return_policy", "image_url"),
     "reviews": ("reviews",),
     "volatile": ("price", "in_stock"),
 }

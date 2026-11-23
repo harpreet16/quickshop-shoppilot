@@ -110,3 +110,37 @@ def test_sse_helper_emits_valid_json_for_python_values():
 
     assert event["event"] == "tool_call"
     assert json.loads(event["data"]) == payload
+
+
+# ---- product photos
+
+def test_image_prefers_the_page_photo_and_falls_back_to_the_search_thumbnail():
+    hook = _hook()
+    listings = [dict(LISTINGS[0], thumbnail="https://thumb/a.jpg"), dict(LISTINGS[1], thumbnail="https://thumb/b.jpg"), LISTINGS[2]]
+    hook._on_tool_call(_event("search_listings", listings))
+    hook._on_tool_call(_event(
+        "fetch_product_evidence", {"url": "https://shop/a", "status": "ok", "image_url": "https://cdn/a-main.jpg"},
+        {"url": "https://shop/a"},
+    ))
+    for url, overall in (("https://shop/a", 4.4), ("https://shop/b", 3.6), ("https://shop/c", 3.0)):
+        hook._on_tool_call(_event("score_product", _scores(url, overall), {"url": url}))
+    by_url = {p["url"]: p for p in hook.products()}
+    assert by_url["https://shop/a"]["image_url"] == "https://cdn/a-main.jpg"   # page photo beats the thumbnail
+    assert by_url["https://shop/b"]["image_url"] == "https://thumb/b.jpg"      # no page photo: thumbnail
+    assert by_url["https://shop/c"]["image_url"] is None                       # nothing known: none, never invented
+
+
+def test_failed_page_read_still_gets_the_thumbnail():
+    hook = _hook()
+    hook._on_tool_call(_event("search_listings", [dict(LISTINGS[0], thumbnail="https://thumb/a.jpg")]))
+    hook._on_tool_call(_event("fetch_product_evidence", {"url": "https://shop/a", "status": "unavailable", "image_url": None}, {"url": "https://shop/a"}))
+    hook._on_tool_call(_event("score_product", _scores("https://shop/a", 4.0), {"url": "https://shop/a"}))
+    assert hook.products()[0]["image_url"] == "https://thumb/a.jpg"
+
+
+def test_non_http_image_from_a_tool_is_ignored():
+    hook = _hook()
+    hook._on_tool_call(_event("search_listings", LISTINGS))
+    hook._on_tool_call(_event("fetch_product_evidence", {"url": "https://shop/a", "image_url": "data:image/png;base64,AA"}, {"url": "https://shop/a"}))
+    hook._on_tool_call(_event("score_product", _scores("https://shop/a", 4.0), {"url": "https://shop/a"}))
+    assert hook.products()[0]["image_url"] is None

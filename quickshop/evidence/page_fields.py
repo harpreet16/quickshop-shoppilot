@@ -125,3 +125,20 @@ def appears_verbatim(snippet: str | None, page_markdown: str | None) -> bool:
     if not snippet or not page_markdown:
         return False
     return _squash(snippet) in _squash(page_markdown)
+
+
+def clean_image_url(value, base_url: str | None = None) -> str | None:
+    """An absolute http(s) image URL, or None. Rejects data:/javascript: URLs and anything not a URL."""
+    from urllib.parse import urljoin, urlsplit
+
+    text = clean_text(value)
+    if not text or len(text) > 2000 or " " in text:
+        return None
+    if text.startswith("//"):
+        text = "https:" + text
+    elif base_url and not urlsplit(text).scheme:
+        text = urljoin(base_url, text)
+    parts = urlsplit(text)
+    if parts.scheme not in ("http", "https") or not parts.netloc:
+        return None
+    return text

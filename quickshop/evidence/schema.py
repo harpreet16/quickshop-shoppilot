@@ -77,6 +77,7 @@ class EvidenceRecord(BaseModel):
     regenerated_fiber_pct: float | None = Field(default=None, ge=0, le=100)
     synthetic_fiber_pct: float | None = Field(default=None, ge=0, le=100)
 
+    image_url: str | None = None                 # main product photo (http/https), None when not found
     origin_country: str | None = None
     care_text: str | None = None
     return_policy: ReturnPolicy | None = None

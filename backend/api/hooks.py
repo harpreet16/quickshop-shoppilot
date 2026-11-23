@@ -41,6 +41,7 @@ class StreamingHook(HookProvider):
         self.calls: list[dict] = []
         self._listings: dict[str, dict] = {}
         self._scored: dict[str, dict] = {}
+        self._images: dict[str, str] = {}   # product page url -> image read from the page
 
     def register_hooks(self, registry, **kwargs):
         registry.add_callback(AfterToolCallEvent, self._on_tool_call)
@@ -76,6 +77,12 @@ class StreamingHook(HookProvider):
             for item in data:
                 if isinstance(item, dict) and item.get("url") and item.get("title"):
                     self._listings[_url_key(item["url"])] = item
+        elif name == "fetch_product_evidence" and isinstance(data, dict):
+            image = data.get("image_url")
+            if isinstance(image, str) and image.startswith(("http://", "https://")):
+                for url in (data.get("url"), (event.tool_use.get("input") or {}).get("url")):
+                    if url:
+                        self._images[_url_key(url)] = image
         elif name == "score_product" and isinstance(data, dict):
             if data.get("url") and data.get("available", True):
                 self._scored[_url_key(data["url"])] = {
@@ -98,6 +105,8 @@ class StreamingHook(HookProvider):
                     "rating": listing.get("rating"),
                     "reviews": listing.get("reviews"),
                     "url": scores["url"],
+                    # the product page's own photo is best; the search thumbnail covers products with no page read
+                    "image_url": self._images.get(key) or listing.get("thumbnail"),
                     "scores": {
                         k: scores.get(k)
                         for k in ("price", "quality", "legitimacy", "overall")
