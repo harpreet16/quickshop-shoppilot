@@ -5,7 +5,7 @@ agency**. Comparing against B1 isolates the contribution of adaptive search, sel
 and the scoring rule, separating it from the contribution of simply being online.
 
 ## Pipeline 
-1. **One** SerpAPI Google Shopping search for the raw query : no clarification, no re-search.
+1. **One** Firecrawl web search for the raw query : no clarification, no re-search.
 2. Take the **top 10** listings as-is : no triage, no selective deep extraction.
 3. **One** LLM call scoring all 10 from **listing metadata only** : no product-page evidence.
 4. **Arithmetic average** of the three axes (the same aggregation defect as B0).

@@ -13,7 +13,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 from backend.api.main import app  # noqa: E402
 from quickshop.config import GEMINI_MODEL_ID, MODEL_ID  # noqa: E402
 
-KEYS = ("SERPAPI_KEY", "FIRECRAWL_API_KEY", "GEMINI_API_KEY", "API_KEY")
+KEYS = ("FIRECRAWL_API_KEY", "GEMINI_API_KEY", "API_KEY")
 
 
 @pytest.fixture
@@ -24,18 +24,18 @@ def client(monkeypatch):
 
 
 def test_health_reports_gemini_when_its_key_is_set(client, monkeypatch):
-    for key in ("SERPAPI_KEY", "FIRECRAWL_API_KEY", "GEMINI_API_KEY"):
+    for key in ("FIRECRAWL_API_KEY", "GEMINI_API_KEY"):
         monkeypatch.setenv(key, "x")
 
     body = client.get("/health").json()
 
     assert body["status"] == "ok"
     assert body["model"] == GEMINI_MODEL_ID
-    assert body["services"] == {"serpapi": True, "firecrawl": True, "model": True}
+    assert body["services"] == {"firecrawl": True, "model": True}
 
 
 def test_health_reports_asu_model_when_only_the_asu_key_is_set(client, monkeypatch):
-    for key in ("SERPAPI_KEY", "FIRECRAWL_API_KEY", "API_KEY"):
+    for key in ("FIRECRAWL_API_KEY", "API_KEY"):
         monkeypatch.setenv(key, "x")
 
     body = client.get("/health").json()
@@ -46,12 +46,12 @@ def test_health_reports_asu_model_when_only_the_asu_key_is_set(client, monkeypat
 
 
 def test_health_is_degraded_and_names_what_is_missing(client, monkeypatch):
-    monkeypatch.setenv("SERPAPI_KEY", "x")
+    monkeypatch.setenv("API_KEY", "x")
 
     body = client.get("/health").json()
 
     assert body["status"] == "degraded"
-    assert body["services"] == {"serpapi": True, "firecrawl": False, "model": False}
+    assert body["services"] == {"firecrawl": False, "model": True}
 
 
 def test_cors_allows_the_frontend_origin(client):

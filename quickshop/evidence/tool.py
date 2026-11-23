@@ -30,7 +30,13 @@ def set_service(service: EvidenceService | None) -> None:
 
 def get_usage() -> dict:
     """Firecrawl calls/credits and cache counters, for Part A's budget logic and for evaluation."""
-    return get_service().usage()
+    from quickshop.tools.search import get_search_usage
+
+    usage = get_service().usage()
+    search = get_search_usage()
+    usage["firecrawl"]["calls"] += search["calls"]
+    usage["firecrawl"]["credits_used"] += search["credits_used"]
+    return usage
 
 
 @tool

@@ -1,6 +1,6 @@
 # To run use: python -m quickshop "black jeans under $80"
-# Add --frozen to reuse saved searches and saved page evidence, so the run makes no SerpAPI
-# or Firecrawl calls and gives the same tool results every time.
+# Add --frozen to reuse saved searches and saved page evidence, so the run makes no Firecrawl
+# calls and gives the same tool results every time.
 import os
 import sys
 

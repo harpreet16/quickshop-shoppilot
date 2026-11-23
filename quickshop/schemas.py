@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 class Listing(BaseModel):
     title: str
-    price: float
+    price: float | None = None
     merchant: str
     domain: str | None = None
     rating: float | None = None

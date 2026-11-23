@@ -4,7 +4,7 @@ from typing import Literal
 def render_recommendation(
     rank: int,
     title: str,
-    price: float,
+    price: float | None,
     merchant: str,
     url: str,
     scores: dict,
@@ -13,7 +13,8 @@ def render_recommendation(
     """Render a single recommended product."""
     lines = []
     lines.append(f"{rank}. {title}")
-    lines.append(f"   Price: ${price:.2f} from {merchant}")
+    price_text = f"${price:.2f}" if price is not None else "unknown"
+    lines.append(f"   Price: {price_text} from {merchant}")
     lines.append(f"   Link: {url}")
     lines.append(
         f"   Scores: price={scores['price']}/5, quality={scores['quality']}/5, legitimacy={scores['legitimacy']}/5"
@@ -30,12 +31,13 @@ def render_recommendation(
 
 def render_warning(
     title: str,
-    price: float,
+    price: float | None,
     merchant: str,
     reason: str,
 ) -> str:
     """Render a product in the warning section."""
-    return f"   ⚠ {title} (${price:.2f} from {merchant})\n     Reason: {reason}"
+    price_text = f"${price:.2f}" if price is not None else "price unknown"
+    return f"   ⚠ {title} ({price_text} from {merchant})\n     Reason: {reason}"
 
 
 def render_report(

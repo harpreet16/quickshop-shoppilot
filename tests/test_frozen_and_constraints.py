@@ -1,5 +1,5 @@
 # Tests for search replay (--frozen) and for not asking what the user already said.
-# They run offline: SerpAPI is replaced by a fake client.
+# They run offline: Firecrawl is replaced by a fake client.
 from types import SimpleNamespace
 
 import pytest
@@ -10,15 +10,14 @@ from quickshop.tools import search as search_module
 from quickshop.tools import search_snapshot
 from quickshop.tools.search import search_listings
 
-SERP_RESPONSE = {
-    "shopping_results": [
-        {"title": "Levi's Classic Straight Jeans", "extracted_price": 48.65, "source": "Kohl's",
-         "link": "https://www.kohls.com/product/123", "rating": 4.6, "reviews": 900},
-        {"title": "Old Navy Straight Jeans", "extracted_price": 26.99, "source": "Old Navy",
-         "link": "https://oldnavy.gap.com/browse/456", "rating": 4.2, "reviews": 300},
-    ]
+SEARCH_RESPONSE = {
+    "success": True,
+    "creditsUsed": 2,
+    "data": {"web": [
+        {"title": "Levi's Classic Straight Jeans", "url": "https://www.kohls.com/product/123"},
+        {"title": "Old Navy Straight Jeans", "url": "https://oldnavy.gap.com/browse/456"},
+    ]},
 }
-
 
 class FakeClient:
     calls = 0
@@ -32,9 +31,9 @@ class FakeClient:
     def __exit__(self, *exc):
         return False
 
-    def get(self, url, params=None):
+    def post(self, url, **kwargs):
         FakeClient.calls += 1
-        return SimpleNamespace(raise_for_status=lambda: None, json=lambda: SERP_RESPONSE)
+        return SimpleNamespace(raise_for_status=lambda: None, json=lambda: SEARCH_RESPONSE)
 
 
 @pytest.fixture
@@ -44,30 +43,31 @@ def snapshot_file(tmp_path, monkeypatch):
     monkeypatch.delenv("QUICKSHOP_SEARCH_REPLAY", raising=False)
     monkeypatch.setattr(search_module.httpx, "Client", FakeClient)
     FakeClient.calls = 0
+    monkeypatch.setattr(search_module, "_usage", {"calls": 0, "credits_used": 0})
     return path
 
 
 # -- search replay
 
 def test_live_search_is_saved(snapshot_file, monkeypatch):
-    monkeypatch.setenv("SERPAPI_KEY", "test")
+    monkeypatch.setenv("FIRECRAWL_API_KEY", "test")
     listings = search_listings("black jeans under $80")
     assert len(listings) == 2 and snapshot_file.exists()
     assert search_snapshot.load("black jeans under $80", 20) == listings
 
 
-def test_frozen_search_gives_same_listings_without_calling_serpapi(snapshot_file, monkeypatch):
-    monkeypatch.setenv("SERPAPI_KEY", "test")
+def test_frozen_search_gives_same_listings_without_calling_firecrawl(snapshot_file, monkeypatch):
+    monkeypatch.setenv("FIRECRAWL_API_KEY", "test")
     live = search_listings("black jeans under $80")
     monkeypatch.setenv("QUICKSHOP_SEARCH_REPLAY", "1")
-    monkeypatch.delenv("SERPAPI_KEY")   # frozen mode needs no key
+    monkeypatch.delenv("FIRECRAWL_API_KEY")   # frozen mode needs no key
     frozen = search_listings("black jeans under $80")
     assert frozen == live
-    assert FakeClient.calls == 1        # only the live run called SerpAPI
+    assert FakeClient.calls == 1        # only the live run called Firecrawl
 
 
 def test_query_spacing_and_case_do_not_matter(snapshot_file, monkeypatch):
-    monkeypatch.setenv("SERPAPI_KEY", "test")
+    monkeypatch.setenv("FIRECRAWL_API_KEY", "test")
     live = search_listings("Black  Jeans under $80 ")
     monkeypatch.setenv("QUICKSHOP_SEARCH_REPLAY", "1")
     assert search_listings("black jeans under $80") == live
@@ -81,7 +81,7 @@ def test_frozen_search_never_saved_returns_error(snapshot_file, monkeypatch):
 
 
 def test_failed_search_is_not_saved(snapshot_file, monkeypatch):
-    monkeypatch.delenv("SERPAPI_KEY", raising=False)
+    monkeypatch.delenv("FIRECRAWL_API_KEY", raising=False)
     result = search_listings("black jeans")
     assert result[0]["available"] is False
     assert search_snapshot.load("black jeans", 20) is None

@@ -43,7 +43,7 @@ git clone https://github.com/harpreet16/quickshop-shoppilot.git
 cd quickshop-shoppilot
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
-cp .env.example .env  # Add: API_KEY, SERPAPI_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
+cp .env.example .env  # Add: API_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
 
 # Run QuickShop agent (interactive, output to terminal)
 python -m quickshop 'black jeans under $80'
@@ -84,8 +84,8 @@ streamlit run app.py -- --frozen
 Open http://127.0.0.1:8501. Project configuration binds the server to localhost;
 this pilot has no authentication and must not be exposed publicly.
 
-Live mode uses server-side `.env` keys: `API_KEY` (ASU gateway), `SERPAPI_KEY`
-(add this manually if absent from your template), and `FIRECRAWL_API_KEY`.
+Live mode uses server-side `.env` keys: `API_KEY` (ASU gateway)
+and `FIRECRAWL_API_KEY` (search and product-page reading).
 No keys are entered or displayed in the page. Gemini is not needed for this UI.
 Keep `QUICKSHOP_EVIDENCE_REPLAY=0` for fresh live evidence.
 
@@ -111,7 +111,7 @@ are not promoted into recommendation cards.
 
 **Frozen mode** uses synthetic fixed black-jeans listings/evidence inspired by
 `outputs/quickshop_output.txt`, including an untrusted eBay seller. It still uses
-the live ASU model and requires `API_KEY`, but makes no SerpAPI/Firecrawl calls.
+the live ASU model and requires `API_KEY`, but makes no Firecrawl calls.
 Demo links are placeholders, not purchasable offers. Other searches still receive
 the same demo products. Mode changes and **New conversation** clear the browser's
 conversation; they are disabled while work is active. Answer pending questions
@@ -190,17 +190,24 @@ of guessing.
 
 | Tool | Returns | Source |
 |------|---------|--------|
-| `search_listings` | candidate listings | SerpAPI |
+| `search_listings` | candidate listings | Firecrawl web search |
 | `fetch_product_evidence` | evidence record (composition, origin, policy, reviews) | Firecrawl |
-| `check_merchant` | merchant signals (domain age, reviews, allowlist) | SerpAPI, public records |
+| `check_merchant` | merchant signals (domain age, reviews, allowlist) | local brand/domain heuristics (no live search) |
 | `score_product` | per-axis scores | deterministic Python |
 | `ask_user` | clarification answers | user |
 
 ### External services
 
-- **SerpAPI** : Google Shopping endpoint for discovery.
+- **Firecrawl Search** : web discovery with direct URLs; price, rating and reviews remain null until verified from page evidence. B1 also uses this search without page reads, so its metadata is sparse.
 - **Firecrawl** : schema-constrained JSON extracted from a product page for evidence.
 
+**Search migration:** Live QuickShop and B1 need only `FIRECRAWL_API_KEY` for discovery;
+remove the old search-provider key from your local environment if no longer needed.
+`/health.services` now contains `firecrawl` and `model` only. Saved search snapshots remain
+replayable, including older shopping results. B1's offline fixture and captured evaluation
+outputs are historical; rerun live evaluations before comparing the new search provider.
+B2 deliberately retains model-native Google/OpenAI search as a separate benchmark.
+Search does not scrape pages; product facts and photos require the existing evidence step.
 ## Product evidence (`fetch_product_evidence`)
 
 Given a product URL, `quickshop/evidence/` returns one validated `EvidenceRecord`. It does no search,
@@ -214,7 +221,7 @@ URL -> canonicalize -> cache (per-field TTL) -> Firecrawl (JSON extraction + mar
 | File | Job |
 |------|-----|
 | `schema.py` | `EvidenceRecord` and its parts. Unknown is `None`, never 0. Percentages 0 to 100, currency is a code. |
-| `firecrawl_client.py` | The only file that talks to Firecrawl. Never raises; failures become `status="unavailable"` with a reason. Exposes a calls/credits counter. |
+| `firecrawl_client.py` | Product-page Firecrawl client. Never raises; failures become `status="unavailable"` with a reason. Exposes a calls/credits counter. |
 | `fabric.py` + `fiber_config.py` | Pure-Python composition parser. Fiber names, categories and part labels live in `fiber_config.py` as data. |
 | `cache.py` | SQLite cache keyed by canonical URL. `canonicalize_url()` lives here. |
 | `service.py` | The pipeline (`EvidenceService`). `build_record()` is pure and testable. |
@@ -241,10 +248,10 @@ could not be read. `composition_confidence` is `explicit`, `ambiguous` (e.g. per
 | `QUICKSHOP_EVIDENCE_CACHE` | `.env` | `.cache/evidence.sqlite3` |
 | `QUICKSHOP_EVIDENCE_REPLAY=1` | `.env` | off. Serve only from the cache, never call Firecrawl (reproducible evaluation). |
 | `QUICKSHOP_SEARCH_SNAPSHOT` | `.env` | `.cache/search_snapshot.json`. Where saved searches are kept. |
-| `QUICKSHOP_SEARCH_REPLAY=1` | `.env` | off. Use only saved searches, never call SerpAPI. `--frozen` turns this on, along with `QUICKSHOP_EVIDENCE_REPLAY`. |
+| `QUICKSHOP_SEARCH_REPLAY=1` | `.env` | off. Use only saved searches, never call Firecrawl search. `--frozen` turns this on, along with `QUICKSHOP_EVIDENCE_REPLAY`. |
 
 **Cost.** A fresh page read is about 5 Firecrawl credits (1 + 4 for JSON extraction). Cached reads are
-free. For the budget hook, `quickshop.evidence.tool.get_usage()` returns Firecrawl calls and credits
+free. For the budget hook, `quickshop.evidence.tool.get_usage()` returns combined search/page-read Firecrawl calls and reported credits
 plus cache hits and misses. The cache can be frozen with `EvidenceCache.export_json()`.
 
 **Tests:** `pytest` runs everything offline from saved page fixtures in `tests/evidence/fixtures/`.

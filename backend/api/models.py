@@ -85,7 +85,6 @@ class ErrorPayload(BaseModel):
 
 
 class ServiceStatus(BaseModel):
-    serpapi: bool
     firecrawl: bool
     model: bool
 

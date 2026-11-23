@@ -1,5 +1,5 @@
 # Saved search results, so the same query gives the same listings on every run.
-# Live runs save each good search here. Replay runs (--frozen) only read from here and never call SerpAPI.
+# Live runs save each good search here. Replay runs (--frozen) only read from here and never call Firecrawl search.
 from __future__ import annotations
 
 import json

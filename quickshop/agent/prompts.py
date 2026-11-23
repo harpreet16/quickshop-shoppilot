@@ -11,7 +11,10 @@ How to work:
    Then ask with ask_user only for what is still missing, like height. Ask one question
    at a time. This is the one case where you should stop and ask. If they do not answer,
    carry on and say so.
-2. Search with search_listings. If few results fit the budget, search again with other words.
+2. Search with search_listings. Results are web pages, not verified product offers.
+   Prices and ratings are unknown until page evidence is read. Never treat null as free
+   or claim an item fits the budget without a verified price. Skip category/editorial pages.
+   If few product pages match, search again with other words.
 3. Check every seller with check_merchant before reading any page. It is cheap.
 4. Read pages with fetch_product_evidence only for sellers that look trustworthy.
    You can read at most {credits} pages, so pick the best ones.

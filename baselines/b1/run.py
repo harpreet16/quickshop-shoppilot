@@ -22,16 +22,12 @@ def search_listings(query, mock=False):
         with open(os.path.join(here, "fixtures", "serpapi_response.json")) as f:
             data = json.load(f)
     else:
-        import requests
+        from quickshop.tools.search import search_listings as discover
 
-        params = {
-            "engine": "google_shopping",
-            "q": query,
-            "api_key": os.getenv("SERPAPI_KEY"),
-        }
-        resp = requests.get("https://serpapi.com/search", params=params, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
+        results = discover(query, max_results=TOP_N)
+        if results and results[0].get("available") is False:
+            raise RuntimeError(results[0]["error"])
+        return [{**item, "link": item["url"]} for item in results]
 
     results = data.get("shopping_results", [])[:TOP_N]
     listings = []
@@ -54,7 +50,7 @@ def build_prompt(query, listings):
     return f"""
 You are a shopping recommendation system. Score each listing ONLY from the
 metadata provided (title, price, merchant, rating, reviews). You do NOT have the
-product page, so treat missing material/seller detail as uncertainty.
+product page, so treat missing detail as uncertainty. Keep unknown prices null; never invent them.
 
 For EACH listing give integer scores 1-5 for:
 - price   (fit to the user's budget if stated; cheaper-but-reasonable scores higher)

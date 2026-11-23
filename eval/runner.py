@@ -106,7 +106,7 @@ def run_b0(query: str) -> dict:
 
 
 def run_b1(query: str) -> dict:
-    """B1 baseline (SerpAPI + LLM scoring, no page reads)."""
+    """B1 baseline (Firecrawl search + LLM scoring, no page reads)."""
     here = Path(__file__).parent.parent / "baselines" / "b1"
 
     (here / "input.txt").write_text(query)
@@ -359,7 +359,7 @@ def main():
     parser.add_argument(
         "--frozen",
         action="store_true",
-        help="QuickShop uses saved searches and saved page evidence only (no SerpAPI or Firecrawl calls)",
+        help="QuickShop uses saved searches and saved page evidence only (no Firecrawl calls)",
     )
     parser.add_argument(
         "--dataset", "-d",

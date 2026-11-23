@@ -7,8 +7,7 @@ const POLL_INTERVAL_MS = 30_000
 const REQUEST_TIMEOUT_MS = 5_000
 
 const SERVICE_LABELS: Record<string, string> = {
-  serpapi: 'Product search',
-  firecrawl: 'Page reader',
+  firecrawl: 'Product search and page reader',
   model: 'AI model',
 }
 

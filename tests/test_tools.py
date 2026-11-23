@@ -7,17 +7,17 @@ from quickshop.tools.scoring import score_product
 
 
 class TestSearchListings:
-    """Tests for the SerpAPI search tool."""
+    """Tests for the Firecrawl search tool."""
 
     def test_search_returns_list(self, monkeypatch):
         """Search should return a list."""
-        monkeypatch.setenv("SERPAPI_KEY", "")
+        monkeypatch.setenv("FIRECRAWL_API_KEY", "")
         result = search_listings("black jeans")
         assert isinstance(result, list)
 
     def test_search_without_key_returns_error(self, monkeypatch):
         """Without API key, should return error dict."""
-        monkeypatch.delenv("SERPAPI_KEY", raising=False)
+        monkeypatch.delenv("FIRECRAWL_API_KEY", raising=False)
         result = search_listings("test query")
         assert len(result) == 1
         assert "error" in result[0] or "available" in result[0]
@@ -171,12 +171,20 @@ class TestScoringBrackets:
         assert score_product(url="test", natural_fiber_pct=20)["quality"] == 1
 
 
-def test_search_listing_keeps_a_valid_thumbnail_and_drops_others():
+def test_search_results_do_not_invent_product_metadata():
     from quickshop.tools.search import _extract_listings
 
-    out = _extract_listings({"shopping_results": [
-        {"title": "A", "extracted_price": 10, "source": "X", "link": "https://x.test/a", "thumbnail": "https://img.test/a.jpg"},
-        {"title": "B", "extracted_price": 10, "source": "X", "link": "https://x.test/b", "thumbnail": "data:image/gif;base64,AA"},
-        {"title": "C", "extracted_price": 10, "source": "X", "link": "https://x.test/c"},
-    ]})
-    assert [o["thumbnail"] for o in out] == ["https://img.test/a.jpg", None, None]
+    out = _extract_listings({"data": {"web": [
+        {"title": "Jeans", "url": "https://www.shop.test/p",
+         "description": "Under $80, thousands of happy customers"},
+        {"title": "Jeans", "url": "https://www.shop.test/p"},
+        {"title": "Bad", "url": "javascript:alert(1)"},
+        {"title": "Bad", "url": "https:///missing-host"},
+        {"url": "https://shop.test/no-title"},
+        None,
+    ]}})
+    assert out == [{
+        "title": "Jeans", "url": "https://www.shop.test/p", "merchant": "shop.test",
+        "domain": "shop.test", "price": None, "rating": None, "reviews": None,
+        "thumbnail": None,
+    }]

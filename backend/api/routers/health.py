@@ -10,11 +10,10 @@ router = APIRouter(tags=["health"])
 async def health() -> HealthResponse:
     """Returns the health of the API and whether each external service key is configured."""
     services = ServiceStatus(
-        serpapi=bool(os.getenv("SERPAPI_KEY")),
         firecrawl=bool(os.getenv("FIRECRAWL_API_KEY")),
         model=model_configured(),
     )
-    all_ok = all([services.serpapi, services.firecrawl, services.model])
+    all_ok = all([services.firecrawl, services.model])
     return HealthResponse(
         status="ok" if all_ok else "degraded",
         model=active_model_id(),
