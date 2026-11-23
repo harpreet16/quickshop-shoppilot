@@ -3,8 +3,16 @@ import json
 import os
 import sys
 import time
+import warnings
 from datetime import datetime
 from pathlib import Path
+
+# suppress known upstream Strands harness warnings that don't affect correctness
+warnings.filterwarnings("ignore", message="Invalid configuration parameters.*api_key.*", category=UserWarning)
+warnings.filterwarnings("ignore", message="context_window_limit is not set", category=UserWarning)
+warnings.filterwarnings("ignore", message="prompt caching not applied", category=UserWarning)
+# suppress the double-import warning caused by sys.path manipulation below
+warnings.filterwarnings("ignore", message=".*found in sys.modules.*", category=RuntimeWarning)
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
