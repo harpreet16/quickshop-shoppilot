@@ -14,6 +14,12 @@ load_dotenv()
 SERPAPI_BASE = "https://serpapi.com/search"
 
 
+def _thumbnail(item: dict) -> Optional[str]:
+    """The listing's photo URL if SerpAPI gave a plain http(s) one."""
+    value = item.get("thumbnail")
+    return value if isinstance(value, str) and value.startswith(("http://", "https://")) else None
+
+
 def _extract_listings(results: dict) -> list[dict]:
     """Extract listings from SerpAPI shopping results."""
     listings = []
@@ -53,6 +59,7 @@ def _extract_listings(results: dict) -> list[dict]:
                 rating=item.get("rating"),
                 reviews=item.get("reviews"),
                 url=link,
+                thumbnail=_thumbnail(item),
             )
             listings.append(listing.model_dump())
         except Exception as e:

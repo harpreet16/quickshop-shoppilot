@@ -50,6 +50,7 @@ class ProductResult(BaseModel):
     rating: float | None = None
     reviews: int | None = None
     url: str
+    image_url: str | None = Field(None, description="Product photo: from the page read when there was one, else the search thumbnail")
     scores: ProductScores
     eligible: bool = Field(
         ...,

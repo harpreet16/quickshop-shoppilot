@@ -18,6 +18,12 @@ load_dotenv()   # makes FIRECRAWL_API_KEY available even if nothing else loaded 
 ESTIMATED_CREDITS_PER_SCRAPE = 5
 DEFAULT_TIMEOUT_MS = 60_000     # Firecrawl's scrape timeout is in milliseconds
 
+# The agent can ask for several page reads at once, and Firecrawl answers a burst with HTTP 429.
+# At most this many scrapes run at the same time in this process (the rest wait their turn).
+MAX_CONCURRENT_SCRAPES = max(1, int(os.getenv("QUICKSHOP_FIRECRAWL_CONCURRENCY") or 2))
+_SCRAPE_SLOTS = threading.BoundedSemaphore(MAX_CONCURRENT_SCRAPES)
+RATE_LIMIT_BACKOFF_FACTOR = 4   # after a 429, wait this many times longer than for other errors
+
 EXTRACTION_PROMPT = (
     "Extract facts about the single clothing product this page is about. "
     "Copy composition, origin, return policy, price, rating and availability text VERBATIM from the page; "
@@ -45,6 +51,8 @@ RAW_EXTRACTION_SCHEMA: dict = {
         "rating_text": _S,
         "in_stock": {"type": ["boolean", "null"]},
         "availability_text": _S,
+        "image_url": {**_S, "description": "the full https URL of the MAIN product photo exactly as it appears "
+                                           "on the page; not a colour swatch, logo, icon or another product"},
     },
 }
 
@@ -67,6 +75,7 @@ class RawExtraction:
     http_status: int | None = None
     credits_used: int = 0
     extraction_error: str | None = None    # set when the JSON extraction was unusable but markdown exists
+    og_image: str | None = None            # page's og:image from Firecrawl metadata: the preferred product photo
     cacheable: bool = True                 # False for setup problems (no/bad key, no credits) so they are never remembered
 
 
@@ -138,7 +147,7 @@ def _classify_error(exc: Exception) -> tuple[bool, str]:
 
 class FirecrawlClient:
     def __init__(self, api_key: str | None = None, *, scraper: Scraper | None = None,
-                 timeout_ms: int = DEFAULT_TIMEOUT_MS, max_retries: int = 2, backoff_s: float = 1.0,
+                 timeout_ms: int = DEFAULT_TIMEOUT_MS, max_retries: int = 3, backoff_s: float = 1.0,
                  sleep: Callable[[float], None] = time.sleep):
         self.api_key = api_key if api_key is not None else os.getenv("FIRECRAWL_API_KEY")
         self._scraper = scraper
@@ -177,14 +186,18 @@ class FirecrawlClient:
         for attempt in range(self.max_retries + 1):
             self.usage.add(calls=1)
             try:
-                doc = scraper.scrape(url, formats=formats, timeout=self.timeout_ms)
+                with _SCRAPE_SLOTS:
+                    doc = scraper.scrape(url, formats=formats, timeout=self.timeout_ms)
                 break
             except Exception as exc:
                 retryable, reason = _classify_error(exc)
                 if not retryable or attempt == self.max_retries:
                     return self._fail(url, reason if not retryable else f"{reason} after {attempt + 1} tries")
                 self.usage.add(retries=1)
-                self._sleep(self.backoff_s * (2 ** attempt))
+                wait = self.backoff_s * (2 ** attempt)
+                if "429" in reason:
+                    wait *= RATE_LIMIT_BACKOFF_FACTOR      # being rate limited needs a real pause, not 1 second
+                self._sleep(wait)
 
         meta = _attr(doc, "metadata")
         markdown = _attr(doc, "markdown")
@@ -217,6 +230,9 @@ class FirecrawlClient:
             return self._fail(url, "not a product page: no product data found", http_status=status,
                               markdown=markdown, credits_used=credits)
 
+        og_image = _attr(meta, "og_image", "ogImage")
+        og_image = og_image.strip() if isinstance(og_image, str) and og_image.strip() else None
+
         self.usage.add(successes=1)
         return RawExtraction(url, True, None, markdown if has_md else None, fields, status, credits,
-                             extraction_error)
+                             extraction_error, og_image=og_image)

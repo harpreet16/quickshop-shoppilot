@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { Box, Flex, Link, Text } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { useTilt } from '@/hooks/useTilt'
 import { evidenceGlyph, fabricLabel, formatPrice, parseEvidence } from '@/lib/results'
 import { EASE, fonts, palette } from '@/theme/palette'
 import { Icon } from './Icon'
+import { ProductImage } from './ProductImage'
 import { RiskTag } from './RiskTag'
 import { ScoreMeter } from './ScoreMeter'
 import type { ScoredProduct } from '@/types'
@@ -20,6 +22,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, rank, featured }: ProductCardProps) {
   const [showAll, setShowAll] = useState(false)
+  const tilt = useTilt(featured ? 4 : 7)
   const evidence = product.evidence.map(parseEvidence)
   const visible = showAll ? evidence : evidence.slice(0, VISIBLE_EVIDENCE)
   const hiddenCount = evidence.length - VISIBLE_EVIDENCE
@@ -65,11 +68,27 @@ export function ProductCard({ product, rank, featured }: ProductCardProps) {
       layout
       initial={{ opacity: 0, y: 26 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -3 }}
       transition={{ duration: 0.6, delay: Math.min(rank, 5) * 0.08, ease: EASE }}
-      style={{ height: '100%' }}
+      // perspective lives on the parent so the tilting child is drawn in 3D
+      style={{ height: '100%', perspective: 1100 }}
       aria-label={`${product.title}, ${formatPrice(product.price)}, sold by ${product.merchant}`}
     >
+      <motion.div
+        onPointerMove={tilt.onPointerMove}
+        onPointerLeave={tilt.onPointerLeave}
+        whileHover={tilt.enabled ? { scale: 1.015 } : undefined}
+        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+        style={{
+          height: '100%',
+          position: 'relative',
+          borderRadius: 10,
+          transformStyle: 'preserve-3d',
+          rotateX: tilt.enabled ? tilt.rotateX : 0,
+          rotateY: tilt.enabled ? tilt.rotateY : 0,
+          boxShadow: tilt.enabled ? tilt.boxShadow : '0 1px 2px rgba(15, 27, 45, 0.05)',
+          willChange: 'transform',
+        }}
+      >
       <Flex
         direction={featured ? { base: 'column', md: 'row' } : 'column'}
         h="100%"
@@ -82,10 +101,12 @@ export function ProductCard({ product, rank, featured }: ProductCardProps) {
         minW={0}
         css={{
           transition: 'box-shadow 0.35s ease, border-color 0.35s ease',
-          '&:hover': { boxShadow: '0 22px 48px rgba(15, 27, 45, 0.11)', borderColor: palette.ink },
+          '&:hover': { borderColor: palette.ink },
         }}
       >
-        {featured && <Box position="absolute" top={0} left={0} right={0} h="3px" bg={palette.brass} />}
+        {featured && <Box position="absolute" top={0} left={0} right={0} h="3px" bg={palette.brass} zIndex={1} />}
+
+        {featured && product.image_url && <ProductImage src={product.image_url} alt={product.title} variant="hero" shiftX={tilt.enabled ? tilt.shiftX : undefined} shiftY={tilt.enabled ? tilt.shiftY : undefined} />}
 
         <Flex direction="column" gap={5} p={{ base: 5, md: featured ? 8 : 6 }} flex={featured ? '1.15' : undefined} minW={0}>
           <Flex justifyContent="space-between" alignItems="center" gap={3}>
@@ -102,41 +123,46 @@ export function ProductCard({ product, rank, featured }: ProductCardProps) {
             <RiskTag risk={product.risk} />
           </Flex>
 
-          <Box minW={0}>
-            <Text fontSize="11px" fontWeight="700" letterSpacing="0.18em" textTransform="uppercase" color={palette.textSecondary}>
-              {product.merchant}
-            </Text>
-            <Text
-              as="h3"
-              mt={2}
-              fontFamily={fonts.display}
-              fontSize={featured ? { base: '27px', md: '33px' } : '24px'}
-              fontWeight="500"
-              lineHeight="1.15"
-              letterSpacing="-0.01em"
-              color={palette.ink}
-              lineClamp={3}
-              overflowWrap="anywhere"
-            >
-              {product.title}
-            </Text>
-          </Box>
+          <Flex gap={{ base: 4, md: 5 }} alignItems="flex-start" minW={0}>
+            {!featured && product.image_url && <ProductImage src={product.image_url} alt={product.title} variant="thumb" shiftX={tilt.enabled ? tilt.shiftX : undefined} shiftY={tilt.enabled ? tilt.shiftY : undefined} />}
+            <Flex direction="column" gap={5} flex={1} minW={0}>
+              <Box minW={0}>
+                <Text fontSize="11px" fontWeight="700" letterSpacing="0.18em" textTransform="uppercase" color={palette.textSecondary}>
+                  {product.merchant}
+                </Text>
+                <Text
+                  as="h3"
+                  mt={2}
+                  fontFamily={fonts.display}
+                  fontSize={featured ? { base: '27px', md: '33px' } : '24px'}
+                  fontWeight="500"
+                  lineHeight="1.15"
+                  letterSpacing="-0.01em"
+                  color={palette.ink}
+                  lineClamp={3}
+                  overflowWrap="anywhere"
+                >
+                  {product.title}
+                </Text>
+              </Box>
 
-          <Flex alignItems="baseline" gap={4} flexWrap="wrap">
-            <Text className="tabular" fontSize="26px" fontWeight="600" letterSpacing="-0.02em" color={palette.ink} lineHeight="1">
-              {formatPrice(product.price)}
-            </Text>
-            {ratingText && (
-              <Text className="tabular" fontSize="13px" color={palette.textSecondary}>
-                <Text as="span" color={palette.brass} aria-hidden="true">★ </Text>
-                {ratingText}
-              </Text>
-            )}
-          </Flex>
+              <Flex alignItems="baseline" gap={4} flexWrap="wrap">
+                <Text className="tabular" fontSize="26px" fontWeight="600" letterSpacing="-0.02em" color={palette.ink} lineHeight="1">
+                  {formatPrice(product.price)}
+                </Text>
+                {ratingText && (
+                  <Text className="tabular" fontSize="13px" color={palette.textSecondary}>
+                    <Text as="span" color={palette.brass} aria-hidden="true">★ </Text>
+                    {ratingText}
+                  </Text>
+                )}
+              </Flex>
 
-          <Flex alignItems="center" gap={2.5} color={palette.textSecondary} fontSize="14px">
-            <Icon name="layers" size={17} />
-            <Text fontWeight="500">{fabricLabel(product)}</Text>
+              <Flex alignItems="center" gap={2.5} color={palette.textSecondary} fontSize="14px">
+                <Icon name="layers" size={17} />
+                <Text fontWeight="500">{fabricLabel(product)}</Text>
+              </Flex>
+                </Flex>
           </Flex>
 
           {featured && <Box mt={{ base: 1, md: 'auto' }}>{cta}</Box>}
@@ -224,7 +250,22 @@ export function ProductCard({ product, rank, featured }: ProductCardProps) {
 
           {!featured && <Box mt="auto" pt={1}>{cta}</Box>}
         </Flex>
+        {tilt.enabled && (
+          <motion.div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              borderRadius: 10,
+              pointerEvents: 'none',
+              background: tilt.glare,
+              opacity: tilt.glareOpacity,
+              mixBlendMode: 'soft-light',
+            }}
+          />
+        )}
       </Flex>
+      </motion.div>
     </motion.article>
   )
 }

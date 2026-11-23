@@ -93,6 +93,15 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
     if comp_raw:
         snippets["composition"] = comp_raw
 
+    # product photo: the page's og:image first; else the extractor's URL, but only if the page really contains it
+    image_url = pf.clean_image_url(raw.og_image, url)
+    if image_url is None:
+        candidate = pf.clean_image_url(f.get("image_url"), url)
+        if candidate and markdown and candidate in markdown:
+            image_url = candidate
+        elif pf.clean_text(f.get("image_url")):
+            notes.append("image url discarded: not a valid URL or not found on the page")
+
     # origin, policy, reviews, stock
     origin = pf.parse_origin(f.get("origin_text"))
     if pf.clean_text(f.get("origin_text")):
@@ -141,7 +150,7 @@ def build_record(url: str, canonical_url: str, raw: RawExtraction, *, now: datet
             status="ok" if not problems else "partial",
             error_reason="; ".join(problems) or None,
             title=title, brand=pf.clean_text(f.get("brand")), seller_name=pf.clean_text(f.get("seller_name")),
-            price=price, in_stock=in_stock,
+            price=price, in_stock=in_stock, image_url=image_url,
             composition=parsed.components, composition_raw=comp_raw if parsed.components or comp_raw else None,
             composition_confidence=confidence, main_part=parsed.main_part,
             fibers_mentioned=parsed.fibers_mentioned, composition_hint=parsed.composition_hint,
