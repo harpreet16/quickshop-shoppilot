@@ -31,7 +31,17 @@ def _result_json(result):
 
 
 def _url_key(url) -> str:
-    return str(url).strip()
+    """Normalize URL for matching — strips all query params so a listing URL with
+    tracking params (wmlspartner, veh, cn …) still matches the clean URL the agent
+    passes to score_product. The product identity is always in the path for the
+    retailers we work with (Amazon /dp/ASIN, Walmart /ip/.../ID, etc.)."""
+    from urllib.parse import urlsplit, urlunsplit
+    try:
+        p = urlsplit(str(url).strip())
+        return urlunsplit((p.scheme.lower(), p.netloc.lower().replace("www.", ""),
+                           p.path.rstrip("/"), "", ""))
+    except Exception:
+        return str(url).strip()
 
 
 class StreamingHook(HookProvider):
