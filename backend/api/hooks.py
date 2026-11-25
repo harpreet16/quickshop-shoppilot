@@ -16,18 +16,25 @@ logger = logging.getLogger(__name__)
 
 
 def _result_json(result):
-    """Parse the JSON a tool returned out of Strands' {"content": [{"text": ...}]} wrapper."""
+    """Parse the JSON a tool returned out of Strands' {"content": [{"text": ...}]} wrapper.
+
+    Concatenates all text blocks before parsing (the same approach as recorder.py's
+    read_tool_output) so large responses split across multiple content blocks are handled.
+    """
     if not isinstance(result, dict):
         return None
-    for block in result.get("content") or []:
-        text = block.get("text") if isinstance(block, dict) else None
-        if not text:
-            continue
-        try:
-            return json.loads(text)
-        except ValueError:
-            continue
-    return None
+    parts = [
+        block.get("text", "")
+        for block in (result.get("content") or [])
+        if isinstance(block, dict) and block.get("text")
+    ]
+    text = "".join(parts)
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except (ValueError, TypeError):
+        return None
 
 
 def _url_key(url) -> str:
