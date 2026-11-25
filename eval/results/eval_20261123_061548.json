@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-11-23T06:15:48.627438",
+  "dataset": 2,
+  "systems": [
+    "b2"
+  ],
+  "queries": [
+    "d2q7"
+  ],
+  "runs": [
+    {
+      "query_id": "d2q7",
+      "query": "100% cashmere scarf under $150",
+      "category": "quality",
+      "expected": "Should find genuine cashmere and flag likely blends or suspect sellers",
+      "system_results": {
+        "b2": {
+          "success": false,
+          "output": "",
+          "elapsed_seconds": 11.8,
+          "exit_code": 1,
+          "error": "B2: InternalServerError HTTP 504; check provider availability and configuration"
+        }
+      }
+    }
+  ]
+}

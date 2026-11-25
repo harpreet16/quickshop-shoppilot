@@ -162,17 +162,20 @@ def run_b2(query: str) -> dict:
         )
         elapsed = time.time() - start
 
-        output = (
-            (here / "output.txt").read_text()
-            if (here / "output.txt").exists()
-            else result.stdout
-        )
-
-        return {
-            "success": result.returncode == 0,
-            "output": output,
+        # stdout belongs to this invocation; output.txt may be stale after a failure.
+        success = result.returncode == 0 and bool(result.stdout.strip())
+        outcome = {
+            "success": success,
+            "output": result.stdout.strip() if success else "",
             "elapsed_seconds": round(elapsed, 2),
+            "exit_code": result.returncode,
         }
+        if not success:
+            outcome["error"] = result.stderr.strip()[-4000:] or (
+                "B2 returned empty output" if result.returncode == 0
+                else f"B2 exited with code {result.returncode}"
+            )
+        return outcome
     except Exception as e:
         return {
             "success": False,

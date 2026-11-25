@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-11-23T06:06:46.159649",
+  "dataset": 2,
+  "systems": [
+    "b2"
+  ],
+  "queries": [
+    "d2q7"
+  ],
+  "runs": [
+    {
+      "query_id": "d2q7",
+      "query": "100% cashmere scarf under $150",
+      "category": "quality",
+      "expected": "Should find genuine cashmere and flag likely blends or suspect sellers",
+      "system_results": {
+        "b2": {
+          "success": true,
+          "output": "Here are three highly-rated, 100% cashmere scarves under $150 from reputable and trustworthy brands:\n\n### 1. Mongolian Cashmere Scarf\n* **Merchant:** Quince\n* **Price:** $54.00\n* **Product Page:** Available on [Quince's Website](https://www.quince.com/women/mongolian-cashmere-scarf).\n* **Price Note:** Extremely budget-friendly at $54. Because Quince operates on a direct-to-consumer model that cuts out middleman markups, they are able to offer premium materials at a fraction of traditional retail costs. \n* **Quality (Material/Durability):** Made from 100% Grade-A Mongolian cashmere. It features a fiber thickness of 15.8\u201316.2 microns and a long fiber length of 34\u201336 mm. These longer, finer fibers make the scarf incredibly soft, highly insulating (three times warmer than sheep's wool), and naturally more resistant to pilling than lower-grade cashmere.\n* **Seller Legitimacy:** Quince is a highly respected, well-known direct-to-consumer brand focused on sustainable luxury essentials. They offer secure payment processing, free shipping, and a highly generous 365-day return policy. \n\n### 2. Unisex Cashmere Ribbed Solid Color Scarf\n* **Merchant:** State Cashmere\n* **Price:** $65.00\n* **Product Page:** Available on [State Cashmere's Online Store](https://statecashmere.com/products/the-unisex-cashmere-ribbed-solid-color-scarf).\n* **Price Note:** At $65, this scarf offers phenomenal value. Textured, ribbed-knit cashmere typically commands a premium price due to the extra yarn weight required for the knit pattern.\n* **Quality (Material/Durability):** Knitted from 100% pure Inner Mongolian Grade-A cashmere, measuring 70\" L x 7\" W. The ribbed-knit texture provides structural density, making this scarf feel slightly thicker and more substantial than flat-woven alternatives. The added texture helps it retain its shape beautifully and resist flattening or wear over time.\n* **Seller Legitimacy:** State Cashmere is a trusted, specialized knitwear brand based in New York. They practice sustainable and ethical sourcing directly from nomadic Mongolian herders, paying fair wages. They ship quickly from the U.S. and have robust customer service with a 30-day return window.\n\n### 3. The Cashmere Scarf\n* **Merchant:** Everlane\n* **Price:** $128.00 (frequently on sale for $77.00)\n* **Product Page:** Available on [Everlane's Official Store](https://www.everlane.com/).\n* **Price Note:** Sits at $128 at full retail price, putting it safely under the $150 budget. \n* **Quality (Material/Durability):** Made of 100% cashmere. Everlane utilizes an eco-conscious, high-quality blend of 70% GRS-certified recycled cashmere and 30% virgin cashmere certified by the Good Cashmere Standard\u00ae. This blend offers the same cloud-like softness and warmth of traditional virgin cashmere, but with a raw carbon footprint that is over 90% lower. It is generously sized at 76\" L x 13.5\" W, offering plenty of fabric for cozy bundling.\n* **Seller Legitimacy:** Everlane is a pioneer in ethical fashion and \"radical transparency,\" making them an incredibly reliable and reputable seller. They thoroughly audit their factories for fair wages and safe environments, and they offer straightforward, reliable 30-day returns.",
+          "elapsed_seconds": 30.64,
+          "exit_code": 0
+        }
+      }
+    }
+  ]
+}

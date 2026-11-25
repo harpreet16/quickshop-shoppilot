@@ -42,8 +42,8 @@ agentic rather than a single model call or a fixed pipeline.
 git clone https://github.com/harpreet16/quickshop-shoppilot.git
 cd quickshop-shoppilot
 python -m venv .venv && source .venv/bin/activate
-pip install -e .
-cp .env.example .env  # Add: API_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
+pip install -e '.[eval]'  # includes B2's Google GenAI SDK
+cp .env.example .env  # Add: API_KEY, FIRECRAWL_API_KEY, OPENROUTER_API_KEY (B2)
 
 # Run QuickShop agent (interactive, output to terminal)
 python -m quickshop 'black jeans under $80'

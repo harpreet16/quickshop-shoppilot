@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-11-23T05:49:12.392491",
+  "dataset": 2,
+  "systems": [
+    "b2"
+  ],
+  "queries": [
+    "d2q7"
+  ],
+  "runs": [
+    {
+      "query_id": "d2q7",
+      "query": "100% cashmere scarf under $150",
+      "category": "quality",
+      "expected": "Should find genuine cashmere and flag likely blends or suspect sellers",
+      "system_results": {
+        "b2": {
+          "success": false,
+          "output": "",
+          "elapsed_seconds": 0.12,
+          "exit_code": 1,
+          "error": "B2: GEMINI_API_KEY not set. Add it to .env or baselines/b2/.env"
+        }
+      }
+    }
+  ]
+}
